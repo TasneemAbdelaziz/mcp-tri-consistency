@@ -1,0 +1,9 @@
+scope,annotation,true,false,omitted
+all,readOnlyHint,43309,9756,24019
+all,destructiveHint,2874,42345,31865
+all,idempotentHint,35052,5226,36806
+all,openWorldHint,27880,19284,29920
+side_effecting,readOnlyHint,1644,6006,4136
+side_effecting,destructiveHint,1865,5904,4017
+side_effecting,idempotentHint,3504,2840,5442
+side_effecting,openWorldHint,3468,3441,4877

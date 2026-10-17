@@ -1,0 +1,119 @@
+# Python sink catalog for E(t), the effects a tool's code can actually have.
+#
+# Each entry is a fully-qualified callable as resolved by the call graph
+# (imports followed, aliases expanded). Wildcards (*) match any attribute.
+# Categories (fine-grained, 5): read / write / delete / execute / network.
+# The coarse ablation (3) maps read -> read, write+delete -> write,
+# execute+network -> external.
+#
+# `when` narrows a sink to a call shape, e.g. open() is only a write when
+# the mode argument contains w/a/x/+.
+
+read:
+  - builtins.open                     # when mode is r / omitted
+  - pathlib.Path.read_text
+  - pathlib.Path.read_bytes
+  - pathlib.Path.open                 # when mode is r / omitted
+  - pathlib.Path.iterdir
+  - pathlib.Path.glob
+  - pathlib.Path.rglob
+  - os.listdir
+  - os.scandir
+  - os.walk
+  - glob.glob
+  - json.load
+  - aiofiles.open                     # when mode is r / omitted
+  - sqlite3.Cursor.execute            # when SQL starts with SELECT
+
+write:
+  - builtins.open                     # when mode contains w / a / x / +
+  - pathlib.Path.open                 # when mode contains w / a / x / +
+  - pathlib.Path.write_text
+  - pathlib.Path.write_bytes
+  - pathlib.Path.mkdir
+  - pathlib.Path.touch
+  - pathlib.Path.rename
+  - pathlib.Path.replace              # overwrite: also relevant to destructiveHint
+  - os.makedirs
+  - os.mkdir
+  - os.rename
+  - os.replace
+  - os.chmod
+  - shutil.copy
+  - shutil.copy2
+  - shutil.copyfile
+  - shutil.copytree
+  - shutil.move
+  - json.dump
+  - aiofiles.open                     # when mode contains w / a / x / +
+  - sqlite3.Cursor.execute            # when SQL starts with INSERT / UPDATE / CREATE
+  - sqlalchemy.orm.Session.add
+  - sqlalchemy.orm.Session.commit
+  - pymongo.collection.Collection.insert_one
+  - pymongo.collection.Collection.insert_many
+  - pymongo.collection.Collection.update_one
+  - pymongo.collection.Collection.update_many
+  - pymongo.collection.Collection.replace_one
+  - redis.Redis.set
+  - boto3.client.put_object
+
+delete:
+  - os.remove
+  - os.unlink
+  - os.rmdir
+  - os.removedirs
+  - shutil.rmtree
+  - pathlib.Path.unlink
+  - pathlib.Path.rmdir
+  - sqlite3.Cursor.execute            # when SQL starts with DELETE / DROP / TRUNCATE
+  - sqlalchemy.orm.Session.delete
+  - pymongo.collection.Collection.delete_one
+  - pymongo.collection.Collection.delete_many
+  - pymongo.collection.Collection.drop
+  - redis.Redis.delete
+  - redis.Redis.flushdb
+  - boto3.client.delete_object
+
+execute:
+  - subprocess.run
+  - subprocess.call
+  - subprocess.check_call
+  - subprocess.check_output
+  - subprocess.Popen
+  - asyncio.create_subprocess_exec
+  - asyncio.create_subprocess_shell
+  - os.system
+  - os.popen
+  - os.exec*
+  - os.spawn*
+  - builtins.eval
+  - builtins.exec
+  - builtins.compile
+
+network:
+  - requests.*                        # get/post/put/patch/delete/request/Session.*
+  - httpx.*                           # incl. AsyncClient.*
+  - aiohttp.ClientSession.*
+  - urllib.request.urlopen
+  - urllib3.PoolManager.request
+  - http.client.HTTPConnection.request
+  - http.client.HTTPSConnection.request
+  - socket.socket.connect
+  - smtplib.SMTP.*
+  - websockets.connect
+  - openai.*                          # third-party API SDKs = open world
+  - anthropic.*
+  - boto3.client
+  - google.cloud.*
+
+# HTTP verb refinement: a network call can also be a remote write/delete,
+# which matters for readOnlyHint / destructiveHint on API-wrapper servers
+# (the most common kind of remote MCP server).
+http_method_effects:
+  GET: read
+  HEAD: read
+  OPTIONS: read
+  POST: write
+  PUT: write
+  PATCH: write
+  DELETE: delete

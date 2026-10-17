@@ -1,0 +1,6 @@
+# MCP SDK. The <2 ceiling is important: v2 is a pre-release with breaking
+# changes (streamablehttp_client / sse_client / ClientSession are reworked).
+# The census was validated on mcp 1.25.0; any 1.x >= 1.25 exposes the same
+# client API used here.
+mcp>=1.25,<2
+httpx>=0.27

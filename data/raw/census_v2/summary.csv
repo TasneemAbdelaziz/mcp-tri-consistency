@@ -1,0 +1,17 @@
+scope,metric,servers,tools
+all,Successfully inspected,3718,77084
+all,Any field present (schema coverage),2218 (59.7%),53832 (69.8%)
+all,All four fields present (complete field emission),1470 (39.5%) >=1 tool; 1276 (34.3%) every tool,37809 (49.0%)
+all,No fields present,1500 (40.3%),23252 (30.2%)
+all,readOnlyHint field present,2213 (59.5%),53065 (68.8%)
+all,destructiveHint field present,1863 (50.1%),45219 (58.7%)
+all,idempotentHint field present,1651 (44.4%),40278 (52.3%)
+all,openWorldHint field present,1950 (52.4%),47164 (61.2%)
+side_effecting,Successfully inspected,1942,11786
+side_effecting,Any field present (schema coverage),1299 (66.9%),8169 (69.3%)
+side_effecting,All four fields present (complete field emission),988 (50.9%) >=1 tool; 927 (47.7%) every tool,5909 (50.1%)
+side_effecting,No fields present,643 (33.1%),3617 (30.7%)
+side_effecting,readOnlyHint field present,1231 (63.4%),7650 (64.9%)
+side_effecting,destructiveHint field present,1243 (64.0%),7769 (65.9%)
+side_effecting,idempotentHint field present,1052 (54.2%),6344 (53.8%)
+side_effecting,openWorldHint field present,1134 (58.4%),6909 (58.6%)
