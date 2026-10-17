@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "D:\AIU\Master\1st Year\MCP paper\MCP tool\scripts\github_code_search.py", line 149, in <module>
+    collect(token)
+  File "D:\AIU\Master\1st Year\MCP paper\MCP tool\scripts\github_code_search.py", line 104, in collect
+    items = s.search(key, page=page)["items"]
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\AIU\Master\1st Year\MCP paper\MCP tool\scripts\github_code_search.py", line 72, in search
+    r.raise_for_status()
+  File "D:\AIU\Master\1st Year\MCP paper\MCP tool\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Server error '503 Service Unavailable' for url 'https://api.github.com/search/code?q=readOnlyHint+language%3APython+size%3A0..781&page=2&per_page=100'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+readOnlyHint language:Python size:0..781: 198
+readOnlyHint language:Python size:782..1172: 473
+server error 503, retrying
+readOnlyHint language:Python size:1173..1562: 675
+readOnlyHint language:Python size:1563..1953: 678
+readOnlyHint language:Python size:1954..2344: 596
+readOnlyHint language:Python size:2345..2735: 590
+readOnlyHint language:Python size:2736..3125: 624
+readOnlyHint language:Python size:3126..3516: 700
+readOnlyHint language:Python size:3517..3907: 824
+server error 503, retrying
+readOnlyHint language:Python size:3908..4298: 868
+readOnlyHint language:Python size:4299..4493: 538
+readOnlyHint language:Python size:4494..4688: 677
+readOnlyHint language:Python size:4689..4884: 648
+readOnlyHint language:Python size:4885..5079: 633
+readOnlyHint language:Python size:5080..5177: 453
+readOnlyHint language:Python size:5178..5274: 684
+readOnlyHint language:Python size:5275..5372: 346
+readOnlyHint language:Python size:5373..5469: 654
