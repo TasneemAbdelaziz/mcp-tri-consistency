@@ -1,0 +1,11 @@
+repo,language,path,sha,status,error
+betterpost/betterpost-plugin,typescript,repos\betterpost__betterpost-plugin,071e14f696f925e2832f7b17f32e8470284aebae,ok,
+bowmark-ai/skill,typescript,repos\bowmark-ai__skill,c03db62db9609a6a451dd8dc7ae75093889edf4d,ok,
+embeddedlayers/mcp-analytics,python,repos\embeddedlayers__mcp-analytics,33a3580381095a520cf0e92ad4578af956496ae8,ok,
+ergoveritas1-alt/certscore.ai,typescript,repos\ergoveritas1-alt__certscore.ai,f6340a5db9011a11c27de68b777306dd9d43bb6d,ok,
+exa-labs/exa-mcp-server,typescript,repos\exa-labs__exa-mcp-server,e9c3b0126a3373eb1aeaca162e84d0791ff4c7f7,ok,
+fouradata/mcp,typescript,repos\fouradata__mcp,3973a091a38d67b4584be18fc19384a601e127d0,ok,
+just-done/just-domain-mcp,python,repos\just-done__just-domain-mcp,7d852a4826720b256ac9f44ab5943a815a4078f7,ok,
+lumifyai/lumify,python,repos\lumifyai__lumify,f43af0fb7e782bf10cde703500c318e620ae20c4,ok,
+nefesh-ai/nefesh-mcp-server,python,repos\nefesh-ai__nefesh-mcp-server,24172f15c005376ebee0eea7cd08451384b3e3a5,ok,
+SitePulsar/mcp-server,python,repos\SitePulsar__mcp-server,d555087b244409714ef554069270624546cbd3f4,ok,

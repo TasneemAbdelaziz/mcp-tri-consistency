@@ -5,7 +5,7 @@ RQ3 (code drift), but old file contents are only downloaded on demand.
 The HEAD commit of each clone is recorded in data/processed/repos_manifest.csv
 so every result can be traced to an exact code version.
 
-Usage: python clone_repos.py [N]   # N = only the first N repos (for testing)
+Usage: python clone_repos.py [N]   # N = test sample: first N repos per language
 """
 import csv
 import subprocess
@@ -46,9 +46,13 @@ def main():
     repos = {}
     with open(CANDIDATES, encoding="utf-8") as f:
         for r in csv.DictReader(f):
-            repos.setdefault(r["full_name"], r["language"])
-    limit = int(sys.argv[1]) if len(sys.argv) > 1 else None
-    items = list(repos.items())[:limit]
+            repos.setdefault(r["full_name"], r)
+    items = [(name, r["language"]) for name, r in repos.items()]
+    if len(sys.argv) > 1:
+        # test sample: first N repos per language, skipping template families
+        n = int(sys.argv[1])
+        items = [(name, r["language"]) for name, r in repos.items() if int(r["owner_repos"]) <= 10]
+        items = [x for x in items if x[1] == "python"][:n] + [x for x in items if x[1] == "typescript"][:n]
 
     results = []
     with ThreadPoolExecutor(WORKERS) as pool:

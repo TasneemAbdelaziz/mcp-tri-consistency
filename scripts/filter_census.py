@@ -63,6 +63,13 @@ def main():
                          "default_branch": m["default_branch"], "stars": m["stars"],
                          "size_kb": m["size_kb"], "pushed_at": m["pushed_at"]})
 
+    # Some owners publish hundreds of servers from one template (e.g. pipeworx-io:
+    # 1,248 repos). owner_repos lets the analysis cap or group such families.
+    owner = Counter(r["full_name"].split("/")[0].lower() for r in {r["full_name"]: r for r in rows}.values())
+    for r in rows:
+        r["owner_repos"] = owner[r["full_name"].split("/")[0].lower()]
+    print("owners with >10 repos:", {o: n for o, n in owner.most_common() if n > 10})
+
     with open(OUT, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]))
         w.writeheader()
