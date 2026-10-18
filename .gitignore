@@ -9,3 +9,4 @@ data/raw/census_test/
 data/raw/*/registry_snapshot.json
 data/raw/*/tools_full.jsonl
 data/raw/registry_snapshot_*.json
+.pytest_cache/

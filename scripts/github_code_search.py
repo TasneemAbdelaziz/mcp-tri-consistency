@@ -9,7 +9,8 @@ The search API returns at most 1,000 results per query, so each
 holds <= 1,000 hits. Code search allows ~10 requests/minute.
 
 Hits go to data/raw/code_search/hits.jsonl; finished ranges are recorded in
-done.txt so an interrupted run resumes where it stopped.
+done.txt so an interrupted run resumes where it stopped. Ranges whose pages
+kept failing go to failed.txt and are retried at the start of the next run.
 Run aggregate_code_search() (python github_code_search.py --aggregate) to
 build data/processed/code_search_repos.csv from the hits.
 """
@@ -27,6 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "data/raw/code_search"
 HITS = RAW / "hits.jsonl"
 DONE = RAW / "done.txt"
+FAILED = RAW / "failed.txt"
 OUT = ROOT / "data/processed/code_search_repos.csv"
 API = "https://api.github.com/search/code"
 
@@ -50,6 +52,7 @@ class Searcher:
         self.last = 0.0
 
     def search(self, q, page=1, per_page=PAGE):
+        failures = 0
         while True:
             wait = MIN_INTERVAL - (time.time() - self.last)
             if wait > 0:
@@ -58,28 +61,35 @@ class Searcher:
             try:
                 r = self.client.get(API, params={"q": q, "page": page, "per_page": per_page})
             except httpx.HTTPError as e:
-                print(f"network error {e!r}, retrying", file=sys.stderr)
-                time.sleep(30)
-                continue
-            if r.status_code in (403, 429):
+                r, error = None, repr(e)
+            if r is not None and r.status_code in (403, 429):
                 reset = int(r.headers.get("x-ratelimit-reset", time.time() + 60))
                 wait = max(reset - time.time(), int(r.headers.get("retry-after", 0)), 30)
                 print(f"rate limited, sleeping {wait:.0f}s", file=sys.stderr)
                 time.sleep(wait)
                 continue
-            if r.status_code == 422:  # past the 1,000-result window
+            if r is not None and r.status_code == 422:  # past the 1,000-result window
                 return {"total_count": 0, "items": []}
-            if r.status_code >= 500:  # transient GitHub errors (search 503s often)
-                print(f"server error {r.status_code}, retrying", file=sys.stderr)
-                time.sleep(30)
-                continue
-            r.raise_for_status()
-            return r.json()
+            if r is not None and r.status_code == 200:
+                return r.json()
+            # transient: network errors, 408 and 5xx are common on code search
+            failures += 1
+            error = error if r is None else f"HTTP {r.status_code}"
+            if failures >= 5:
+                print(f"giving up on {q!r} page {page}: {error}", file=sys.stderr)
+                return {"total_count": 0, "items": [], "failed": True}
+            print(f"{error}, retry {failures}/5", file=sys.stderr)
+            time.sleep(30 * failures)
 
 
 def ranges(searcher, base, lo, hi):
-    """Yield (lo, hi, count) size ranges, each with <= LIMIT hits."""
-    count = searcher.search(f"{base} size:{lo}..{hi}", per_page=1)["total_count"]
+    """Yield (lo, hi, count) size ranges, each with <= LIMIT hits.
+    count is None when the count query itself failed."""
+    res = searcher.search(f"{base} size:{lo}..{hi}", per_page=1)
+    if res.get("failed"):
+        yield lo, hi, None
+        return
+    count = res["total_count"]
     if count <= LIMIT or lo == hi:
         if count > LIMIT:
             print(f"warning: {base} size:{lo} has {count} hits, only {LIMIT} reachable", file=sys.stderr)
@@ -90,33 +100,60 @@ def ranges(searcher, base, lo, hi):
     yield from ranges(searcher, base, mid + 1, hi)
 
 
+def fetch_range(s, hits, key, count, lang, term):
+    """Download all pages of one size range; False if a page failed."""
+    for page in range(1, min(count, LIMIT) // PAGE + 2):
+        res = s.search(key, page=page)
+        if res.get("failed"):
+            return False
+        for it in res["items"]:
+            hits.write(json.dumps({
+                "repo": it["repository"]["full_name"],
+                "fork": it["repository"]["fork"],
+                "path": it["path"],
+                "language": lang,
+                "term": term,
+            }) + "\n")
+        if len(res["items"]) < PAGE:
+            break
+    hits.flush()
+    return True
+
+
 def collect(token):
     RAW.mkdir(parents=True, exist_ok=True)
-    done = set(DONE.read_text(encoding="utf-8").split("\n")) if DONE.exists() else set()
+    done = DONE.read_text(encoding="utf-8").split("\n") if DONE.exists() else []
+    failed = FAILED.read_text(encoding="utf-8").split("\n") if FAILED.exists() else []
     s = Searcher(token)
     with open(HITS, "a", encoding="utf-8") as hits, open(DONE, "a", encoding="utf-8") as log:
+        # retry ranges that failed in an earlier run
+        still_failed = []
+        for key in filter(None, failed):
+            term, lang = key.split()[0], key.split("language:")[1].split()[0]
+            if fetch_range(s, hits, key, LIMIT, lang, term):
+                log.write(key + "\n")
+                log.flush()
+            else:
+                still_failed.append(key)
+        FAILED.write_text("\n".join(still_failed) + "\n", encoding="utf-8")
+
         for term in TERMS:
             for lang in LANGUAGES:
                 base = f"{term} language:{lang}"
                 if base in done:
                     continue
-                for lo, hi, count in ranges(s, base, 0, MAX_SIZE):
+                # ranges are done in increasing size order: resume after the last one
+                start = max((int(k.split("..")[1]) + 1 for k in done if k.startswith(base + " size:")),
+                            default=0)
+                for lo, hi, count in ranges(s, base, start, MAX_SIZE):
                     key = f"{base} size:{lo}..{hi}"
-                    if key in done or count == 0:
+                    if count == 0:
                         continue
-                    for page in range(1, min(count, LIMIT) // PAGE + 2):
-                        items = s.search(key, page=page)["items"]
-                        for it in items:
-                            hits.write(json.dumps({
-                                "repo": it["repository"]["full_name"],
-                                "fork": it["repository"]["fork"],
-                                "path": it["path"],
-                                "language": lang,
-                                "term": term,
-                            }) + "\n")
-                        if len(items) < PAGE:
-                            break
-                    hits.flush()
+                    if count is None or not fetch_range(s, hits, key, count, lang, term):
+                        with open(FAILED, "a", encoding="utf-8") as f:
+                            f.write(key + "\n")
+                        print(f"{key}: FAILED, will retry next run", file=sys.stderr)
+                        continue
                     log.write(key + "\n")
                     log.flush()
                     print(f"{key}: {count}", file=sys.stderr)
