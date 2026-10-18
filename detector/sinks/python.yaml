@@ -106,6 +106,41 @@ network:
   - boto3.client
   - google.cloud.*
 
+# Library wrappers whose effect depends on the operation, not on the fact that
+# they spawn a process. Matched before the generic categories above.
+# GitPython: repo.git.<subcommand>(...) runs `git <subcommand>`.
+libraries:
+  read:
+    - git.Repo.git.status
+    - git.Repo.git.diff
+    - git.Repo.git.log
+    - git.Repo.git.show
+    - git.Repo.git.branch       # listing; branch -d is caught by its arguments
+    - git.Repo.iter_commits
+    - git.Repo.rev_parse
+    - git.Repo.commit
+    - git.Repo.head.commit.diff
+  write:
+    - git.Repo.git.add
+    - git.Repo.git.commit
+    - git.Repo.git.checkout
+    - git.Repo.git.merge
+    - git.Repo.git.pull
+    - git.Repo.git.push
+    - git.Repo.git.tag
+    - git.Repo.git.stash
+    - git.Repo.index.add
+    - git.Repo.index.commit
+    - git.Repo.create_head
+    - git.Repo.clone_from
+  delete:
+    - git.Repo.git.reset
+    - git.Repo.git.clean
+    - git.Repo.git.rm
+    - git.Repo.index.reset
+    - git.Repo.index.remove
+    - git.Repo.delete_head
+
 # HTTP verb refinement: a network call can also be a remote write/delete,
 # which matters for readOnlyHint / destructiveHint on API-wrapper servers
 # (the most common kind of remote MCP server).

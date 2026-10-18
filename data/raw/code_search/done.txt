@@ -121,3 +121,7 @@ readOnlyHint language:TypeScript size:3753..3850
 readOnlyHint language:TypeScript size:3851..3947
 readOnlyHint language:TypeScript size:3948..4044
 readOnlyHint language:TypeScript size:4045..4141
+readOnlyHint language:TypeScript size:4142..4239
+readOnlyHint language:TypeScript size:4240..4336
+readOnlyHint language:TypeScript size:4337..4433
+readOnlyHint language:TypeScript size:4434..4530

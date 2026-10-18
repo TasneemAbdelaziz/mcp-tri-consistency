@@ -4,3 +4,5 @@
 # client API used here.
 mcp>=1.25,<2
 httpx>=0.27
+pyyaml
+pytest
