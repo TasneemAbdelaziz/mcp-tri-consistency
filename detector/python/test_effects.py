@@ -105,3 +105,107 @@ def test_lowlevel_match_dispatcher(tmp_path):
     ''')
     assert tools["read_it"]["entry"] == "call_tool[read_it]" and not tools["read_it"]["violations"]
     assert rules(tools["drop_it"]) == {"readOnly_but_delete"}
+
+
+# --- labeling rules R1-R6 (labeling/guide.md): kinds and strict vs lenient ---
+
+def kinds(t):
+    return {v["witness"]["kind"] for v in t["violations"]}
+
+
+def test_r1_bookkeeping_delete_is_lenient(tmp_path):
+    tools = analyze(tmp_path, '''
+        from pathlib import Path
+        @mcp.tool(annotations={"destructiveHint": False})
+        def commit(repo):
+            git_dir = Path(repo.git_dir)
+            for name in ("MERGE_HEAD", "MERGE_MSG"):
+                (git_dir / name).unlink(missing_ok=True)
+    ''')
+    assert kinds(tools["commit"]) == {"bookkeeping"}
+    assert tools["commit"]["violations_lenient"] == []
+
+
+def test_r2_cleanup_in_except_handler(tmp_path):
+    tools = analyze(tmp_path, '''
+        import os
+        @mcp.tool(annotations={"destructiveHint": False})
+        def convert(out):
+            try:
+                build(out)
+            except Exception:
+                os.remove(out)
+                raise
+    ''')
+    assert kinds(tools["convert"]) == {"cleanup"} and tools["convert"]["violations_lenient"] == []
+
+
+def test_r2_deleting_user_file_stays_strict(tmp_path):
+    tools = analyze(tmp_path, '''
+        import os
+        @mcp.tool(annotations={"destructiveHint": False})
+        def remove(path):
+            os.remove(path)
+    ''')
+    assert kinds(tools["remove"]) == {"plain"} and len(tools["remove"]["violations_lenient"]) == 1
+
+
+def test_r3_fixed_vs_dynamic_command(tmp_path):
+    tools = analyze(tmp_path, '''
+        import subprocess
+        from shlex import split
+        @mcp.tool(annotations={"readOnlyHint": True})
+        def pw(n):
+            subprocess.run(split(f"hankify-pw --num-words {n}"))
+        @mcp.tool(annotations={"readOnlyHint": True})
+        def shell(cmd):
+            subprocess.run(cmd, shell=True)
+    ''')
+    assert kinds(tools["pw"]) == {"execute_fixed"} and tools["pw"]["violations_lenient"] == []
+    assert kinds(tools["shell"]) == {"execute_dynamic"} and tools["shell"]["violations_lenient"]
+
+
+def test_r4_post_to_search_or_graphql_query(tmp_path):
+    tools = analyze(tmp_path, '''
+        import requests
+        @mcp.tool(annotations={"readOnlyHint": True})
+        def find(q):
+            requests.post("https://api.x.com/search", json={"q": q})
+        @mcp.tool(annotations={"readOnlyHint": True})
+        def gql(q):
+            requests.post("https://api.x.com/graphql", json={"query": "query { me { id } }"})
+        @mcp.tool(annotations={"readOnlyHint": True})
+        def create(name):
+            requests.post("https://api.x.com/users", json={"name": name})
+    ''')
+    assert tools["find"]["violations_lenient"] == [] and tools["gql"]["violations_lenient"] == []
+    assert kinds(tools["create"]) == {"plain"}
+
+
+def test_r5_debug_log_vs_state_journal(tmp_path):
+    tools = analyze(tmp_path, '''
+        @mcp.tool(annotations={"readOnlyHint": True})
+        def status():
+            with open("server.log", "a") as f:
+                f.write("called")
+        @mcp.tool(annotations={"readOnlyHint": True})
+        def settle(rows):
+            with open("settlements.jsonl", "a") as f:
+                f.write(rows)
+    ''')
+    assert kinds(tools["status"]) == {"log"} and tools["status"]["violations_lenient"] == []
+    assert kinds(tools["settle"]) == {"plain"} and tools["settle"]["violations_lenient"]
+
+
+def test_r6_checkout_branch_vs_force(tmp_path):
+    tools = analyze(tmp_path, '''
+        import git
+        @mcp.tool(annotations={"destructiveHint": False})
+        def switch(repo: git.Repo, b):
+            repo.git.checkout(b)
+        @mcp.tool(annotations={"destructiveHint": False})
+        def restore(repo: git.Repo, path):
+            repo.git.checkout("--", path)
+    ''')
+    assert tools["switch"]["violations"] == []
+    assert {v["rule"] for v in tools["restore"]["violations"]} == {"nondestructive_but_delete"}

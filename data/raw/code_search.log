@@ -752,3 +752,16 @@ rate limited, sleeping 59s
 rate limited, sleeping 60s
 rate limited, sleeping 81s
 rate limited, sleeping 85s
+readOnlyHint language:TypeScript size:9397..9587: 617
+readOnlyHint language:TypeScript size:9588..9778: 666
+readOnlyHint language:TypeScript size:9779..9969: 598
+HTTP 503, retry 1/5
+readOnlyHint language:TypeScript size:9970..10159: 553
+readOnlyHint language:TypeScript size:10160..10350: 595
+readOnlyHint language:TypeScript size:10351..10541: 547
+readOnlyHint language:TypeScript size:10542..10732: 546
+readOnlyHint language:TypeScript size:10733..10922: 585
+readOnlyHint language:TypeScript size:10923..11113: 588
+readOnlyHint language:TypeScript size:11114..11304: 615
+readOnlyHint language:TypeScript size:11305..11495: 527
+readOnlyHint language:TypeScript size:11496..11685: 510

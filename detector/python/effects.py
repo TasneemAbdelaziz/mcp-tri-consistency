@@ -57,6 +57,18 @@ RETURNS = {
 }
 BUILTINS = {"open", "eval", "exec", "compile", "__import__"}
 
+# Effect kinds for the labeling rules (labeling/guide.md). They are heuristics on
+# the call's text and the expressions its variables were assigned from; every
+# effect keeps its kind so results can be reported strict (all) and lenient
+# (LENIENT_DROP kinds removed).
+BOOKKEEPING_WORDS = ("merge_head", "orig_head", "cherry_pick_head", "autostash", "git_dir", ".git/",
+                     ".lock", "lockfile", ".pid")
+TEMP_WORDS = ("tmp", "temp", "partial", ".part", "scratch")
+CLEANUP_FUNCS = ("cleanup", "clean_up", "remove_partial", "rollback", "discard")
+LOG_WORDS = (".log", "/log", "logs/", "debug")
+READ_ENDPOINT_WORDS = ("search", "query", "token", "oauth", "login", "auth", "lookup")
+LENIENT_DROP = {"bookkeeping", "cleanup", "temp", "execute_fixed", "post_read_like", "log"}
+
 
 def load_sinks(path=SINKS_FILE):
     data = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -146,6 +158,7 @@ class Context:
         self.repo, self.module, self.cls = repo, module, cls
         self.info = repo.modules[module]
         self.types = {}
+        self.assigned = {}  # local name -> the expression it was last assigned from
         if func is not None:
             self.type_function(func)
 
@@ -157,6 +170,14 @@ class Context:
                 if t:
                     self.types[a.arg] = t
         for node in ast.walk(func):
+            if isinstance(node, ast.Assign) and len(node.targets) == 1:
+                target = node.targets[0]
+                names = [target] if isinstance(target, ast.Name) else \
+                    [e for e in getattr(target, "elts", []) if isinstance(e, ast.Name)]  # fd, path = mkstemp()
+                for n in names:
+                    self.assigned[n.id] = node.value
+            elif isinstance(node, (ast.For, ast.AsyncFor)) and isinstance(node.target, ast.Name):
+                self.assigned[node.target.id] = node.iter  # for name in ("MERGE_HEAD", ...)
             if isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
                 t = self.value_type(node.value)
                 if t:
@@ -238,6 +259,11 @@ def classify_call(call, ctx, libs, generic):
                 cat = SQL.get(sql.split()[0].lower())
                 if cat:
                     return [(cat, q, "high")]
+        # R6: a branch switch is protected by git; --force or `-- <paths>` drops local edits
+        if q == "git.Repo.git.checkout":
+            flags = {mod.literal(a) for a in call.args} | {k.arg for k in call.keywords}
+            if flags & {"-f", "--force", "--", "force"}:
+                return [("delete", q, "high")]
         for pattern, cat in libs:
             if fnmatch.fnmatchcase(q, pattern):
                 return [(cat, q, "high")]
@@ -275,6 +301,77 @@ def classify_call(call, ctx, libs, generic):
     return []
 
 
+def call_text(call, ctx, depth=2):
+    """The call's source plus, for each variable it uses, what that variable was
+    assigned from (two levels), lower-cased: `p.unlink()` + `p = Path(tmpdir) / x`."""
+    parts, seen, frontier = [ast.unparse(call)], set(), [call]
+    for _ in range(depth):
+        nxt = []
+        for node in frontier:
+            for n in ast.walk(node):
+                if isinstance(n, ast.Name) and n.id in ctx.assigned and n.id not in seen:
+                    seen.add(n.id)
+                    parts.append(ast.unparse(ctx.assigned[n.id]))
+                    nxt.append(ctx.assigned[n.id])
+        frontier = nxt
+    return " ".join(parts).lower()
+
+
+def fixed_program(call, ctx):
+    """True when the program a subprocess call runs is a literal (its arguments may vary)."""
+    if not call.args:
+        return False
+    arg = call.args[0]
+    for _ in range(2):  # follow `cmd = [...]` once, and split(f"prog ...")
+        if isinstance(arg, ast.Name) and arg.id in ctx.assigned:
+            arg = ctx.assigned[arg.id]
+        if isinstance(arg, ast.Call) and call_name(arg).split(".")[-1] == "split" and arg.args:
+            arg = arg.args[0]
+    if isinstance(arg, ast.Constant) and isinstance(arg.value, str):
+        return bool(arg.value.strip())
+    if isinstance(arg, (ast.List, ast.Tuple)) and arg.elts:
+        return isinstance(arg.elts[0], ast.Constant)
+    if isinstance(arg, ast.JoinedStr) and arg.values:
+        first = arg.values[0]
+        return isinstance(first, ast.Constant) and bool(str(first.value).split())
+    return False
+
+
+def effect_kind(cat, sink, call, ctx, fname, in_handler):
+    """Which labeling rule (if any) this effect falls under; 'plain' otherwise."""
+    text = call_text(call, ctx)
+    if cat == "delete":
+        if any(w in text for w in BOOKKEEPING_WORDS):
+            return "bookkeeping"                                       # R1
+        if in_handler or any(w in (fname or "").lower() for w in CLEANUP_FUNCS) \
+                or any(w in text for w in TEMP_WORDS) or "tempfile." in text:
+            return "cleanup"                                           # R2
+    if cat == "execute" and not sink.startswith("builtins."):
+        return "execute_fixed" if fixed_program(call, ctx) else "execute_dynamic"  # R3
+    if cat == "write":
+        verb = call.func.attr.lower() if isinstance(call.func, ast.Attribute) else ""
+        if verb in ("post", "request") and (any(w in text for w in READ_ENDPOINT_WORDS)
+                                            or ("graphql" in text and "mutation" not in text)):
+            return "post_read_like"                                    # R4
+        if any(w in text for w in LOG_WORDS):
+            return "log"                                               # R5
+        if "tempfile." in text or any(w in text for w in TEMP_WORDS):
+            return "temp"                                              # P3
+    return "plain"
+
+
+def handler_calls(stmts):
+    """ids of nodes inside except / finally blocks (cleanup paths)."""
+    ids = set()
+    for stmt in stmts:
+        for node in ast.walk(stmt):
+            if isinstance(node, ast.Try):
+                for block in [h.body for h in node.handlers] + [node.finalbody]:
+                    for s in block:
+                        ids.update(id(n) for n in ast.walk(s))
+    return ids
+
+
 class Analyzer:
     def __init__(self, repo, k=3):
         self.repo, self.k = repo, k
@@ -289,18 +386,20 @@ class Analyzer:
         self.cache[key] = []  # breaks recursion cycles
         node, module, cls = self.repo.functions[qname]
         ctx = Context(self.repo, module, cls, node)
-        self.cache[key] = self.statements_effects(node.body, ctx, depth)
+        self.cache[key] = self.statements_effects(node.body, ctx, depth, node.name)
         return self.cache[key]
 
-    def statements_effects(self, stmts, ctx, depth):
+    def statements_effects(self, stmts, ctx, depth, fname=None):
         effects = []
         rel = ctx.info["rel"]
+        in_handler = handler_calls(stmts)
         for stmt in stmts:
             for node in ast.walk(stmt):
                 if not isinstance(node, ast.Call):
                     continue
                 for cat, sink, conf in classify_call(node, ctx, self.libs, self.generic):
-                    effects.append({"category": cat, "sink": sink, "confidence": conf,
+                    kind = effect_kind(cat, sink, node, ctx, fname, id(node) in in_handler)
+                    effects.append({"category": cat, "sink": sink, "confidence": conf, "kind": kind,
                                     "file": rel, "line": node.lineno, "path": []})
                 q = ctx.resolve(node.func)
                 if q in self.repo.functions and depth < self.k:
@@ -384,6 +483,8 @@ class Analyzer:
                 tool["entry"] = entry
                 tool["effects"] = effects
                 tool["violations"] = violations(tool["annotations"], effects)
+                tool["violations_lenient"] = [v for v in tool["violations"]
+                                              if v["witness"]["kind"] not in LENIENT_DROP]
                 results.append(tool)
         return results
 

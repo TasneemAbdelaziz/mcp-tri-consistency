@@ -161,3 +161,15 @@ readOnlyHint language:TypeScript size:8619..8812
 readOnlyHint language:TypeScript size:8813..9007
 readOnlyHint language:TypeScript size:9008..9201
 readOnlyHint language:TypeScript size:9202..9396
+readOnlyHint language:TypeScript size:9397..9587
+readOnlyHint language:TypeScript size:9588..9778
+readOnlyHint language:TypeScript size:9779..9969
+readOnlyHint language:TypeScript size:9970..10159
+readOnlyHint language:TypeScript size:10160..10350
+readOnlyHint language:TypeScript size:10351..10541
+readOnlyHint language:TypeScript size:10542..10732
+readOnlyHint language:TypeScript size:10733..10922
+readOnlyHint language:TypeScript size:10923..11113
+readOnlyHint language:TypeScript size:11114..11304
+readOnlyHint language:TypeScript size:11305..11495
+readOnlyHint language:TypeScript size:11496..11685
