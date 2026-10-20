@@ -50,6 +50,8 @@ const ORM = { create: ["write", "additive"], createMany: ["write", "additive"], 
   delete: ["delete"], deleteMany: ["delete"], remove: ["delete"], destroy: ["delete"], truncate: ["delete"],
   findMany: ["read"], findUnique: ["read"], findFirst: ["read"], select: ["read"], count: ["read"] };
 const HTTP_RECEIVER = /client|http|api|session|axios|request|fetcher/i;
+// repos with more source files than this are loaded lazily
+const LAZY_OVER = 300;
 // name-based call resolution: skip names too common to identify one function
 const MAX_BY_NAME = 3;
 const GENERIC_NAMES = new Set(["then", "catch", "finally", "call", "apply", "bind", "toString", "valueOf", "toJSON",
@@ -78,7 +80,9 @@ const lower = s => s.toLowerCase();
 class Repo {
   constructor(root) {
     this.root = root;
-    this.parsed = A.parseSources(root);
+    // big repos: tool files and what they import, not every file (see parseSourcesLazy)
+    this.lazy = A.sourceFiles(root).length > LAZY_OVER;
+    this.parsed = this.lazy ? A.parseSourcesLazy(root) : A.parseSources(root);
     this.consts = A.repoConstants(this.parsed);
     this.files = new Map();
     for (const f of this.parsed) this.files.set(f.rel, { rel: f.rel, sf: f.sf });

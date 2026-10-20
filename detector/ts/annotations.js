@@ -380,9 +380,49 @@ function parseRepo(root, { mcpOnly = false, parsed = null } = {}) {
 }
 
 const parseSources = root => sourceFiles(root).map(f => ({ ...f, sf: parse(f.full) })).filter(f => f.sf);
+
+// Large repos: parse only the files that define tools (or name an annotation)
+// and the repo files they import, transitively up to maxDepth. Effects reached
+// only through files nothing imports from there are missed; small repos are
+// parsed whole (effects.js decides the threshold).
+const SEED_RE = /readOnlyHint|destructiveHint|openWorldHint|idempotentHint|registerTool|setRequestHandler|addTool|registerAppTool|McpTool/;
+function parseSourcesLazy(root, maxDepth = 6) {
+  const files = sourceFiles(root);
+  const byRel = new Map(files.map(f => [f.rel, f]));
+  const resolve = (fromRel, spec) => {
+    if (!spec.startsWith(".")) return null;
+    const base = path.posix.normalize(path.posix.join(path.posix.dirname(fromRel), spec)).replace(/\.(m|c)?js$/, "");
+    for (const c of [base, ...[".ts", ".tsx", ".mts", ".cts", ".js", ".mjs", ".cjs", ".jsx"].flatMap(e => [base + e, `${base}/index${e}`])])
+      if (byRel.has(c)) return c;
+    return null;
+  };
+  const seen = new Map();
+  let frontier = files.filter(f => { try { return SEED_RE.test(fs.readFileSync(f.full, "utf8")); } catch { return false; } });
+  for (let depth = 0; depth <= maxDepth && frontier.length; depth++) {
+    const next = [];
+    for (const f of frontier) {
+      if (seen.has(f.rel)) continue;
+      const sf = parse(f.full);
+      seen.set(f.rel, sf);
+      if (!sf) continue;
+      const visit = n => {
+        let spec = null;
+        if ((ts.isImportDeclaration(n) || ts.isExportDeclaration(n)) && n.moduleSpecifier && ts.isStringLiteral(n.moduleSpecifier)) spec = n.moduleSpecifier.text;
+        else if (ts.isCallExpression(n) && n.arguments.length === 1 && ts.isStringLiteral(n.arguments[0]) &&
+          (n.expression.kind === ts.SyntaxKind.ImportKeyword || (ts.isIdentifier(n.expression) && n.expression.text === "require"))) spec = n.arguments[0].text;
+        const rel = spec && resolve(f.rel, spec);
+        if (rel && !seen.has(rel)) next.push(byRel.get(rel));
+        ts.forEachChild(n, visit);
+      };
+      visit(sf);
+    }
+    frontier = next;
+  }
+  return files.filter(f => seen.get(f.rel)).map(f => ({ ...f, sf: seen.get(f.rel) }));
+}
 const usesMcp = parsed => parsed.some(f => mcpImports(f.sf).length);
 
-module.exports = { parseRepo, parseSources, usesMcp, repoConstants, HINTS, FileCtx, unwrap, dotted, calleeName, line, AMBIGUOUS };
+module.exports = { parseRepo, parseSources, parseSourcesLazy, sourceFiles, usesMcp, repoConstants, HINTS, FileCtx, unwrap, dotted, calleeName, line, AMBIGUOUS };
 
 // CLI: node annotations.js REPO [OUT.jsonl] [--all]   (--all keeps non-MCP repos)
 if (require.main === module) {

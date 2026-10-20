@@ -11,3 +11,5 @@ data/raw/*/tools_full.jsonl
 data/raw/registry_snapshot_*.json
 .pytest_cache/
 node_modules/
+data/tmp/
+data/results/scan/
