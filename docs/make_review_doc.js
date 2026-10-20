@@ -78,16 +78,19 @@ Effects
 - execute: runs code, a script, a program or a shell command.
     Returning a command or code without running it is NOT execute.
 - network: contacts a system outside the server.
-    target = "open" (a URL/address the caller supplies, the web,
-    arbitrary third parties, messages to people) | "named_service"
-    (one specific named external service) | "unspecified".
+    world = "open" (the tool can reach entities the server does not
+    control: a URL/address the caller supplies, web search, arbitrary
+    third parties, messages to people) | "closed" (a bounded set the
+    description names, e.g. the user's own notes) | "unknown".
+    A service name or a fixed host does NOT make it closed: one service
+    can search an open world. Judge the interaction, not the address.
 
 For every claim the description makes about an effect, output a record:
   effect, polarity (affirmed | denied | uncertain), scope ("global" or the
   resource it is limited to, e.g. "filesystem", "javascript"), actor
   (tool | provider | other_tool | user), condition (null or the condition
   text), evidence (an exact substring of the description), and mode or
-  target where they apply.
+  world where they apply.
 
 Rules
 1. Only this tool's own action has actor = tool. Advice to call another
@@ -102,7 +105,7 @@ Rules
    ("sync", "manage", "live data", a named service that may be the
    server's own backend). If no text bears on an effect, output no record.
 5. An HTTP method alone (POST, GET) does not establish write or read.
-   Judge the action described.
+   Judge the action described; a path such as /search may show it.
 6. A URL, an API-key requirement or a verb in the tool name is not by
    itself network or execute.
 7. Several records per tool are allowed, including the same effect with
@@ -133,7 +136,7 @@ const SCHEMA_EX = `{"tool_id": "x711-gas-station/x711_code_sandbox",
    "actor": "tool", "mode": "additive", "condition": null,
    "evidence": "Create a managed headless browser session"},
   {"effect": "network", "polarity": "affirmed", "scope": "global",
-   "actor": "tool", "target": "named_service", "condition": null,
+   "actor": "tool", "world": "unknown", "condition": null,
    "evidence": "on Browserbase infrastructure"},
   {"effect": "delete", "polarity": "affirmed", "scope": "global",
    "actor": "provider", "condition": "after 5 minutes of inactivity",
@@ -141,7 +144,10 @@ const SCHEMA_EX = `{"tool_id": "x711-gas-station/x711_code_sandbox",
  "needs_review": false, "notes": "expiry is done by Browserbase, not the tool"}`;
 
 const DERIVE = `for each effect e (actor = tool only):
-  affirmed     if any claim on e is affirmed   (any scope)
+  conflicting  if e is affirmed and denied with the same scope and
+               condition (or affirmed and denied globally)
+               -> needs_review; never resolved silently
+  affirmed     elif any claim on e is affirmed   (any scope)
   denied       elif any claim on e is denied with scope = global
   uncertain    elif any claim on e is uncertain
   not_stated   otherwise
@@ -150,6 +156,7 @@ const DERIVE = `for each effect e (actor = tool only):
 const body = [
   new Paragraph({ heading: HeadingLevel.TITLE, children: runs("Review: extracting D(t) from MCP tool descriptions") }),
   P(["Response to ", ["MCP_Classification_Review_for_Claude.docx", { italic: true }], " (Menna Samy, 19 Oct 2026) · prepared with Tasneem, 19 Oct 2026"], { color: "595959" }),
+  P([b("v1.1 (20 Oct 2026): "), "four corrections from Menna's comments. (1) A service name or fixed host does not make an interaction closed; network now records world = open | closed | unknown. (2) Aggregation reports conflicting instead of choosing affirmed. (3) In the two-model vote, any agreement is kept, including not_stated. (4) The POST /api/search example is read because of the path, not the method."], { color: "8A3B12" }),
   P(["Each conclusion is tagged ", tag("Supported"), "when it follows from the MCP specification or standard measurement practice, or ", tag("Policy"), "when it is a choice the project must make and state in the paper."]),
 
   H1("1. Verdict"),
@@ -161,7 +168,7 @@ const body = [
   P(b("The four changes:")),
   ...numbered([
     [b("Claim-level output with scope and actor"), " instead of one status per effect (section 3). This resolves most of the nine differences."],
-    [b("Split network by target"), ": openWorldHint is about an open world of entities, not about network traffic (section 5)."],
+    [b("Record the world of a network claim"), ": openWorldHint is about an open world of entities, not about network traffic (section 5)."],
     [b("Fresh, blind, dual-human ground truth"), ". The current 20 tools become a development set only (section 6)."],
     [b("Run through the API, not chat"), ", with logged model versions and settings (section 8). The ChatGPT chat outputs cannot be reported."],
   ]),
@@ -173,7 +180,7 @@ const body = [
     ["2", "Cached WeChat article / network", "uncertain", "not_stated", [b("uncertain")], "“via ReadGZH” names a service that is this server's own backend; a cache read may not leave it (rule N2)"],
     ["3", "Campaign brief / delete", "not_stated", "denied", [b("denied")], "“read-only” is a broad denial (rule B1)"],
     ["4", "Browser session / delete", "not_stated", "uncertain", [b("not_stated")], "Expiry is done by Browserbase: a provider claim, kept as a record but not the tool's effect (rule A1)"],
-    ["5", "Browser session / network", "uncertain", "not_stated", [b("uncertain")], "Under description-only input. With server_name in the input it becomes affirmed (named_service): Browserbase is not apibase (rule N2)"],
+    ["5", "Browser session / network", "uncertain", "not_stated", [b("uncertain")], "Under description-only input. With server_name in the input it becomes affirmed (Browserbase is not apibase), world unknown (rule N2)"],
     ["6", "Slippage / read", "not_stated", "uncertain", [b("uncertain")], "“based on live price impact” bears on reading live data but does not say the tool fetches it (rule U1). No comparison rule uses read"],
     ["7", "Code sandbox / read", "not_stated", "denied", [b("not_stated + scoped")], "“no filesystem access” denies filesystem reads only (rule S1)"],
     ["8", "Code sandbox / write", "not_stated", "denied", [b("not_stated + scoped")], "Same scope: filesystem only"],
@@ -191,7 +198,7 @@ const body = [
     [[code("actor")], "tool | provider | other_tool | user", "separates the tool's action from workflow advice and provider lifecycle"],
     [[code("condition")], "null or text", "“if fresh=true”, “after 5 minutes”"],
     [[code("mode")], "additive | modifying | unknown (write only)", "destructiveHint=false allows only additive updates (section 5)"],
-    [[code("target")], "open | named_service | unspecified (network only)", "openWorldHint is about open-world entities (section 5)"],
+    [[code("world")], "open | closed | unknown (network only), judged by the interaction, not the address", "openWorldHint is about open-world entities (section 5)"],
     [[code("evidence")], "exact substring", "auditable; checked automatically"],
   ], [W(0.16), W(0.42), W(0.42)]),
   gap(),
@@ -209,8 +216,8 @@ const body = [
     ["S1", "Scoped denial (“no filesystem access”, “does not execute JavaScript”)", "denial with that scope only; derived global status unchanged; flag scoped_denial", "Policy"],
     ["A1", "Provider lifecycle (expiry, garbage collection)", "record with actor=provider; not an effect of the tool. Creating something that later expires is still write", "Policy"],
     ["A2", "Workflow instructions (“then call submit_x”)", "actor=other_tool; not an effect of this tool", "Policy"],
-    ["N1", "Explicit external request (“fetches the URL you provide”, “uses at most eight external HTTP requests”)", "network affirmed, target=open", "Supported"],
-    ["N2", "Named service (“via ReadGZH”, “on Browserbase”)", "if the service is clearly not the server's own: affirmed, named_service; if it may be the server's own backend: uncertain", "Policy"],
+    ["N1", "Explicit external request (“fetches the URL you provide”, “uses at most eight external HTTP requests”)", "network affirmed, world=open", "Supported"],
+    ["N2", "Named service (“via ReadGZH”, “on Browserbase”)", "network: affirmed if the service is clearly not the server's own, uncertain if it may be the server's own backend. world: from what the tool does there (search arbitrary entities = open; the user's own bounded data = closed); the name alone = unknown", "Policy"],
     ["H1", "HTTP method shown (“POST /api/exec/slippage”)", "not write by itself; judge the action (same as R4 on the code side)", "Policy"],
     ["E1", "Returns a command or code without running it", "not execute", "Supported"],
   ], [W(0.07), W(0.30), W(0.43), W(0.20)]),
@@ -225,12 +232,12 @@ const body = [
     ["readOnlyHint=true", "write (any mode), delete", "Supported: “does not modify”", "none"],
     ["readOnlyHint=true", "execute", "Policy: inconsistent when the tool runs caller-supplied code with no stated isolation; otherwise review", "was: always inconsistent (matches R3 on the code side)"],
     ["destructiveHint=false (only if readOnlyHint≠true)", "delete; write with mode=modifying", "Supported for delete; the modifying-write part is our reading of “only additive”", "adds overwrite/update; skips tools with readOnlyHint=true"],
-    ["openWorldHint=false", "network with target=open", "Supported by the spec's own example (web search vs memory)", "was: any network. named_service → review"],
+    ["openWorldHint=false", "network with world=open", "Supported by the spec's own example (web search vs memory)", "was: any network. world=unknown → review"],
     ["omitted hint", "nothing", "Supported: defaults never contradict", "none"],
     ["idempotentHint", "not assessed", "—", "none"],
   ], [W(0.20), W(0.22), W(0.34), W(0.24)]),
   gap(),
-  P([b("Two further points. "), "First, a description that denies writes on a tool annotated readOnlyHint=false is not an inconsistency: the annotation is just less informative. Report it separately as “annotation weaker than description”. Second, the network/openWorld split applies to Tasneem's detector too: a request to a URL taken from tool arguments is open; a request to a literal host is a named service. We will change both sides together."]),
+  P([b("Two further points. "), "First, a description that denies writes on a tool annotated readOnlyHint=false is not an inconsistency: the annotation is just less informative. Report it separately as “annotation weaker than description”. Second, the network/openWorld split applies to Tasneem's detector too: a request to a URL taken from tool arguments is open; a request to a literal host is unknown and goes to review, since one host can expose an open world. We will change both sides together."]),
   P([b("Still to verify: "), "whether later spec revisions changed these definitions; we quoted 2025-06-18 and should cite the revision current at submission."]),
 
   H1("6. Independent ground truth"),
@@ -258,7 +265,7 @@ const body = [
 
   H1("8. Two models"),
   P([tag("Supported"), "Two models from different vendors help as a robustness check, but agreement is not truth: they share training data and see the same prompt, so their errors correlate. Report each model against the gold labels and their κ with each other."]),
-  P([tag("Policy"), "With two votes: both affirm → affirmed; both deny → denied; anything else → uncertain + needs_review. For the inconsistency count, report the strict version (both must agree) and the union, so the reader sees the range."]),
+  P([tag("Policy"), "With two votes: any agreement is kept as it is (both affirmed, both denied, both uncertain, or both not_stated); a disagreement → uncertain + needs_review. For the inconsistency count, report the strict version (both must agree) and the union, so the reader sees the range."]),
   P(b("Log for every run:")),
   bullet("exact model ID and provider, API date, temperature 0, top_p, max tokens, seed when supported"),
   bullet("prompt version and hash, guide version, input file hash, tool IDs"),
@@ -278,7 +285,7 @@ const body = [
     ["“Returns the command to install X.”", "execute not_stated", "“Runs the install command.”", "execute affirmed"],
     ["“Then call submit_work.”", "write actor=other_tool", "“Submits the work.”", "write affirmed"],
     ["“Adds a comment.”", "write additive", "“Updates the record.”", "write modifying"],
-    ["“POST /api/search”", "read (H1)", "“Creates an order (POST /orders).”", "write affirmed"],
+    ["“POST /api/search”", "read, from the path “search”; POST alone says nothing (H1)", "“Creates an order (POST /orders).”", "write affirmed"],
   ], [W(0.28), W(0.22), W(0.28), W(0.22)]),
   gap(),
   H2("Testing without overfitting"),

@@ -245,9 +245,28 @@ def python_files(root):
     return files
 
 
-def parse_repo(root):
+def uses_mcp(files):
+    """True if any file imports an MCP library (mcp, fastmcp). Checked per repo:
+    tools are often defined in a file that never imports the SDK itself."""
+    for path in files:
+        try:
+            tree = ast.parse(path.read_text(encoding="utf-8", errors="replace"))
+        except (SyntaxError, ValueError):
+            continue
+        for node in ast.walk(tree):
+            names = [a.name for a in node.names] if isinstance(node, ast.Import) else \
+                [node.module] if isinstance(node, ast.ImportFrom) and node.module and not node.level else []
+            if any(n.split(".")[0] in MCP_MODULES for n in names):
+                return True
+    return False
+
+
+def parse_repo(root, mcp_only=False):
+    """mcp_only: return nothing for repos that never import an MCP library."""
     root = Path(root)
     files = python_files(root)
+    if mcp_only and not uses_mcp(files):
+        return []
     consts = repo_constants(files)
     tools = []
     for path in files:
@@ -256,9 +275,11 @@ def parse_repo(root):
 
 
 def main():
-    tools = parse_repo(sys.argv[1])
+    # python annotations.py REPO [OUT.jsonl] [--all]   (--all keeps non-MCP repos)
+    args = [a for a in sys.argv[1:] if a != "--all"]
+    tools = parse_repo(args[0], mcp_only="--all" not in sys.argv)
     sys.stdout.reconfigure(encoding="utf-8")  # Windows consoles default to cp1252
-    out = open(sys.argv[2], "w", encoding="utf-8") if len(sys.argv) > 2 else sys.stdout
+    out = open(args[1], "w", encoding="utf-8") if len(args) > 1 else sys.stdout
     for t in tools:
         out.write(json.dumps(t, ensure_ascii=False) + "\n")
 

@@ -28,7 +28,7 @@ from pathlib import Path
 
 import yaml
 
-from annotations import HINTS, Module, call_name, is_test, parse_file, python_files, repo_constants
+from annotations import HINTS, Module, call_name, is_test, parse_file, python_files, repo_constants, uses_mcp
 
 SINKS_FILE = Path(__file__).resolve().parents[1] / "sinks/python.yaml"
 CATEGORIES = ["read", "write", "delete", "execute", "network"]
@@ -512,8 +512,11 @@ def main():
     ap.add_argument("repo")
     ap.add_argument("--k", type=int, default=3)
     ap.add_argument("--out")
+    ap.add_argument("--all", action="store_true", help="also analyze repos that never import an MCP library")
     args = ap.parse_args()
-    results = Analyzer(Repo(args.repo), args.k).analyze()
+    repo = Repo(args.repo)
+    mcp = args.all or uses_mcp([repo.root / info["rel"] for info in repo.modules.values()])
+    results = Analyzer(repo, args.k).analyze() if mcp else []
     sys.stdout.reconfigure(encoding="utf-8")
     out = open(args.out, "w", encoding="utf-8") if args.out else sys.stdout
     for r in results:

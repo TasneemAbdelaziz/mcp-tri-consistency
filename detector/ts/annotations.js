@@ -365,17 +365,24 @@ function repoConstants(parsed) {
   return table;
 }
 
-function parseRepo(root) {
+// mcpOnly: return nothing for repos where no file imports an MCP library (the
+// same annotation names are used by non-MCP agent frameworks). Checked per repo,
+// not per file: tools are often defined in a file that never imports the SDK.
+function parseRepo(root, { mcpOnly = false } = {}) {
   const parsed = sourceFiles(root).map(f => ({ ...f, sf: parse(f.full) })).filter(f => f.sf);
+  if (mcpOnly && !parsed.some(f => mcpImports(f.sf).length)) return [];
   const consts = repoConstants(parsed);
   return parsed.flatMap(f => parseFile(f.sf, f.rel, consts));
 }
 
 module.exports = { parseRepo, HINTS };
 
+// CLI: node annotations.js REPO [OUT.jsonl] [--all]   (--all keeps non-MCP repos)
 if (require.main === module) {
-  const tools = parseRepo(process.argv[2]);
-  const out = process.argv[3] ? fs.createWriteStream(process.argv[3]) : process.stdout;
+  const keepAll = process.argv.includes("--all");
+  const [repoDir, outFile] = process.argv.slice(2).filter(a => a !== "--all");
+  const tools = parseRepo(repoDir, { mcpOnly: !keepAll });
+  const out = outFile ? fs.createWriteStream(outFile) : process.stdout;
   for (const t of tools) out.write(JSON.stringify(t) + "\n");
-  if (process.argv[3]) out.end();
+  if (outFile) out.end();
 }

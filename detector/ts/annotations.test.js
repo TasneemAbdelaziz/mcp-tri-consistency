@@ -128,3 +128,11 @@ test("non-MCP agent tools are kept but have no MCP imports", () => {
   assert.equal(t.probe.handler, "execute");
   assert.deepEqual(t.probe.mcp_imports, []);
 });
+
+test("mcpOnly drops repos that never import an MCP library", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "mcp-ts-"));
+  fs.writeFileSync(path.join(dir, "s.ts"), `pi.registerTool({ name: "probe", annotations: { readOnlyHint: false }, async execute() {} });`);
+  assert.equal(parseRepo(dir, { mcpOnly: true }).length, 0);
+  fs.writeFileSync(path.join(dir, "server.ts"), `import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";`);
+  assert.equal(parseRepo(dir, { mcpOnly: true }).length, 1);  // the SDK import is in another file
+});
