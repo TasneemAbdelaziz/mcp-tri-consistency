@@ -33,7 +33,7 @@ This follows the MCP spec: `readOnlyHint` = "does not modify its environment",
 
 | # | Case | Label | Why | Real example |
 |---|---|---|---|---|
-| R1 | Deleting internal bookkeeping that the operation itself ends (e.g. `.git/MERGE_HEAD` after a merge commit) | consistent with `destructive=false` | Part of completing the operation, as the underlying tool does it; no user data is lost (P1 not met) | official `git` server, `git_commit` |
+| R1 | Deleting or rewriting the tool's own bookkeeping: state the operation ends (e.g. `.git/MERGE_HEAD` after a merge commit), or its own manifest / cache / state file | consistent with `destructive=false` | Part of completing the operation, as the underlying tool does it; no user data is lost (P1 not met) | official `git` server, `git_commit` |
 | R2 | Cleaning up an output file the tool created in the same call (failed or partial output) | consistent, **unless** the path comes from the user and may pre-exist: then writing it is an overwrite → `destructive` | P3; but overwriting an existing user file meets P1 | `NTL-GPT-Clone`, `clip_raster` |
 | R3 | Running an external program | judge by **what the program does**: a fixed program with no lasting effect is consistent; a command built from user input (a shell tool) is `inconsistent` with `readOnly=true` | Running a process is not itself a change; an arbitrary command can do anything | `ciscolive-potpourri`, `generate_password` (consistent) |
 | R4 | HTTP POST | judge by **what the endpoint does**, not the verb: search, token, GraphQL `query` = read; GraphQL `mutation` and create/update endpoints = write | Many APIs read through POST | `ciscolive-potpourri`, `get_client_details` (token POST = read) |
@@ -66,3 +66,7 @@ When the label and the detector disagree, the label wins; note the case here.
 ## Changelog
 
 - v0.1 (2026-10-19): P1–P3 and R1–R6 from the first 14 sampled repos.
+- v0.2 (2026-10-20): comparison rules follow the MCP 2025-06-18 text (review v1.1): `destructiveHint=false` also
+  excludes modifying and overwriting writes, and is only checked when `readOnlyHint` is not true; `openWorldHint=false`
+  is inconsistent only with requests to an open target (URL from data), a fixed host goes to review. R1 covers the
+  tool's own manifest / cache / state files.

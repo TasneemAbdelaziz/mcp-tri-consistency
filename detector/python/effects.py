@@ -63,6 +63,7 @@ BUILTINS = {"open", "eval", "exec", "compile", "__import__"}
 # (LENIENT_DROP kinds removed).
 BOOKKEEPING_WORDS = ("merge_head", "orig_head", "cherry_pick_head", "autostash", "git_dir", ".git/",
                      ".lock", "lockfile", ".pid")
+WRITE_BOOKKEEPING_WORDS = ("manifest", "cache", "_state", "state.json", "registry.json", "checkpoint")
 TEMP_WORDS = ("tmp", "temp", "partial", ".part", "scratch")
 CLEANUP_FUNCS = ("cleanup", "clean_up", "remove_partial", "rollback", "discard")
 LOG_WORDS = (".log", "/log", "logs/", "debug")
@@ -349,6 +350,8 @@ def effect_kind(cat, sink, call, ctx, fname, in_handler):
     if cat == "execute" and not sink.startswith("builtins."):
         return "execute_fixed" if fixed_program(call, ctx) else "execute_dynamic"  # R3
     if cat == "write":
+        if any(w in text for w in BOOKKEEPING_WORDS + WRITE_BOOKKEEPING_WORDS):
+            return "bookkeeping"                                       # R1: the tool's own state files
         verb = call.func.attr.lower() if isinstance(call.func, ast.Attribute) else ""
         if verb in ("post", "request") and (any(w in text for w in READ_ENDPOINT_WORDS)
                                             or ("graphql" in text and "mutation" not in text)):
@@ -358,6 +361,63 @@ def effect_kind(cat, sink, call, ctx, fname, in_handler):
         if "tempfile." in text or any(w in text for w in TEMP_WORDS):
             return "temp"                                              # P3
     return "plain"
+
+
+# write mode, for destructiveHint=false ("performs only additive updates"):
+# additive = creates/appends; modifying = changes existing state; overwrite = may
+# replace an existing file or object; unknown otherwise
+WRITE_MODES = {
+    "mkdir": "additive", "makedirs": "additive", "touch": "additive", "insert_one": "additive",
+    "insert_many": "additive", "add": "additive", "create_head": "additive", "commit": "additive",
+    "tag": "additive", "stash": "additive", "clone_from": "additive", "post": "additive",
+    "write_text": "overwrite", "write_bytes": "overwrite", "put_object": "overwrite", "copy": "overwrite",
+    "copy2": "overwrite", "copyfile": "overwrite", "copytree": "overwrite", "dump": "unknown",
+    "update_one": "modifying", "update_many": "modifying", "replace_one": "modifying", "set": "modifying",
+    "rename": "modifying", "replace": "modifying", "move": "modifying", "chmod": "modifying",
+    "put": "modifying", "patch": "modifying",
+    # git refuses to drop local changes on a branch switch, merge or pull (guide R6);
+    # checkout --force / -- <paths> is classified as delete in classify_call
+    "checkout": "additive", "merge": "additive", "pull": "additive",
+}
+SQL_MODES = {"insert": "additive", "create": "additive", "update": "modifying", "alter": "modifying",
+             "replace": "modifying", "upsert": "modifying", "merge": "modifying"}
+
+
+def write_mode(sink, call, ctx):
+    method = sink.split(".")[-1].lower()
+    mod = ctx.info["mod"]
+    if sink in OPENERS or sink.endswith(".open"):
+        pos = 0 if sink.startswith("pathlib.Path") else 1
+        node = call.args[pos] if len(call.args) > pos else next((k.value for k in call.keywords if k.arg == "mode"), None)
+        mode = literal_str(mod, node) if node is not None else None
+        if mode is None:
+            return "unknown"
+        return "overwrite" if set(mode) & set("w+") else "additive"  # a, x: append / create new
+    if method in ("execute", "executemany", "executescript") and call.args:
+        sql = literal_str(mod, call.args[0]) or ""
+        return SQL_MODES.get(sql.split()[0].lower(), "unknown") if sql.split() else "unknown"
+    return WRITE_MODES.get(method, "unknown")
+
+
+def network_world(call, ctx):
+    """open = the target comes from data (likely tool input); unknown = a fixed host.
+    A fixed host is not proof of a closed world: one service can expose an open world
+    (review v1.1), so it goes to review rather than counting as consistent."""
+    mod = ctx.info["mod"]
+    url = call.args[0] if call.args else next((k.value for k in call.keywords if k.arg in ("url", "uri")), None)
+    if isinstance(call.func, ast.Attribute) and call.func.attr == "request" and len(call.args) > 1:
+        url = call.args[1]  # request(method, url)
+    if url is None:
+        return "unknown"
+    if literal_str(mod, url) is not None:
+        return "unknown"
+    if isinstance(url, ast.JoinedStr) and url.values:
+        first = url.values[0]
+        head = first.value if isinstance(first, ast.Constant) else \
+            literal_str(mod, first.value) if isinstance(first, ast.FormattedValue) else None
+        if isinstance(head, str) and "://" in head and head.split("://", 1)[1]:
+            return "unknown"  # f"https://api.x.com/{id}": fixed host
+    return "open"
 
 
 def handler_calls(stmts):
@@ -399,8 +459,13 @@ class Analyzer:
                     continue
                 for cat, sink, conf in classify_call(node, ctx, self.libs, self.generic):
                     kind = effect_kind(cat, sink, node, ctx, fname, id(node) in in_handler)
-                    effects.append({"category": cat, "sink": sink, "confidence": conf, "kind": kind,
-                                    "file": rel, "line": node.lineno, "path": []})
+                    effect = {"category": cat, "sink": sink, "confidence": conf, "kind": kind,
+                              "file": rel, "line": node.lineno, "path": []}
+                    if cat == "write":
+                        effect["mode"] = write_mode(sink, node, ctx)
+                    elif cat == "network":
+                        effect["world"] = network_world(node, ctx)
+                    effects.append(effect)
                 q = ctx.resolve(node.func)
                 if q in self.repo.functions and depth < self.k:
                     for e in self.function_effects(q, depth + 1):
@@ -482,29 +547,43 @@ class Analyzer:
                                 break
                 tool["entry"] = entry
                 tool["effects"] = effects
-                tool["violations"] = violations(tool["annotations"], effects)
-                tool["violations_lenient"] = [v for v in tool["violations"]
-                                              if v["witness"]["kind"] not in LENIENT_DROP]
+                tool["inconsistencies"], tool["review"] = inconsistencies(tool["annotations"], effects)
+                tool["inconsistencies_lenient"] = [v for v in tool["inconsistencies"]
+                                                   if v["witness"]["kind"] not in LENIENT_DROP]
                 results.append(tool)
         return results
 
 
-def violations(ann, effects):
+def inconsistencies(ann, effects):
+    """C<->A inconsistencies, and cases that need review, from explicit hints only.
+    Rules follow the MCP 2025-06-18 definitions (docs/Review_D_extraction_for_Menna.docx, s.5):
+      readOnlyHint=true      "does not modify its environment": no write, delete, execute
+      destructiveHint=false  "only additive updates", meaningful only when readOnlyHint is
+                             not true: no delete, no modifying or overwriting write
+      openWorldHint=false    "domain of interaction is closed": no request to an open
+                             target; a fixed host is unknown -> review
+    Returns (inconsistencies, review)."""
     cats = {}
     for e in effects:
         cats.setdefault(e["category"], []).append(e)
-    found = []
+    found, review = [], []
     if ann["readOnlyHint"] == "true":
         for c in ("delete", "execute", "write"):
             for e in cats.get(c, []):
                 found.append({"rule": "readOnly_but_" + c, "witness": e})
-    if ann["destructiveHint"] == "false":
+    if ann["destructiveHint"] == "false" and ann["readOnlyHint"] != "true":
         for e in cats.get("delete", []):
             found.append({"rule": "nondestructive_but_delete", "witness": e})
+        for e in cats.get("write", []):
+            if e.get("mode") in ("modifying", "overwrite"):
+                found.append({"rule": "nondestructive_but_" + e["mode"], "witness": e})
     if ann["openWorldHint"] == "false":
         for e in cats.get("network", []):
-            found.append({"rule": "closedworld_but_network", "witness": e})
-    return found
+            if e.get("world") == "open":
+                found.append({"rule": "closedworld_but_open_network", "witness": e})
+            else:
+                review.append({"rule": "closedworld_network_unknown_world", "witness": e})
+    return found, review
 
 
 def main():

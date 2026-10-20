@@ -14,7 +14,7 @@ def cats(t):
 
 
 def rules(t):
-    return {v["rule"] for v in t["violations"]}
+    return {v["rule"] for v in t["inconsistencies"]}
 
 
 def test_open_mode_decides_read_or_write(tmp_path):
@@ -27,7 +27,7 @@ def test_open_mode_decides_read_or_write(tmp_path):
             with open(p, "a") as f:
                 f.write("x")
     ''')
-    assert cats(tools["show"]) == {"read"} and not tools["show"]["violations"]
+    assert cats(tools["show"]) == {"read"} and not tools["show"]["inconsistencies"]
     assert rules(tools["save"]) == {"readOnly_but_write"}
 
 
@@ -64,7 +64,42 @@ def test_http_verbs_and_closed_world(tmp_path):
             requests.delete(f"https://api.x.com/users/{uid}")
     ''')
     assert cats(tools["remove_user"]) == {"network", "delete"}
-    assert rules(tools["remove_user"]) == {"readOnly_but_delete", "closedworld_but_network"}
+    # a fixed host is not proof of a closed or an open world: review, not inconsistency
+    assert rules(tools["remove_user"]) == {"readOnly_but_delete"}
+    assert {r["rule"] for r in tools["remove_user"]["review"]} == {"closedworld_network_unknown_world"}
+
+
+def test_open_world_when_url_comes_from_input(tmp_path):
+    tools = analyze(tmp_path, '''
+        import httpx
+        BASE = "https://api.internal.x.com"
+        @mcp.tool(annotations={"openWorldHint": False})
+        def fetch_page(url):
+            return httpx.get(url)
+        @mcp.tool(annotations={"openWorldHint": False})
+        def status():
+            return httpx.get(f"{BASE}/status")
+    ''')
+    assert rules(tools["fetch_page"]) == {"closedworld_but_open_network"}
+    assert rules(tools["status"]) == set() and tools["status"]["review"]
+
+
+def test_destructive_false_means_additive_only(tmp_path):
+    tools = analyze(tmp_path, '''
+        @mcp.tool(annotations={"readOnlyHint": False, "destructiveHint": False})
+        def append_note(t):
+            with open("notes.md", "a") as f: f.write(t)
+        @mcp.tool(annotations={"readOnlyHint": False, "destructiveHint": False})
+        def save(p, t):
+            with open(p, "w") as f: f.write(t)
+        @mcp.tool(annotations={"readOnlyHint": True, "destructiveHint": False})
+        def ro(p, t):
+            with open(p, "w") as f: f.write(t)
+    ''')
+    assert rules(tools["append_note"]) == set()
+    assert rules(tools["save"]) == {"nondestructive_but_overwrite"}
+    # destructiveHint is meaningless when readOnlyHint is true: only the readOnly rule fires
+    assert rules(tools["ro"]) == {"readOnly_but_write"}
 
 
 def test_dict_get_is_not_http(tmp_path):
@@ -82,7 +117,7 @@ def test_omitted_hints_never_violate(tmp_path):
         @mcp.tool()
         def rm(p): os.remove(p)
     ''')
-    assert cats(tools["rm"]) == {"delete"} and tools["rm"]["violations"] == []
+    assert cats(tools["rm"]) == {"delete"} and tools["rm"]["inconsistencies"] == []
 
 
 def test_lowlevel_match_dispatcher(tmp_path):
@@ -103,14 +138,14 @@ def test_lowlevel_match_dispatcher(tmp_path):
                 case T.DROP:
                     os.remove(arguments["p"])
     ''')
-    assert tools["read_it"]["entry"] == "call_tool[read_it]" and not tools["read_it"]["violations"]
+    assert tools["read_it"]["entry"] == "call_tool[read_it]" and not tools["read_it"]["inconsistencies"]
     assert rules(tools["drop_it"]) == {"readOnly_but_delete"}
 
 
 # --- labeling rules R1-R6 (labeling/guide.md): kinds and strict vs lenient ---
 
 def kinds(t):
-    return {v["witness"]["kind"] for v in t["violations"]}
+    return {v["witness"]["kind"] for v in t["inconsistencies"]}
 
 
 def test_r1_bookkeeping_delete_is_lenient(tmp_path):
@@ -123,7 +158,7 @@ def test_r1_bookkeeping_delete_is_lenient(tmp_path):
                 (git_dir / name).unlink(missing_ok=True)
     ''')
     assert kinds(tools["commit"]) == {"bookkeeping"}
-    assert tools["commit"]["violations_lenient"] == []
+    assert tools["commit"]["inconsistencies_lenient"] == []
 
 
 def test_r2_cleanup_in_except_handler(tmp_path):
@@ -137,7 +172,7 @@ def test_r2_cleanup_in_except_handler(tmp_path):
                 os.remove(out)
                 raise
     ''')
-    assert kinds(tools["convert"]) == {"cleanup"} and tools["convert"]["violations_lenient"] == []
+    assert kinds(tools["convert"]) == {"cleanup"} and tools["convert"]["inconsistencies_lenient"] == []
 
 
 def test_r2_deleting_user_file_stays_strict(tmp_path):
@@ -147,7 +182,7 @@ def test_r2_deleting_user_file_stays_strict(tmp_path):
         def remove(path):
             os.remove(path)
     ''')
-    assert kinds(tools["remove"]) == {"plain"} and len(tools["remove"]["violations_lenient"]) == 1
+    assert kinds(tools["remove"]) == {"plain"} and len(tools["remove"]["inconsistencies_lenient"]) == 1
 
 
 def test_r3_fixed_vs_dynamic_command(tmp_path):
@@ -161,8 +196,8 @@ def test_r3_fixed_vs_dynamic_command(tmp_path):
         def shell(cmd):
             subprocess.run(cmd, shell=True)
     ''')
-    assert kinds(tools["pw"]) == {"execute_fixed"} and tools["pw"]["violations_lenient"] == []
-    assert kinds(tools["shell"]) == {"execute_dynamic"} and tools["shell"]["violations_lenient"]
+    assert kinds(tools["pw"]) == {"execute_fixed"} and tools["pw"]["inconsistencies_lenient"] == []
+    assert kinds(tools["shell"]) == {"execute_dynamic"} and tools["shell"]["inconsistencies_lenient"]
 
 
 def test_r4_post_to_search_or_graphql_query(tmp_path):
@@ -178,7 +213,7 @@ def test_r4_post_to_search_or_graphql_query(tmp_path):
         def create(name):
             requests.post("https://api.x.com/users", json={"name": name})
     ''')
-    assert tools["find"]["violations_lenient"] == [] and tools["gql"]["violations_lenient"] == []
+    assert tools["find"]["inconsistencies_lenient"] == [] and tools["gql"]["inconsistencies_lenient"] == []
     assert kinds(tools["create"]) == {"plain"}
 
 
@@ -193,8 +228,8 @@ def test_r5_debug_log_vs_state_journal(tmp_path):
             with open("settlements.jsonl", "a") as f:
                 f.write(rows)
     ''')
-    assert kinds(tools["status"]) == {"log"} and tools["status"]["violations_lenient"] == []
-    assert kinds(tools["settle"]) == {"plain"} and tools["settle"]["violations_lenient"]
+    assert kinds(tools["status"]) == {"log"} and tools["status"]["inconsistencies_lenient"] == []
+    assert kinds(tools["settle"]) == {"plain"} and tools["settle"]["inconsistencies_lenient"]
 
 
 def test_r6_checkout_branch_vs_force(tmp_path):
@@ -207,5 +242,5 @@ def test_r6_checkout_branch_vs_force(tmp_path):
         def restore(repo: git.Repo, path):
             repo.git.checkout("--", path)
     ''')
-    assert tools["switch"]["violations"] == []
-    assert {v["rule"] for v in tools["restore"]["violations"]} == {"nondestructive_but_delete"}
+    assert tools["switch"]["inconsistencies"] == []
+    assert {v["rule"] for v in tools["restore"]["inconsistencies"]} == {"nondestructive_but_delete"}
