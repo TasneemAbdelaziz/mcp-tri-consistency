@@ -1,0 +1,105 @@
+# TypeScript / JavaScript sink catalog for E(t). Same categories as python.yaml.
+#
+# Names are what detector/ts/effects.js resolves a call to: "<module>.<member>",
+# with node: prefixes dropped and fs/promises, fs-extra, graceful-fs folded
+# into "fs". Wildcards (*) match any member. Globals are bare names (fetch, eval).
+# Calls that need their arguments to decide (fetch method, SQL text, untyped
+# ORM receivers) are handled in effects.js, not here.
+
+read:
+  - fs.readFile*
+  - fs.readdir*
+  - fs.stat*
+  - fs.lstat*
+  - fs.existsSync
+  - fs.access*
+  - fs.createReadStream
+  - fs.readJson*
+  - fs.opendir*
+
+write:
+  - fs.writeFile*
+  - fs.appendFile*
+  - fs.mkdir*
+  - fs.mkdtemp*
+  - fs.copyFile*
+  - fs.cp*
+  - fs.copy*                  # fs-extra
+  - fs.rename*
+  - fs.move*                  # fs-extra
+  - fs.createWriteStream
+  - fs.outputFile*            # fs-extra
+  - fs.outputJson*
+  - fs.writeJson*
+  - fs.ensureDir*
+  - fs.ensureFile*
+  - fs.chmod*
+  - fs.chown*
+  - fs.symlink*
+  - fs.truncate*
+  - fs.utimes*
+
+delete:
+  - fs.unlink*
+  - fs.rm
+  - fs.rmSync
+  - fs.rmdir*
+  - fs.remove*                # fs-extra
+  - fs.emptyDir*
+  - rimraf.*
+  - rimraf
+  - del.*
+  - del
+
+execute:
+  - child_process.*
+  - execa.*
+  - execa
+  - shelljs.exec
+  - eval
+  - vm.*
+  - Function                  # new Function(...)
+  - cross-spawn
+  - cross-spawn.*
+
+network:
+  - fetch
+  - node-fetch
+  - node-fetch.*
+  - cross-fetch
+  - axios
+  - axios.*
+  - got
+  - got.*
+  - ky
+  - ky.*
+  - undici.*
+  - superagent.*
+  - http.request
+  - http.get
+  - https.request
+  - https.get
+  - net.connect
+  - net.createConnection
+  - ws                        # new WebSocket(...)
+  - openai.*                  # third-party API SDKs = network
+  - "@anthropic-ai/sdk.*"
+  - "@octokit/rest.*"
+  - stripe.*
+  - "@slack/web-api.*"
+  - googleapis.*
+
+# Write mode for destructiveHint=false (only additive updates)
+write_modes:
+  additive: [mkdir, mkdtemp, appendFile, ensureDir, ensureFile, symlink, insertOne, insertMany, create, createMany, post]
+  overwrite: [writeFile, outputFile, outputJson, writeJson, copyFile, copy, cp, createWriteStream, truncate]
+  modifying: [rename, move, chmod, chown, utimes, updateOne, updateMany, update, upsert, replaceOne, findOneAndUpdate, put, patch]
+
+http_method_effects:
+  GET: read
+  HEAD: read
+  OPTIONS: read
+  POST: write
+  PUT: write
+  PATCH: write
+  DELETE: delete

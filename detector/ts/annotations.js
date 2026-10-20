@@ -257,8 +257,12 @@ function parseFile(sf, rel, repoConsts) {
   const rec = (node, style, name, desc, ann, handler) => {
     const [states, kind] = ctx.annotations(ann);
     const [h, hl] = handlerInfo(ctx, handler);
-    tools.push({ file: rel, line: line(sf, node), style, tool: name ?? null, description: desc ?? null,
-      annotations: states, annotations_kind: kind, handler: h, handler_line: hl, mcp_imports: imports });
+    const record = { file: rel, line: line(sf, node), style, tool: name ?? null, description: desc ?? null,
+      annotations: states, annotations_kind: kind, handler: h, handler_line: hl, mcp_imports: imports };
+    // for effects.js, not serialized: the handler node, its file context, and a
+    // wrapper call's parameter bindings
+    Object.defineProperty(record, "_ast", { value: { handler: handler && unwrap(handler), ctx, params: ctx.params && new Map(ctx.params), node } });
+    tools.push(record);
   };
 
   // one registration call -> [style, nameNode, descNode, annotationsNode, handlerNode] or null
@@ -368,14 +372,17 @@ function repoConstants(parsed) {
 // mcpOnly: return nothing for repos where no file imports an MCP library (the
 // same annotation names are used by non-MCP agent frameworks). Checked per repo,
 // not per file: tools are often defined in a file that never imports the SDK.
-function parseRepo(root, { mcpOnly = false } = {}) {
-  const parsed = sourceFiles(root).map(f => ({ ...f, sf: parse(f.full) })).filter(f => f.sf);
-  if (mcpOnly && !parsed.some(f => mcpImports(f.sf).length)) return [];
+function parseRepo(root, { mcpOnly = false, parsed = null } = {}) {
+  parsed = parsed || parseSources(root);
+  if (mcpOnly && !usesMcp(parsed)) return [];
   const consts = repoConstants(parsed);
   return parsed.flatMap(f => parseFile(f.sf, f.rel, consts));
 }
 
-module.exports = { parseRepo, HINTS };
+const parseSources = root => sourceFiles(root).map(f => ({ ...f, sf: parse(f.full) })).filter(f => f.sf);
+const usesMcp = parsed => parsed.some(f => mcpImports(f.sf).length);
+
+module.exports = { parseRepo, parseSources, usesMcp, repoConstants, HINTS, FileCtx, unwrap, dotted, calleeName, line, AMBIGUOUS };
 
 // CLI: node annotations.js REPO [OUT.jsonl] [--all]   (--all keeps non-MCP repos)
 if (require.main === module) {
