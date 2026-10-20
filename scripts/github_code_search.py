@@ -186,5 +186,8 @@ if __name__ == "__main__":
     if "--aggregate" in sys.argv:
         aggregate()
     else:
+        # --term readOnlyHint: search only that term (default: all TERMS)
+        if "--term" in sys.argv:
+            TERMS[:] = [sys.argv[sys.argv.index("--term") + 1]]
         token = os.environ.get("GITHUB_TOKEN") or sys.exit("GITHUB_TOKEN is required for code search")
         collect(token)

@@ -10,3 +10,4 @@ data/raw/*/registry_snapshot.json
 data/raw/*/tools_full.jsonl
 data/raw/registry_snapshot_*.json
 .pytest_cache/
+node_modules/
