@@ -14,6 +14,9 @@ A summary row per repo is appended to data/results/scan_manifest.csv; repos
 already in it are skipped, so the scan resumes after an interruption.
 The full git history is fetched later, only for repos with inconsistencies (RQ3).
 
+Each repo gets DOWNLOAD_BUDGET + ANALYSIS_BUDGET seconds; analysis that does not fit
+is skipped and the repo is marked "partial".
+
 Usage: python scan_repos.py [--limit N] [--workers 8] [--seed 7]
 """
 import argparse
@@ -43,7 +46,8 @@ SKIP_DIRS = {"node_modules", ".git", "dist", "build", "out", "coverage", ".next"
              ".venv", "venv", "__pycache__"}
 MAX_ARCHIVE = 300 * 1024 * 1024
 MAX_FILE = 2 * 1024 * 1024
-TIMEOUT = 300
+DOWNLOAD_BUDGET = 300  # seconds per repo for the archive (all attempts; 8 run in parallel)
+ANALYSIS_BUDGET = 240  # seconds per repo for all detector runs; the rest is marked partial
 FIELDS = ["repo", "sha", "status", "py_files", "ts_files", "tools", "annotated", "inconsistent_strict",
           "inconsistent_lenient", "review", "seconds", "error"]
 BAD_CHARS = re.compile(r'[<>:"|?*\x00-\x1f]')
@@ -58,18 +62,20 @@ def head_sha(repo):
 
 
 def download(repo, sha, dest, attempts=3):
-    """codeload sometimes drops long transfers: retry with a growing pause."""
+    """codeload sometimes drops long transfers: retry with a growing pause,
+    within DOWNLOAD_BUDGET seconds in total."""
+    deadline = time.time() + DOWNLOAD_BUDGET
     for i in range(attempts):
         try:
-            return download_once(repo, sha, dest)
+            return download_once(repo, sha, dest, deadline)
         except (httpx.TransportError, httpx.TimeoutException):
-            if i == attempts - 1:
+            if i == attempts - 1 or time.time() + 10 * (i + 1) > deadline:
                 raise
             time.sleep(10 * (i + 1))
 
 
-def download_once(repo, sha, dest):
-    with httpx.stream("GET", f"https://codeload.github.com/{repo}/tar.gz/{sha}", timeout=120,
+def download_once(repo, sha, dest, deadline):
+    with httpx.stream("GET", f"https://codeload.github.com/{repo}/tar.gz/{sha}", timeout=60,
                       follow_redirects=True) as r:
         if r.status_code != 200:
             raise RuntimeError(f"archive http {r.status_code}")
@@ -79,6 +85,8 @@ def download_once(repo, sha, dest):
                 size += len(chunk)
                 if size > MAX_ARCHIVE:
                     raise RuntimeError("archive too large")
+                if time.time() > deadline:
+                    raise RuntimeError("download budget exceeded")
                 f.write(chunk)
 
 
@@ -134,8 +142,8 @@ def analysis_roots(src):
     return sorted(r for r in roots if not any(o != r and o in r.parents for o in roots))
 
 
-def run_detector(cmd, out_file):
-    r = subprocess.run(cmd + ["--out", str(out_file)], capture_output=True, text=True, timeout=TIMEOUT,
+def run_detector(cmd, out_file, timeout):
+    r = subprocess.run(cmd + ["--out", str(out_file)], capture_output=True, text=True, timeout=timeout,
                        encoding="utf-8", errors="replace", cwd=ROOT)
     if r.returncode != 0:
         raise RuntimeError(r.stderr.strip().splitlines()[-1][:200] if r.stderr.strip() else f"exit {r.returncode}")
@@ -165,7 +173,8 @@ def scan(repo):
         roots = analysis_roots(src)
         if not roots:
             return row | {"status": "no_hints", "tools": 0, "annotated": 0, "seconds": round(time.time() - t0, 1)}
-        tools = []
+        tools, skipped = [], 0
+        deadline = time.time() + ANALYSIS_BUDGET
         for i, root in enumerate(roots):
             prefix = root.relative_to(src).as_posix()
             has_py = any(root.rglob("*.py"))
@@ -173,7 +182,16 @@ def scan(repo):
             runs = ([("python", [PYTHON, "detector/python/effects.py", str(root)])] if has_py else []) + \
                    ([("ts", ["node", "detector/ts/effects.js", str(root)])] if has_ts else [])
             for lang, cmd in runs:
-                for t in run_detector(cmd, work / f"{lang}{i}.jsonl"):
+                left = deadline - time.time()
+                if left < 5:
+                    skipped += 1
+                    continue
+                try:
+                    found = run_detector(cmd, work / f"{lang}{i}.jsonl", left)
+                except subprocess.TimeoutExpired:
+                    skipped += 1
+                    continue
+                for t in found:
                     if prefix != ".":  # paths relative to the repo root
                         t["file"] = f"{prefix}/{t['file']}"
                     tools.append(t | {"lang": lang, "package_root": prefix})
@@ -182,7 +200,7 @@ def scan(repo):
                 for t in tools:
                     f.write(json.dumps(t | {"repo": repo, "sha": sha}, ensure_ascii=False) + "\n")
         ann = [t for t in tools if t.get("annotations_kind") != "none"]
-        row |= {"status": "ok", "tools": len(tools), "annotated": len(ann),
+        row |= {"status": "partial" if skipped else "ok", "tools": len(tools), "annotated": len(ann),
                 "inconsistent_strict": sum(bool(t.get("inconsistencies")) for t in ann),
                 "inconsistent_lenient": sum(bool(t.get("inconsistencies_lenient")) for t in ann),
                 "review": sum(bool(t.get("review")) for t in ann)}

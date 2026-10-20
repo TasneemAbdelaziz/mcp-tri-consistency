@@ -1,0 +1,23 @@
+{
+ "date": "2026-10-21",
+ "counts": {
+  "py_sdk": 479232,
+  "py_fastmcp": 319488,
+  "ts_sdk": 407552,
+  "js_sdk": 46848,
+  "py_ro": 40064,
+  "js_ro": 31232,
+  "py_destr_only": 1452
+ },
+ "queries": {
+  "py_sdk": "\"from mcp\" language:Python",
+  "py_fastmcp": "FastMCP language:Python",
+  "ts_sdk": "\"@modelcontextprotocol/sdk\" language:TypeScript",
+  "js_sdk": "\"@modelcontextprotocol/sdk\" language:JavaScript",
+  "py_ro": "readOnlyHint language:Python",
+  "ts_ro": "readOnlyHint language:TypeScript",
+  "js_ro": "readOnlyHint language:JavaScript",
+  "ts_destr_only": "destructiveHint NOT readOnlyHint language:TypeScript",
+  "py_destr_only": "destructiveHint NOT readOnlyHint language:Python"
+ }
+}
