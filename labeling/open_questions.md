@@ -16,6 +16,5 @@ The first six questions were decided on 2026-10-19 and are now rules R1-R6 in
 
 | # | Case | Example | Status | Question |
 |---|---|---|---|---|
-
 | 7 | Deletion gated by configuration, and really a move | `BlockRunAI/blockrun-mcp`: with `BLOCKRUN_KEYCHAIN=strict`, loading the wallet moves the key into the OS keychain and `rmSync`s the plaintext file; reached from 5 tools marked `destructiveHint=false` | open | Is a deletion that only runs under an opt-in setting, and preserves the data elsewhere, destructive? |
 | 8 | POST as a probe | same repo, `blockrun_polymarket_read` (`readOnlyHint=true`) POSTs an empty body to `/order` only to read the 403 geoblock status | R4 suggests consistent | Confirms R4: judge by what the request does, not the verb. |
