@@ -55,10 +55,20 @@ PACKAGE_MARKERS = ("package.json", "pyproject.toml", "setup.py", "setup.cfg")
 HINT_RE = re.compile(r"readOnlyHint|destructiveHint|openWorldHint|idempotentHint")
 
 
+class NetworkDown(Exception):
+    """The machine lost its connection: retry the repo later, never record it as gone."""
+
+
 def head_sha(repo):
+    """HEAD commit, or None when GitHub says the repo does not exist (deleted/private)."""
     r = subprocess.run(["git", "ls-remote", f"https://github.com/{repo}", "HEAD"], capture_output=True,
                        text=True, timeout=60, env={**os.environ, "GIT_TERMINAL_PROMPT": "0"})
-    return r.stdout.split()[0] if r.returncode == 0 and r.stdout.strip() else None
+    if r.returncode == 0 and r.stdout.strip():
+        return r.stdout.split()[0]
+    err = r.stderr.lower()
+    if "could not resolve host" in err or "unable to access" in err and "not found" not in err:
+        raise NetworkDown(r.stderr.strip()[:150])
+    return None
 
 
 def download(repo, sha, dest, attempts=3):
@@ -204,6 +214,8 @@ def scan(repo):
                 "inconsistent_strict": sum(bool(t.get("inconsistencies")) for t in ann),
                 "inconsistent_lenient": sum(bool(t.get("inconsistencies_lenient")) for t in ann),
                 "review": sum(bool(t.get("review")) for t in ann)}
+    except (NetworkDown, httpx.ConnectError) as e:
+        row |= {"status": "network", "error": str(e)[:200]}  # not written: retried next run
     except subprocess.TimeoutExpired:
         row |= {"status": "timeout"}
     except Exception as e:  # noqa: BLE001 - one bad repo must not stop the scan
@@ -240,8 +252,21 @@ def main():
             w.writeheader()
         t0 = time.time()
         futures = [pool.submit(scan, r) for r in todo]
+        offline = 0
         for i, fut in enumerate(as_completed(futures), 1):
-            w.writerow(fut.result())
+            row = fut.result()
+            if row["status"] == "network":
+                # lost connection (sleep, Wi-Fi): keep the repo for the next run, and
+                # stop once the connection looks gone rather than burn the queue
+                offline += 1
+                if offline >= 2 * args.workers:
+                    print("network down: stopping; rerun to resume", file=sys.stderr)
+                    for other in futures:
+                        other.cancel()
+                    break
+                continue
+            offline = 0
+            w.writerow(row)
             f.flush()
             if i % 25 == 0 or i == len(todo):
                 rate = i / (time.time() - t0)
