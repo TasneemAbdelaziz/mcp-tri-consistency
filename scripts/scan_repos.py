@@ -59,6 +59,17 @@ class NetworkDown(Exception):
     """The machine lost its connection: retry the repo later, never record it as gone."""
 
 
+def head_sha_patient(repo, attempts=5, pause=60):
+    """Short connection drops (Wi-Fi, DNS) are waited out instead of failing the repo."""
+    for i in range(attempts):
+        try:
+            return head_sha(repo)
+        except NetworkDown:
+            if i == attempts - 1:
+                raise
+            time.sleep(pause)
+
+
 def head_sha(repo):
     """HEAD commit, or None when GitHub says the repo does not exist (deleted/private)."""
     r = subprocess.run(["git", "ls-remote", f"https://github.com/{repo}", "HEAD"], capture_output=True,
@@ -168,7 +179,7 @@ def scan(repo):
     row = {f: "" for f in FIELDS} | {"repo": repo}
     work = WORK / key
     try:
-        sha = head_sha(repo)
+        sha = head_sha_patient(repo)
         if not sha:
             return row | {"status": "unreachable", "seconds": round(time.time() - t0, 1)}
         row["sha"] = sha
