@@ -17,7 +17,7 @@ The full git history is fetched later, only for repos with inconsistencies (RQ3)
 Each repo gets DOWNLOAD_BUDGET + ANALYSIS_BUDGET seconds; analysis that does not fit
 is skipped and the repo is marked "partial".
 
-Usage: python scan_repos.py [--limit N] [--workers 8] [--seed 7]
+Usage: python scan_repos.py [--limit N] [--workers 8] [--seed 7] [--dataset CSV]
 """
 import argparse
 import csv
@@ -231,11 +231,13 @@ def main():
     ap.add_argument("--limit", type=int)
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--dataset", type=Path, default=DATASET,
+                    help="repo list (default: the main dataset; e.g. dataset_repos_supplement.csv)")
     args = ap.parse_args()
 
     RESULTS.mkdir(parents=True, exist_ok=True)
     WORK.mkdir(parents=True, exist_ok=True)
-    with open(DATASET, encoding="utf-8") as f:
+    with open(args.dataset, encoding="utf-8") as f:
         repos = [r["github"] for r in csv.DictReader(f)]
     random.Random(args.seed).shuffle(repos)  # partial scans stay representative
     done = set()
