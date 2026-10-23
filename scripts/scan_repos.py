@@ -264,6 +264,7 @@ def scan(repo):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--target", type=int, help="scan until the manifest has this many repos (overrides --limit)")
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--dataset", type=Path, default=DATASET,
@@ -279,7 +280,8 @@ def main():
     if MANIFEST.exists():
         with open(MANIFEST, encoding="utf-8") as f:
             done = {r["repo"] for r in csv.DictReader(f)}
-    todo = [r for r in repos if r not in done][: args.limit]
+    limit = max(args.target - len(done), 0) if args.target else args.limit
+    todo = [r for r in repos if r not in done][:limit]
     print(f"{len(repos)} repos, {len(done)} done, scanning {len(todo)} with {args.workers} workers", file=sys.stderr)
 
     new = not MANIFEST.exists()
