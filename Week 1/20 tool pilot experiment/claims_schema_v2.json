@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MCP description claims v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "tool_id",
+    "claims",
+    "needs_review",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "2.0"
+    },
+    "tool_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "needs_review": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "claims": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "effect",
+          "polarity",
+          "scope",
+          "actor",
+          "condition",
+          "mode",
+          "target",
+          "interaction_domain",
+          "evidence"
+        ],
+        "properties": {
+          "effect": {
+            "enum": [
+              "read",
+              "write",
+              "delete",
+              "execute",
+              "network"
+            ]
+          },
+          "polarity": {
+            "enum": [
+              "affirmed",
+              "denied",
+              "uncertain"
+            ]
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "actor": {
+            "enum": [
+              "tool",
+              "provider",
+              "other_tool",
+              "user",
+              "unknown"
+            ]
+          },
+          "condition": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            ]
+          },
+          "mode": {
+            "enum": [
+              "additive",
+              "modifying",
+              "mixed",
+              "unknown",
+              null
+            ]
+          },
+          "target": {
+            "enum": [
+              "caller_supplied",
+              "named_service",
+              "unspecified",
+              null
+            ]
+          },
+          "interaction_domain": {
+            "enum": [
+              "open",
+              "closed",
+              "unspecified",
+              null
+            ]
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "effect": {
+                  "const": "write"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "mode": {
+                  "enum": [
+                    "additive",
+                    "modifying",
+                    "mixed",
+                    "unknown"
+                  ]
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "mode": {
+                  "type": "null"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "effect": {
+                  "const": "network"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "target": {
+                  "enum": [
+                    "caller_supplied",
+                    "named_service",
+                    "unspecified"
+                  ]
+                },
+                "interaction_domain": {
+                  "enum": [
+                    "open",
+                    "closed",
+                    "unspecified"
+                  ]
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "target": {
+                  "type": "null"
+                },
+                "interaction_domain": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

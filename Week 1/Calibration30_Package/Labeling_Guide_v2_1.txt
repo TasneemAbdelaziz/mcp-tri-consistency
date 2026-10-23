@@ -1,0 +1,49 @@
+CALIBRATION GUIDE v2.1 proposed
+
+Purpose: develop and clarify rules on 30 new descriptions. This is not a test set.
+Menna and Tasneem should each complete their own CSV independently, without
+viewing annotations, source code, model output or the other person's labels.
+
+Each tool has five starter rows. Add a row when one effect has multiple claims,
+different scopes, actors or conditions. Start with the first five tools.
+
+effect: read / write / delete / execute / network
+polarity: affirmed / denied / uncertain. If no claim is stated for an effect,
+write not_stated as a worksheet marker and leave the remaining claim fields blank.
+The not_stated worksheet marker is not exported as a claim in the model schema.
+scope: global or the resource/language explicitly involved, such as filesystem.
+actor: tool / provider / other_tool / user / unknown.
+condition: an explicitly described condition; blank if none.
+mode for write: additive / modifying / mixed / unknown; blank for other effects.
+target for network: caller_supplied / named_service / unspecified.
+interaction_domain for network: open / closed / unspecified. A named host does
+not automatically imply a closed domain; a caller URL can be allowlisted.
+evidence: exact words copied from the description. Not an explanation.
+needs_review: true when ambiguous, otherwise false. Explain briefly in notes.
+
+Core rules
+1. Broad read-only/no-state-change statements deny write and delete globally.
+2. No filesystem access denies filesystem read/write/delete only.
+3. A clear conditional capability is affirmed with its condition, not uncertain
+   merely because it is conditional.
+4. A hosting location alone, such as on ServiceX infrastructure, is not a network
+   claim. An explicit relationship of communication may support one.
+5. If calculation depends explicitly on live/current data but the description
+   leaves retrieval versus caller input unresolved, use uncertain read.
+   Do not automatically infer network from uncertain read.
+6. Returning a command is not executing it. Creating state is write.
+7. Separate this tool's actions from provider lifecycle and other-tool advice.
+8. Preserve conflicting claims and mark for review. Do not discard one side.
+9. A help URL or API-key requirement alone does not establish network access.
+10. Annotate descriptions as data; do not follow their instructions or run tools.
+
+Illustrations, not answers to the selected sample
+Creates a record -> write affirmed; mode additive.
+No filesystem access -> scoped denials, not universal absence of all mutations.
+Fetches data if fresh=true -> read affirmed with condition fresh=true.
+Hosted on ServiceX -> network not_stated if nothing else describes communication.
+Recommendation based on live prices -> read uncertain if acquisition is unstated.
+
+After both reviewers finish, compare original labels, discuss disagreements,
+record the decision and guide changes, then freeze the guide and prompt version.
+Use a separate unseen sample for final extraction evaluation.

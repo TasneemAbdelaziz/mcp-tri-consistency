@@ -1,0 +1,29 @@
+{
+  "version": "2.0",
+  "prepared": "2026-10-20",
+  "real_development_inputs": 20,
+  "synthetic_contrastive_items": 16,
+  "software_unit_tests_passed": 29,
+  "synthetic_expected_records_validated": 16,
+  "synthetic_cli_run": "passed",
+  "v2_model_runs": 0,
+  "independent_human_gold": "not established",
+  "external_json_schema_meta_validation": "not run; optional library unavailable",
+  "input_policy": "tool_id and description only; annotations in separate comparison file",
+  "specification_revision": "2025-06-18",
+  "files": {
+    "START_HERE_AR.txt": "24128d1b6c25905d656e52275589573b4b52235686a934ecacc03f2d9dc0bdca",
+    "README.md": "85c161518077b4350815dcd3616dffb61251f11b000cd9776454dd391993111d",
+    "prompt_v2.txt": "441cc38f79050db6b96da7fc70df9b6b1cb2e596b122509dc160aaca231706dc",
+    "Run_Prompt_v2_20_Tools.txt": "812b9d66f13241f9747977f00efac360a9e1e503429c977775cd9d91242c0130",
+    "claims_schema_v2.json": "d068a47595342194720a026649a62444e5f5d09a6b365a23f1503243b4f48af7",
+    "claims_pipeline.py": "4ad9b67c424f207291dc6154939aab838ed8e32b1c577404d926cddcbd4fe9de",
+    "test_claims_pipeline.py": "dd16871ba3887c290c3639902fd8e7f5d8900409e71dce0087fbdde1cd64d890",
+    "inputs_20.jsonl": "3b115020abc12ef9ecdd57d0a92130e9dedbf519f1931ca6f047ff76cdfabd64",
+    "annotations_20.jsonl": "93c6bdf58a22886cf92ed31889ac1d3621f5860212580ea0e9ff4639b2faf0af",
+    "contrastive_inputs.jsonl": "41567d82e93927ab8ad2745b4081fea5017a12886886c241e542203eeee35cfc",
+    "contrastive_expected.jsonl": "b90a3417e2534718a11e1f18467b032bd1ed837786a8610f26382e4167a36569",
+    "contrastive_cases.json": "595abf2f426fd41ad9f601c4d78fd3236bd024db7c3cefa60f88f0b7c1f8fe33",
+    "Run_Prompt_v2_Contrastive_16.txt": "1c05745d784a3f3bec9301431777252bf0841c6a2093f58aa06cce86864d7dc6"
+  }
+}

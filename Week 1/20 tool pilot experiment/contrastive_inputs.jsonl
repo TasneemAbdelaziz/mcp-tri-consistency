@@ -1,0 +1,16 @@
+{"tool_id": "contrast:broad", "description": "Read-only. Lists files."}
+{"tool_id": "contrast:cache", "description": "Lists files and caches results to disk."}
+{"tool_id": "contrast:global", "description": "No state changes."}
+{"tool_id": "contrast:filesystem", "description": "No filesystem access."}
+{"tool_id": "contrast:open", "description": "Fetches any public URL you provide."}
+{"tool_id": "contrast:local", "description": "Looks up a city in the local bundled database."}
+{"tool_id": "contrast:provider", "description": "The provider deletes expired sessions."}
+{"tool_id": "contrast:tool", "description": "Deletes the session."}
+{"tool_id": "contrast:returns", "description": "Returns the command to install X."}
+{"tool_id": "contrast:runs", "description": "Runs the install command."}
+{"tool_id": "contrast:other", "description": "Then call submit_work to send the work."}
+{"tool_id": "contrast:own", "description": "Submits the work."}
+{"tool_id": "contrast:add", "description": "Adds a comment."}
+{"tool_id": "contrast:update", "description": "Updates the record."}
+{"tool_id": "contrast:postsearch", "description": "POST /api/search"}
+{"tool_id": "contrast:createorder", "description": "Creates an order (POST /orders)."}

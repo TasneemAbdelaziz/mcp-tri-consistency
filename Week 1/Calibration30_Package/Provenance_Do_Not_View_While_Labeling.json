@@ -1,0 +1,197 @@
+{
+  "source": "tools_full.jsonl.gz",
+  "source_sha256": "c58b83ebbc29c064af81d3f423bcbc7d8217a2c6f4559f90893379854be48394",
+  "seed": 20261023,
+  "ordering_seed": 20261024,
+  "tools": 30,
+  "distinct_servers": 30,
+  "prior_20_tools_and_servers_excluded": true,
+  "source_records": 77084,
+  "sampling": "purposive keyword coverage, five per discovery group; groups are not labels",
+  "limitations": [
+    "English-readable short descriptions",
+    "not a prevalence or final test sample"
+  ],
+  "selected": [
+    {
+      "tool_id": "census_v2:13401",
+      "server_name": "com.meetsponsors/mcp",
+      "tool_name": "youtuber_add",
+      "discovery_group": "external_interaction"
+    },
+    {
+      "tool_id": "census_v2:18830",
+      "server_name": "com.twmarketdata/tw-market-data",
+      "tool_name": "compare",
+      "discovery_group": "negation"
+    },
+    {
+      "tool_id": "census_v2:25575",
+      "server_name": "io.github.HuangGoodmanAgency/pops4-mcp-catalog",
+      "tool_name": "get_categories",
+      "discovery_group": "information_access"
+    },
+    {
+      "tool_id": "census_v2:74402",
+      "server_name": "ua.com.quintadb/mcp",
+      "tool_name": "update_calendar",
+      "discovery_group": "deletion"
+    },
+    {
+      "tool_id": "census_v2:39392",
+      "server_name": "io.github.lonniev/schwab-mcp",
+      "tool_name": "schwab_get_brokerage_orders",
+      "discovery_group": "information_access"
+    },
+    {
+      "tool_id": "census_v2:21540",
+      "server_name": "exchange.merx/mcp",
+      "tool_name": "resource_broadcast",
+      "discovery_group": "information_access"
+    },
+    {
+      "tool_id": "census_v2:10422",
+      "server_name": "com.create-web-page/create-web-page",
+      "tool_name": "block_add",
+      "discovery_group": "creation_or_modification"
+    },
+    {
+      "tool_id": "census_v2:12866",
+      "server_name": "com.lightbringer/connector",
+      "tool_name": "get_company_context_template",
+      "discovery_group": "negation"
+    },
+    {
+      "tool_id": "census_v2:8566",
+      "server_name": "com.alpinedataworks/adw-intelligence-server",
+      "tool_name": "adw.adw_209",
+      "discovery_group": "creation_or_modification"
+    },
+    {
+      "tool_id": "census_v2:12702",
+      "server_name": "com.kenoodl/verify",
+      "tool_name": "verify",
+      "discovery_group": "deletion"
+    },
+    {
+      "tool_id": "census_v2:60988",
+      "server_name": "io.github.revolist/revogrid-mcp-pro",
+      "tool_name": "validate_revogrid_usage",
+      "discovery_group": "execution"
+    },
+    {
+      "tool_id": "census_v2:39151",
+      "server_name": "io.github.lonniev/excalibur-mcp",
+      "tool_name": "excalibur_delete_operator_credential",
+      "discovery_group": "deletion"
+    },
+    {
+      "tool_id": "census_v2:55458",
+      "server_name": "io.github.pipeworx-io/codewars",
+      "tool_name": "user_authored",
+      "discovery_group": "information_access"
+    },
+    {
+      "tool_id": "census_v2:26770",
+      "server_name": "io.github.NellInc/saferagenticai-mcp",
+      "tool_name": "find_patterns_for_task",
+      "discovery_group": "execution"
+    },
+    {
+      "tool_id": "census_v2:36678",
+      "server_name": "io.github.hellosg/coderegistry",
+      "tool_name": "get-code-vault-summary",
+      "discovery_group": "external_interaction"
+    },
+    {
+      "tool_id": "census_v2:54045",
+      "server_name": "io.github.pipeworx-io/cftc-cot",
+      "tool_name": "generate_llms_txt",
+      "discovery_group": "deletion"
+    },
+    {
+      "tool_id": "census_v2:25993",
+      "server_name": "io.github.Jorgeperez0825/v12-dfs",
+      "tool_name": "admin_issue_key",
+      "discovery_group": "external_interaction"
+    },
+    {
+      "tool_id": "census_v2:56462",
+      "server_name": "io.github.pipeworx-io/country-state-city",
+      "tool_name": "remember",
+      "discovery_group": "deletion"
+    },
+    {
+      "tool_id": "census_v2:52440",
+      "server_name": "io.github.pipeworx-io/box",
+      "tool_name": "resolution_diff",
+      "discovery_group": "information_access"
+    },
+    {
+      "tool_id": "census_v2:36107",
+      "server_name": "io.github.getgapup/mcp-knowledge",
+      "tool_name": "pentest_scope_estimator",
+      "discovery_group": "creation_or_modification"
+    },
+    {
+      "tool_id": "census_v2:69446",
+      "server_name": "io.usefulapi/modern-treasury",
+      "tool_name": "modern_treasury_list_expected_payments",
+      "discovery_group": "negation"
+    },
+    {
+      "tool_id": "census_v2:69614",
+      "server_name": "io.usefulapi/raisely",
+      "tool_name": "update_profile",
+      "discovery_group": "creation_or_modification"
+    },
+    {
+      "tool_id": "census_v2:35417",
+      "server_name": "io.github.fxmacrodata/fxmacrodata",
+      "tool_name": "plot_visual_artifact",
+      "discovery_group": "execution"
+    },
+    {
+      "tool_id": "census_v2:60950",
+      "server_name": "io.github.realopengroup/mcp-server",
+      "tool_name": "open_realopen",
+      "discovery_group": "negation"
+    },
+    {
+      "tool_id": "census_v2:71489",
+      "server_name": "net.vibesprings/x402-tools",
+      "tool_name": "register_watch",
+      "discovery_group": "external_interaction"
+    },
+    {
+      "tool_id": "census_v2:2573",
+      "server_name": "ai.oobeprotocol.sap.mcp/sap-mcp",
+      "tool_name": "sap_premium_validate_plugin_manifest",
+      "discovery_group": "execution"
+    },
+    {
+      "tool_id": "census_v2:31007",
+      "server_name": "io.github.blackboxfoundry/livedatalink",
+      "tool_name": "fema_nfhl_get_inventory_item",
+      "discovery_group": "negation"
+    },
+    {
+      "tool_id": "census_v2:59913",
+      "server_name": "io.github.pipeworx-io/data-oakland",
+      "tool_name": "search_within",
+      "discovery_group": "external_interaction"
+    },
+    {
+      "tool_id": "census_v2:9322",
+      "server_name": "com.babyblueviper/invinoveritas",
+      "tool_name": "execute",
+      "discovery_group": "execution"
+    },
+    {
+      "tool_id": "census_v2:42102",
+      "server_name": "io.github.mcp-dir/portobank-mcp",
+      "tool_name": "openfinance_update_transaction_category",
+      "discovery_group": "creation_or_modification"
+    }
+  ]
+}
