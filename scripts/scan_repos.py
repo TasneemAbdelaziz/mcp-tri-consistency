@@ -71,15 +71,39 @@ def head_sha_patient(repo, attempts=5, pause=60):
 
 
 def head_sha(repo):
-    """HEAD commit, or None when GitHub says the repo does not exist (deleted/private)."""
+    """HEAD commit, or None when the repo does not exist (deleted or private).
+    With GITHUB_TOKEN: the REST API (reliable; 5,000 requests/hour). Without:
+    git ls-remote, which GitHub throttles for anonymous use."""
+    token = os.environ.get("GITHUB_TOKEN")
+    if token:
+        try:
+            r = httpx.get(f"https://api.github.com/repos/{repo}/commits/HEAD", timeout=30, follow_redirects=True,
+                          headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github.sha"})
+        except httpx.HTTPError as e:
+            raise NetworkDown(f"api: {e!r}"[:150])
+        if r.status_code == 200 and len(r.text.strip()) == 40:
+            return r.text.strip()
+        if r.status_code in (404, 451):  # gone, private, or blocked
+            return None
+        if r.status_code == 409:  # empty repository: nothing to analyse
+            return None
+        raise NetworkDown(f"api http {r.status_code}")
     r = subprocess.run(["git", "ls-remote", f"https://github.com/{repo}", "HEAD"], capture_output=True,
                        text=True, timeout=60, env={**os.environ, "GIT_TERMINAL_PROMPT": "0"})
     if r.returncode == 0 and r.stdout.strip():
         return r.stdout.split()[0]
-    err = r.stderr.lower()
-    if "could not resolve host" in err or "unable to access" in err and "not found" not in err:
-        raise NetworkDown(r.stderr.strip()[:150])
-    return None
+    # ls-remote also fails when GitHub throttles or the connection is weak, so a
+    # failure alone does not mean the repo is gone: only a 404 on its page does
+    if repo_page_status(repo) == 404:
+        return None
+    raise NetworkDown(f"ls-remote failed, repo page not 404: {r.stderr.strip()[:120]}")
+
+
+def repo_page_status(repo):
+    try:
+        return httpx.head(f"https://github.com/{repo}", follow_redirects=True, timeout=30).status_code
+    except httpx.HTTPError:
+        return None
 
 
 def download(repo, sha, dest, attempts=3):
