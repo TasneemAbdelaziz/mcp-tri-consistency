@@ -173,3 +173,127 @@ readOnlyHint language:TypeScript size:10923..11113
 readOnlyHint language:TypeScript size:11114..11304
 readOnlyHint language:TypeScript size:11305..11495
 readOnlyHint language:TypeScript size:11496..11685
+readOnlyHint language:TypeScript size:11686..11876
+readOnlyHint language:TypeScript size:11877..12067
+readOnlyHint language:TypeScript size:12068..12258
+readOnlyHint language:TypeScript size:12259..12448
+readOnlyHint language:TypeScript size:12449..12830
+readOnlyHint language:TypeScript size:12831..13021
+readOnlyHint language:TypeScript size:13022..13211
+readOnlyHint language:TypeScript size:13212..13593
+readOnlyHint language:TypeScript size:13594..13974
+readOnlyHint language:TypeScript size:13975..14356
+readOnlyHint language:TypeScript size:14357..14737
+readOnlyHint language:TypeScript size:14738..15119
+readOnlyHint language:TypeScript size:15120..15500
+readOnlyHint language:TypeScript size:15501..15882
+readOnlyHint language:TypeScript size:15883..16263
+readOnlyHint language:TypeScript size:16264..16645
+readOnlyHint language:TypeScript size:16646..17026
+readOnlyHint language:TypeScript size:17027..17408
+readOnlyHint language:TypeScript size:17409..17789
+readOnlyHint language:TypeScript size:17790..18171
+readOnlyHint language:TypeScript size:18172..18552
+readOnlyHint language:TypeScript size:18553..18934
+readOnlyHint language:TypeScript size:18935..19315
+readOnlyHint language:TypeScript size:19316..20078
+readOnlyHint language:TypeScript size:20079..20460
+readOnlyHint language:TypeScript size:20461..20841
+readOnlyHint language:TypeScript size:20842..21603
+readOnlyHint language:TypeScript size:21604..22366
+readOnlyHint language:TypeScript size:22367..23129
+readOnlyHint language:TypeScript size:23130..23892
+readOnlyHint language:TypeScript size:23893..24655
+readOnlyHint language:TypeScript size:24656..25418
+readOnlyHint language:TypeScript size:25419..26181
+readOnlyHint language:TypeScript size:26182..27706
+readOnlyHint language:TypeScript size:27707..29232
+readOnlyHint language:TypeScript size:29233..30758
+readOnlyHint language:TypeScript size:30759..32284
+readOnlyHint language:TypeScript size:32285..33809
+readOnlyHint language:TypeScript size:33810..35335
+readOnlyHint language:TypeScript size:35336..36861
+readOnlyHint language:TypeScript size:36862..39913
+readOnlyHint language:TypeScript size:39914..42965
+readOnlyHint language:TypeScript size:42966..46016
+readOnlyHint language:TypeScript size:46017..49068
+readOnlyHint language:TypeScript size:49069..52119
+readOnlyHint language:TypeScript size:52120..58222
+readOnlyHint language:TypeScript size:58223..70429
+readOnlyHint language:TypeScript size:70430..82635
+readOnlyHint language:TypeScript size:82636..107047
+readOnlyHint language:TypeScript size:107048..131460
+readOnlyHint language:TypeScript size:131461..155873
+readOnlyHint language:TypeScript size:155874..204698
+readOnlyHint language:TypeScript size:204699..400000
+readOnlyHint language:TypeScript
+readOnlyHint language:JavaScript size:0..390
+readOnlyHint language:JavaScript size:391..586
+readOnlyHint language:JavaScript size:587..635
+readOnlyHint language:JavaScript size:636..684
+readOnlyHint language:JavaScript size:685..781
+readOnlyHint language:JavaScript size:782..806
+readOnlyHint language:JavaScript size:807..830
+readOnlyHint language:JavaScript size:831..879
+readOnlyHint language:JavaScript size:880..977
+readOnlyHint language:JavaScript size:978..1075
+readOnlyHint language:JavaScript size:1076..1172
+readOnlyHint language:JavaScript size:1173..1270
+readOnlyHint language:JavaScript size:1271..1367
+readOnlyHint language:JavaScript size:1368..1465
+readOnlyHint language:JavaScript size:1466..1562
+readOnlyHint language:JavaScript size:1563..1660
+readOnlyHint language:JavaScript size:1661..1758
+readOnlyHint language:JavaScript size:1759..1953
+readOnlyHint language:JavaScript size:1954..2149
+readOnlyHint language:JavaScript size:2150..2344
+readOnlyHint language:JavaScript size:2345..2540
+readOnlyHint language:JavaScript size:2541..2735
+readOnlyHint language:JavaScript size:2736..3125
+readOnlyHint language:JavaScript size:3126..3516
+readOnlyHint language:JavaScript size:3517..3907
+readOnlyHint language:JavaScript size:3908..4298
+readOnlyHint language:JavaScript size:4299..4688
+readOnlyHint language:JavaScript size:4689..5079
+readOnlyHint language:JavaScript size:5080..5469
+readOnlyHint language:JavaScript size:5470..6250
+readOnlyHint language:JavaScript size:6251..7032
+readOnlyHint language:JavaScript size:7033..7813
+readOnlyHint language:JavaScript size:7814..8594
+readOnlyHint language:JavaScript size:8595..9375
+readOnlyHint language:JavaScript size:9376..10157
+readOnlyHint language:JavaScript size:10158..10938
+readOnlyHint language:JavaScript size:10939..12500
+readOnlyHint language:JavaScript size:12501..14063
+readOnlyHint language:JavaScript size:14064..15625
+readOnlyHint language:JavaScript size:15626..17188
+readOnlyHint language:JavaScript size:17189..18750
+readOnlyHint language:JavaScript size:18751..21875
+readOnlyHint language:JavaScript size:21876..25000
+readOnlyHint language:JavaScript size:25001..31250
+readOnlyHint language:JavaScript size:31251..37500
+readOnlyHint language:JavaScript size:37501..50000
+readOnlyHint language:JavaScript size:50001..75000
+readOnlyHint language:JavaScript size:75001..100000
+readOnlyHint language:JavaScript size:100001..200000
+readOnlyHint language:JavaScript size:200001..400000
+readOnlyHint language:JavaScript
+destructiveHint NOT readOnlyHint language:Python size:0..12500
+destructiveHint NOT readOnlyHint language:Python size:12501..25000
+destructiveHint NOT readOnlyHint language:Python size:25001..50000
+destructiveHint NOT readOnlyHint language:Python size:50001..100000
+destructiveHint NOT readOnlyHint language:Python size:100001..200000
+destructiveHint NOT readOnlyHint language:Python size:200001..400000
+destructiveHint NOT readOnlyHint language:Python
+destructiveHint NOT readOnlyHint language:TypeScript size:0..1562
+destructiveHint NOT readOnlyHint language:TypeScript size:1563..3125
+destructiveHint NOT readOnlyHint language:TypeScript size:3126..6250
+destructiveHint NOT readOnlyHint language:TypeScript size:6251..12500
+destructiveHint NOT readOnlyHint language:TypeScript size:12501..25000
+destructiveHint NOT readOnlyHint language:TypeScript size:25001..50000
+destructiveHint NOT readOnlyHint language:TypeScript size:50001..100000
+destructiveHint NOT readOnlyHint language:TypeScript size:100001..200000
+destructiveHint NOT readOnlyHint language:TypeScript size:200001..400000
+destructiveHint NOT readOnlyHint language:TypeScript
+destructiveHint NOT readOnlyHint language:JavaScript size:0..400000
+destructiveHint NOT readOnlyHint language:JavaScript
