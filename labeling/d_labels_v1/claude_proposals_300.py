@@ -749,6 +749,143 @@ P.update({
     ],
 })
 
+# ---- batch 5 (241-300) ----
+P.update({
+    "sample_400:329": [c("read", A, "remote_api", "List the team members on the creditor's Debitura account.")],
+    "sample_400:330": [c("write", A, "database",
+                         "Update fields of an existing product, including price, stock and visibility.", mode="modifying")],
+    "sample_400:332": [c("write", A, "other", "Replaces the entire content of a pad.", mode="overwrite",
+                         notes="a non-empty pad needs a confirmation token")],
+    "sample_400:333": [],  # builds a password and shows it: computation only
+    "sample_400:334": [c("write", D, "user_data", "note operations currently fail closed as unavailable",
+                         condition="note operations", notes="CD; the tool plans changes")],
+    "sample_400:335": [c("read", A, "database", "Search the srv6.md knowledge base for SRv6 technical content.")],
+    "sample_400:336": [c("write", A, "remote_api", "Reply to an existing comment on a Canva design.", mode="additive")],
+    "sample_400:338": [c("read", A, "database", "Matches with status, teams, scores and server.")],
+    "sample_400:339": [],
+    "sample_400:340": [
+        c("read", A, "remote_api", "List the Sitemap files Yandex knows for the host"),
+        c("write", D, "global", "Read-only.", notes="B1"),
+        c("delete", D, "global", "Read-only.", notes="B1"),
+    ],
+    "sample_400:342": [
+        c("write", A, "database", "Update a payment method's name, description, or status.", mode="modifying"),
+        c("write", D, "other", "Code cannot be updated.", notes="S1: the code field"),
+    ],
+    "sample_400:343": [c("write", A, "database",
+                         "Deactivate a payment method so it no longer appears in transaction forms.", mode="modifying",
+                         notes="history keeps the reference: not a delete")],
+    "sample_400:344": [c("read", A, "database", "Kịch bản Markdown theo version (mặc định mới nhất).")],
+    "sample_400:345": [],
+    "sample_400:346": [c("read", A, "messages",
+                         "Check messaging inbox threads, list latest conversations, and print unread counts.")],
+    "sample_400:347": [
+        c("read", A, "filesystem", "Check app.json against the host's model and its policies as each caller."),
+        c("write", D, "other", "nothing is generated until there are none", condition="errors remain", notes="CD"),
+    ],
+    "sample_400:348": [c("read", A, "database",
+                         "Read the workspace's sender domains, permanent DNS instructions and current migration readiness.")],
+    "sample_400:349": [c("delete", A, "other", "Delete a ${harnessName} configuration item.")],
+    "sample_400:351": [c("write", A, "other",
+                         "Invoke, focus, set a non-sensitive value, press a key, scroll, select, or toggle one Fabushi element.",
+                         mode="modifying", notes="drives a UI element")],
+    "sample_400:352": [c("read", A, "database", "Search Utsav users by name/email.")],
+    "sample_400:353": [c("read", A, "filesystem", "列出全部可用工作区")],
+    "sample_400:354": [c("read", A, "database", "Retorna a série temporal de germinação agrupada por rótulo de dia.")],
+    "sample_400:355": [c("read", A, "database", "Recall stored knowledge relevant to a query.")],
+    "sample_400:357": [c("write", U, "database", "Generate sample dataset for testing analytics", mode="additive",
+                         notes="W2: whether the data is stored is not said")],
+    "sample_400:358": [c("read", A, "user_data", "Check whether Out-of-Office auto-reply is currently enabled.")],
+    "sample_400:359": [c("write", A, "remote_api", "Book a selected mobility option and commit the customer to the trip.",
+                         mode="additive")],
+    "sample_400:360": [c("write", A, "database", "Append a Codex progress update to the shared session.",
+                         mode="additive")],
+    "sample_400:361": [],
+    "sample_400:362": [
+        c("read", A, "filesystem", "Read a GEE export manifest"),
+        c("read", A, "remote_api", "refresh its live task state"),
+        c("write", U, "filesystem", "refresh its live task state", mode="unknown", notes="may rewrite the manifest"),
+    ],
+    "sample_400:363": [
+        c("read", A, "database", "Read the exact Core-owned broadcast-only recipient-set operation"),
+        c("read", D, "other", "without recipient rows.", notes="S1: recipient rows"),
+    ],
+    "sample_400:365": [
+        c("network", A, "remote_api", "Search the web", world="open"),
+        c("read", A, "remote_api", "Search the web and get clean, LLM-ready results via Tavily."),
+        c("write", A, "other", "Costs $0.01 USDC.", actor="provider", mode="additive", notes="billing"),
+    ],
+    "sample_400:367": [
+        c("read", A, "database", "Audita productos recientes y detecta faltantes"),
+        c("write", D, "global", "No modifica datos."),
+        c("delete", D, "global", "No modifica datos."),
+    ],
+    "sample_400:369": [c("delete", A, "remote_api",
+                         "Permanently delete a Microsoft To Do task list AND all tasks inside it.")],
+    "sample_400:370": [
+        c("write", A, "remote_api", "Start AI clip generation from a YouTube video.", mode="additive"),
+        c("network", A, "remote_api", "provide a callback_url for webhook notification", actor="provider",
+          condition="callback_url given", world="open", notes="the service calls the caller's URL"),
+    ],
+    "sample_400:371": [
+        c("read", A, "other", "Performs frame extraction, transcription, and visual analysis"),
+        c("execute", U, "code", "Requires: FFmpeg", notes="needs FFmpeg; running it is implied"),
+    ],
+    "sample_400:372": [
+        c("execute", A, "code", "Run 'terraform plan' for an F5 XC resource", notes="a fixed program"),
+        c("write", D, "global", "plan does NOT make any changes"),
+        c("delete", D, "global", "plan does NOT make any changes"),
+    ],
+    "sample_400:373": [
+        c("network", A, "remote_api", "Re-discover tools from one or all upstream MCPs.", world="unknown",
+          notes="contacts the configured upstream servers"),
+        c("read", A, "remote_api", "Re-discover tools from one or all upstream MCPs."),
+    ],
+    "sample_400:374": [c("read", A, "filesystem", "Check specs for vague, untestable or untraceable requirements")],
+    "sample_400:375": [c("read", A, "database", "What was spent/received in a date range per the BANK ACCOUNT")],
+    "sample_400:376": [
+        c("read", A, "other", "Report whether tracing is enabled"),
+        c("network", U, "other", "whether Tempo/Mimir are reachable", world="closed",
+          notes="a reachability check implies a connection"),
+    ],
+    "sample_400:377": [c("read", A, "filesystem", "Return redacted git branch and status information.")],
+    "sample_400:379": [],  # a deterministic calculation
+    "sample_400:380": [c("read", A, "database", "Every team, with its players.")],
+    "sample_400:381": [c("write", A, "database", "Create or fully overwrite a named project plan.", mode="overwrite")],
+    "sample_400:382": [],
+    "sample_400:383": [
+        c("read", A, "filesystem", "Clip a raster by vector geometries"),
+        c("write", A, "filesystem", "write a new raster file", mode="additive"),
+    ],
+    "sample_400:384": [c("read", A, "database", "List persisted VLM review findings for the current drawing scope.")],
+    "sample_400:385": [
+        c("read", A, "remote_api", "List the Sieve filter scripts stored on the mail server"),
+        c("write", D, "global", "this server can never create, change or activate a script", notes="B1"),
+        c("delete", D, "global", "Read-only: this server can never create, change or activate a script.", notes="B1"),
+    ],
+    "sample_400:386": [
+        c("read", A, "filesystem", "Sends collected source and base versions"),
+        c("network", A, "remote_api", "Sends collected source and base versions to the configured provider",
+          world="unknown"),
+        c("write", D, "code", "Never edits or executes code."),
+        c("execute", D, "global", "Never edits or executes code."),
+    ],
+    "sample_400:387": [c("read", A, "remote_api", "Get positions and available cash for the account assigned to a strategy.")],
+    "sample_400:388": [c("read", U, "remote_api", "Return parsed, paginated model-deviation text for one FAR part.",
+                         notes="RD: fetched or bundled is not said")],
+    "sample_400:390": [c("read", A, "filesystem", "list facts or extract from frame")],
+    "sample_400:391": [c("read", A, "database", "Returns: synthesized project summary, themes, anchors")],
+    "sample_400:394": [c("read", A, "remote_api",
+                         "Get the maximum amount a subaccount can withdraw for a given spot product")],
+    "sample_400:395": [c("read", A, "other", "Get the ESPHome firmware version for a specific device.")],
+    "sample_400:396": [c("read", A, "other", "Get the current camera position, target, and up vector in world coordinates")],
+    "sample_400:397": [c("read", A, "remote_api", "Get the authenticated Railway user's profile")],
+    "sample_400:398": [],  # returns a URI built from the path
+    "sample_400:399": [c("read", A, "remote_api", "Retrieve a list of chart objects.")],
+    "sample_400:400": [c("write", A, "filesystem",
+                         "Save a Standard Operating Procedure to local project (.odoo-mcp/sops/).", mode="additive")],
+})
+
 
 def tools_in_order():
     """(tool_id, server, tool, description) for the 300 tools, in sheet order."""
