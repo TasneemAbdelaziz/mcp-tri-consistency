@@ -2,6 +2,11 @@
 human label). Made from the description only, with the rules in README.md,
 without seeing Menna's labels, the annotations or the code.
 
+v2 (2026-10-29): network and write claims revised to the rules agreed after
+Menna's review: a service name alone is not network; an operation-linked
+quota or a bare API method/route is uncertain; deleting a field is not also a
+write; persistence alone does not establish a write.
+
 Each claim: (effect, polarity, scope, actor, condition, mode, world, evidence,
 needs_review, notes). Effects without a claim are written as not_stated.
 Run: python claude_proposals_30.py  ->  d_calibration_30_claude_proposals.xlsx
@@ -26,9 +31,9 @@ def c(effect, polarity, scope, evidence, actor="tool", condition="", mode="", wo
 P = {
     "census_v2:13401": [
         c("write", A, "database", "Add a single YouTuber to the database", mode="additive"),
-        c("network", A, "remote_api", "cost an extra YouTube API quota point per call to resolve",
-          condition="handle or URL passed instead of a channel ID", world="unknown", review="yes",
-          notes="quota spent per call implies the tool calls the YouTube API; affirmed rather than uncertain"),
+        c("network", U, "remote_api", "cost an extra YouTube API quota point per call to resolve",
+          condition="handle or URL passed instead of a channel ID", world="unknown",
+          notes="N2 v2: operation-linked API quota, no connection described -> uncertain"),
     ],
     "census_v2:18830": [
         c("read", A, "database", "Margins and institutional flows come from different datasets"),
@@ -46,8 +51,6 @@ P = {
     ],
     "census_v2:39392": [
         c("read", A, "remote_api", "Get order history for the active Schwab account."),
-        c("network", A, "remote_api", "Get order history for the active Schwab account.", world="closed", review="yes",
-          notes="N2: Schwab is not the server's own; the user's own account is a bounded domain"),
     ],
     "census_v2:21540": [
         c("network", A, "other", "Broadcast a signed TRON transaction", world="open",
@@ -86,13 +89,9 @@ P = {
     ],
     "census_v2:39151": [
         c("delete", A, "credentials", "Deletes one key from the operator's encrypted credential blob"),
-        c("write", A, "credentials", "Deletes one key from the operator's encrypted credential blob", mode="modifying",
-          notes="the blob is rewritten without the key"),
     ],
     "census_v2:55458": [
         c("read", A, "remote_api", "List kata authored by a Codewars username"),
-        c("network", A, "remote_api", "List kata authored by a Codewars username", world="open", review="yes",
-          notes="N2: Codewars is not the server's own; any username = open entities"),
     ],
     "census_v2:26770": [
         c("read", A, "database", "return the most relevant patterns grouped by suite"),
@@ -136,8 +135,8 @@ P = {
         c("write", A, "remote_api", "updates a fundraising profile's goal/name/story", mode="modifying"),
         c("write", A, "remote_api", "Set overwriteCustomFields:true to overwrite", condition="overwriteCustomFields:true",
           mode="overwrite"),
-        c("network", A, "remote_api", "Raisely API: PATCH /profiles/{path}", world="unknown",
-          notes="N2: Raisely is not the server's own"),
+        c("network", U, "remote_api", "Raisely API: PATCH /profiles/{path}", world="unknown",
+          notes="N2 v2: method + route without a described call -> uncertain"),
     ],
     "census_v2:35417": [
         c("read", A, "remote_api", "Build a generic MCP Apps chart from one or more FXMacroData endpoint families"),
@@ -173,8 +172,8 @@ P = {
     ],
     "census_v2:9322": [
         c("execute", A, "code", "Run real code"),
-        c("write", A, "filesystem", "get a persistent per-agent development environment at /workspace",
-          condition="use_workspace=true", mode="additive"),
+        c("write", U, "filesystem", "get a persistent per-agent development environment at /workspace",
+          condition="use_workspace=true", mode="unknown", notes="persistence alone does not establish a write"),
         c("network", U, "remote_api", "scraping + processing", world="unknown", review="yes",
           notes="scraping implies network but the description does not say the sandbox has it"),
     ],

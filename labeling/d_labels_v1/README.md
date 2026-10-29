@@ -53,7 +53,9 @@ the fixed list above (free text goes in notes); `actor` has no `unknown`
 | A1 | expiry or cleanup done by a provider | actor = provider |
 | A2 | "then call submit_x" | actor = other_tool |
 | N1 | "fetches the URL you provide" | network affirmed, world open |
-| N2 | a named service | network affirmed if clearly not the server's own, else uncertain; world from the interaction, a name alone = unknown |
+| N2 (v2) | a named service or destination | the destination is not the capability: a name alone ("Lists Codewars kata") = not_stated; an operation-linked API quota or a bare method + route ("API: GET /x") = uncertain; an explicit call or fetch ("calls the Codewars API", "fetches the page") = affirmed. World from the interaction, never from the name |
+| W1 | deleting a field of a stored object | delete only; add a write only if another write is described |
+| W2 | persistence ("persistent workspace", "stored for 24 h") | does not by itself establish that this tool writes: uncertain at most |
 | H1 | an HTTP method shown | not write by itself; judge the action (a path like /search can show it) |
 | E1 | returns a command or code without running it | not execute |
 
@@ -62,14 +64,35 @@ then add here): an API quota or a relative API route without a host (uncertain
 network?); revocation (delete or modifying write?); persistence alone as
 evidence of a write.
 
-## Protocol
+## Label provenance (name it this way in the paper)
 
-1. Tasneem labels the 30 calibration tools blind; compute kappa against
-   Menna's labels per effect (on the derived status and on polarity); settle
-   every disagreement, including Menna's 18 needs_review items; update the rules.
-2. Both label the 400 independently with the frozen rules; kappa; adjudicate.
-3. The derived status per effect and the D↔A / C↔D comparisons are computed
-   by code from these sheets.
+| Source | Name |
+|---|---|
+| Menna's `Menna_Reviewed_Proposals.csv` | LLM-assisted human annotation (model proposed, Menna reviewed) |
+| `d_calibration_30_claude_proposals.xlsx` | model output (Claude), to be reviewed by Tasneem |
+| `d_eval_100_*.xlsx` | independent human annotation: labelled blind, no proposals seen |
+
+Comparisons between the first two are comparisons of two labelling routes,
+not of two models and not of two independent humans.
+
+## Protocol (agreed 2026-10-29)
+
+1. **Calibration (30):** use the differences to settle the rules (N2 v2, W1,
+   W2 added; the read-source question still open), then freeze this README and
+   the prompt. Compare files with `scripts/compare_d_labels.py`, which keeps
+   claims separate (no reduction to one status) and asks binary questions:
+   affirmed by the tool / uncertain / denied at any scope.
+2. **Evaluation (100):** `d_eval_100_tasneem.xlsx` and `d_eval_100_menna.xlsx`,
+   100 tools from the 400-tool sample, drawn before anyone saw proposals for
+   them. Both label independently; kappa before any discussion; adjudicate.
+   This is the human reference.
+3. **Models:** run both models on the same 100 (API, logged) and measure them
+   against the human reference.
+4. **The rest:** model labels for the remaining tools, keeping uncertain and
+   conflicting claims flagged.
+
+The 100 is a first evaluation; whether it suffices per effect depends on how
+many examples of each effect it holds (count them after labelling).
 
 Note: 5 descriptions contain U+FFFD (a character lost in the source file's
 encoding); they are left as they are.
