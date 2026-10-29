@@ -54,12 +54,15 @@ the fixed list above (free text goes in notes); `actor` has no `unknown`
 | A2 | "then call submit_x" | actor = other_tool |
 | N1 | "fetches the URL you provide" | network affirmed, world open |
 | N2 (v2) | a named service or destination | the destination is not the capability: a name alone ("Lists Codewars kata") = not_stated; an operation-linked API quota or a bare method + route ("API: GET /x") = uncertain; an explicit call or fetch ("calls the Codewars API", "fetches the page") = affirmed. World from the interaction, never from the name |
+| RD | when is it a read? | read = **retrieval** from a source independent of the caller's input (a file, a database, a service). Processing the input the caller sent ("checks the code as given"), returning fixed built-in content, or returning a computed result = not_stated. A named data source when the data may also arrive as input ("pre-fetched rows", "chart from endpoint families") = uncertain. If the description says the tool fetches from the source and computes, read = affirmed |
+| CD | conditional denial ("absent fields report removed: false without rewriting the vault") | record the denial with its `condition` and `scope`; it is not a general denial. Comparisons count conditional and unconditional denials separately |
+| NS | silence | not_stated means the description does not say; it never means the tool does not do it (that is `denied`, and needs a quote) |
 | W1 | deleting a field of a stored object | delete only; add a write only if another write is described |
 | W2 | persistence ("persistent workspace", "stored for 24 h") | does not by itself establish that this tool writes: uncertain at most |
 | H1 | an HTTP method shown | not write by itself; judge the action (a path like /search can show it) |
 | E1 | returns a command or code without running it | not execute |
 
-Open questions from Menna's first round (decide in the calibration meeting,
+Decided 2026-10-29: N2 v2, W1, W2, RD, CD, NS. Still open from Menna's first round (decide in the calibration meeting,
 then add here): an API quota or a relative API route without a host (uncertain
 network?); revocation (delete or modifying write?); persistence alone as
 evidence of a write.
@@ -77,8 +80,8 @@ not of two models and not of two independent humans.
 
 ## Protocol (agreed 2026-10-29)
 
-1. **Calibration (30):** use the differences to settle the rules (N2 v2, W1,
-   W2 added; the read-source question still open), then freeze this README and
+1. **Calibration (30):** use the differences to settle the rules (N2 v2, W1, RD, CD,
+   W2, NS added), then freeze this README and
    the prompt. Compare files with `scripts/compare_d_labels.py`, which keeps
    claims separate (no reduction to one status) and asks binary questions:
    affirmed by the tool / uncertain / denied at any scope.

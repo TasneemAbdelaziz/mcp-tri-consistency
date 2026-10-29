@@ -6,7 +6,8 @@ each tool x effect is compared on separate binary questions:
 
   affirmed_by_tool  is there an affirmed claim with actor = tool?  (what D<->A uses)
   uncertain_tool    is there an uncertain claim with actor = tool (and no affirmed)?
-  denied_any_scope  is there a denied claim, at any scope?
+  denied_unconditional  a denied claim without a condition, at any scope?
+  denied_conditional    a denied claim that holds only under a condition (rule CD)?
 
 For each: agreement, Cohen's kappa, and the disagreeing pairs.
 Input files: CSV (Menna's export) or XLSX (the d_labels_v1 sheets).
@@ -42,7 +43,9 @@ QUESTIONS = {
     "affirmed_by_tool": lambda cl: any(c["polarity"] == "affirmed" and c["actor"] == "tool" for c in cl),
     "uncertain_tool": lambda cl: (not any(c["polarity"] == "affirmed" and c["actor"] == "tool" for c in cl)
                                   and any(c["polarity"] == "uncertain" and c["actor"] in ("tool", "") for c in cl)),
-    "denied_any_scope": lambda cl: any(c["polarity"] == "denied" for c in cl),
+    # rule CD: a denial under a condition is not a general denial
+    "denied_unconditional": lambda cl: any(c["polarity"] == "denied" and not c.get("condition", "").strip() for c in cl),
+    "denied_conditional": lambda cl: any(c["polarity"] == "denied" and c.get("condition", "").strip() for c in cl),
 }
 
 

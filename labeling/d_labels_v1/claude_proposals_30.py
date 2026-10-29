@@ -2,6 +2,8 @@
 human label). Made from the description only, with the rules in README.md,
 without seeing Menna's labels, the annotations or the code.
 
+v3 (2026-10-29): read and conditional-denial claims revised to rules RD and CD
+(README); 8566 and 52440 network claims dropped (N2 v2: a name alone).
 v2 (2026-10-29): network and write claims revised to the rules agreed after
 Menna's review: a service name alone is not network; an operation-linked
 quota or a bare API method/route is uncertain; deleting a field is not also a
@@ -36,7 +38,8 @@ P = {
           notes="N2 v2: operation-linked API quota, no connection described -> uncertain"),
     ],
     "census_v2:18830": [
-        c("read", A, "database", "Margins and institutional flows come from different datasets"),
+        c("read", U, "database", "Margins and institutional flows come from different datasets",
+          notes="RD: rows may arrive pre-fetched (rows_by_ticker)"),
     ],
     "census_v2:25575": [
         c("read", A, "database", "List every product category with its item count and sample products"),
@@ -66,17 +69,11 @@ P = {
           condition="page already published"),
     ],
     "census_v2:12866": [
-        c("read", A, "other", "Returns shared company-context interview guidance and the update schema",
-          notes="other = static guidance"),
         c("read", D, "database", "Does not read or change company records."),
         c("write", D, "database", "Does not read or change company records."),
         c("delete", D, "database", "Does not read or change company records.", notes="B1-style: 'change' covers delete"),
     ],
-    "census_v2:8566": [
-        c("read", A, "database", "Returns a 0-100 federal prime-contract award momentum score"),
-        c("network", U, "remote_api", "USAspending.gov top-100 obligated dollars", world="unknown",
-          notes="names the data source; 'Updates: weekly' suggests precomputed data"),
-    ],
+    "census_v2:8566": [],  # RD: a computed score; N2 v2: USAspending.gov is only named
     "census_v2:12702": [
         c("execute", A, "code", "An outside check on code, executed in a sealed sandbox.",
           notes="runs caller-supplied code"),
@@ -89,6 +86,8 @@ P = {
     ],
     "census_v2:39151": [
         c("delete", A, "credentials", "Deletes one key from the operator's encrypted credential blob"),
+        c("write", D, "credentials", "without rewriting\nthe vault", condition="field already absent",
+          notes="CD: conditional denial, not a general one"),
     ],
     "census_v2:55458": [
         c("read", A, "remote_api", "List kata authored by a Codewars username"),
@@ -120,8 +119,7 @@ P = {
     ],
     "census_v2:52440": [
         c("read", A, "remote_api", "runs resolution_audit on both sides and compares source, settle time, precision, and evidence standard"),
-        c("network", U, "remote_api", "either can be Polymarket or Kalshi", world="unknown",
-          notes="market data from named venues; transport not stated"),
+
     ],
     "census_v2:36107": [],
     "census_v2:69446": [
@@ -139,7 +137,8 @@ P = {
           notes="N2 v2: method + route without a described call -> uncertain"),
     ],
     "census_v2:35417": [
-        c("read", A, "remote_api", "Build a generic MCP Apps chart from one or more FXMacroData endpoint families"),
+        c("read", U, "remote_api", "Build a generic MCP Apps chart from one or more FXMacroData endpoint families",
+          notes="RD: the description does not say whether the tool or the app fetches"),
         c("network", D, "other", "The tool does not fetch arbitrary URLs", notes="S1: arbitrary URLs only"),
         c("network", U, "remote_api", "it only composes approved FXMacroData API surfaces", world="closed",
           notes="bounded to approved surfaces"),
