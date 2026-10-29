@@ -1,0 +1,791 @@
+[
+  {
+    "original_csv_record": 5,
+    "tool_id": "census_v2:13401",
+    "effect": "execute",
+    "reason": "Triggering a generic enrichment pipeline does not explicitly describe code, program, script or shell execution.",
+    "changes": {
+      "polarity": {
+        "before": "affirmed",
+        "after": "not_stated"
+      },
+      "scope": {
+        "before": "enrichment pipeline",
+        "after": ""
+      },
+      "actor": {
+        "before": "tool",
+        "after": ""
+      },
+      "evidence": {
+        "before": "trigger the full enrichment pipeline",
+        "after": ""
+      },
+      "needs_review": {
+        "before": "False",
+        "after": ""
+      },
+      "notes": {
+        "before": "Triggers pipeline, does not establish completion.",
+        "after": ""
+      }
+    }
+  },
+  {
+    "original_csv_record": 6,
+    "tool_id": "census_v2:13401",
+    "effect": "network",
+    "reason": "Quota consumption tied to resolution suggests interaction but does not explicitly describe network communication.",
+    "changes": {
+      "polarity": {
+        "before": "affirmed",
+        "after": "uncertain"
+      },
+      "notes": {
+        "before": "API quota for resolution implies API interaction, but network transport not directly stated.",
+        "after": "Proposed rule: operation-linked API quota is uncertain network, not affirmed; destination alone does not prove transport."
+      }
+    }
+  },
+  {
+    "original_csv_record": 7,
+    "tool_id": "census_v2:18830",
+    "effect": "read",
+    "reason": "Dataset provenance and optional pre-fetched inputs leave retrieval versus supplied data unresolved.",
+    "changes": {
+      "polarity": {
+        "before": "affirmed",
+        "after": "uncertain"
+      },
+      "notes": {
+        "before": "Comparison requires data; optional pre-fetched rows may instead be supplied.",
+        "after": "Data-source relationship is explicit; tool retrieval versus supplied rows is unresolved. This is not an automatic inference from computation."
+      }
+    }
+  },
+  {
+    "original_csv_record": 30,
+    "tool_id": "census_v2:21540",
+    "effect": "write",
+    "reason": "Refunds are part of the described operation; no provider actor or exact state-update mode is explicitly identified.",
+    "changes": {
+      "actor": {
+        "before": "provider",
+        "after": "unknown"
+      },
+      "condition": {
+        "before": "on timeout after enabled call",
+        "after": "on timeout"
+      },
+      "mode": {
+        "before": "modifying",
+        "after": "unknown"
+      },
+      "notes": {
+        "before": "Provider refund lifecycle rather than tool direct action.",
+        "after": "Actor attribution and refund state semantics unresolved; do not classify as provider lifecycle solely because it is billing."
+      }
+    }
+  },
+  {
+    "original_csv_record": 32,
+    "tool_id": "census_v2:21540",
+    "effect": "execute",
+    "reason": "Broadcasting a transaction is not code/script/program execution under the execute definition.",
+    "changes": {
+      "polarity": {
+        "before": "affirmed",
+        "after": "not_stated"
+      },
+      "scope": {
+        "before": "TRON broadcast",
+        "after": ""
+      },
+      "actor": {
+        "before": "tool",
+        "after": ""
+      },
+      "condition": {
+        "before": "when endpoint is enabled by feature flag",
+        "after": ""
+      },
+      "evidence": {
+        "before": "Broadcast a signed TRON transaction with automatic energy optimization",
+        "after": ""
+      },
+      "needs_review": {
+        "before": "False",
+        "after": ""
+      }
+    }
+  },
+  {
+    "original_csv_record": 33,
+    "tool_id": "census_v2:21540",
+    "effect": "network",
+    "reason": "Use an informative evidence span identifying the transaction and operation.",
+    "changes": {
+      "evidence": {
+        "before": "broadcasting",
+        "after": "Broadcast a signed TRON transaction with automatic energy optimization"
+      },
+      "notes": {
+        "before": "Broadcast implies external transaction dissemination; not explicit protocol endpoint.",
+        "after": "Broadcast communication is explicit. External interaction domain is not described; no confirmation of ledger inclusion is claimed."
+      }
+    }
+  },
+  {
+    "original_csv_record": 41,
+    "tool_id": "census_v2:12866",
+    "effect": "write",
+    "reason": "Every write claim, including denials, requires a write mode.",
+    "changes": {
+      "mode": {
+        "before": "",
+        "after": "unknown"
+      }
+    }
+  },
+  {
+    "original_csv_record": 45,
+    "tool_id": "census_v2:8566",
+    "effect": "read",
+    "reason": "Weekly updates and a computed momentum score describe freshness/computation, not a claim that this tool retrieves data.",
+    "changes": {
+      "polarity": {
+        "before": "uncertain",
+        "after": "not_stated"
+      },
+      "scope": {
+        "before": "federal award data",
+        "after": ""
+      },
+      "actor": {
+        "before": "tool",
+        "after": ""
+      },
+      "evidence": {
+        "before": "recent 45-day vs prior 45-day, weekly",
+        "after": ""
+      },
+      "needs_review": {
+        "before": "True",
+        "after": ""
+      },
+      "notes": {
+        "before": "Live weekly scores, retrieval versus cached or input not specified.",
+        "after": ""
+      }
+    }
+  },
+  {
+    "original_csv_record": 51,
+    "tool_id": "census_v2:12702",
+    "effect": "write",
+    "reason": "Charging is described without explicit actor; billing is not automatically autonomous provider lifecycle.",
+    "changes": {
+      "actor": {
+        "before": "provider",
+        "after": "unknown"
+      },
+      "mode": {
+        "before": "modifying",
+        "after": "unknown"
+      },
+      "notes": {
+        "before": "Billing side effect likely provider-level, not necessarily tool-level state.",
+        "after": "Charge is explicit when verdict delivered; actor and exact state-write mode are unspecified."
+      }
+    }
+  },
+  {
+    "original_csv_record": 55,
+    "tool_id": "census_v2:60988",
+    "effect": "read",
+    "reason": "Static inspection of supplied code/configuration is an explicit inspection claim; remote retrieval is unnecessary for read.",
+    "changes": {
+      "needs_review": {
+        "before": "True",
+        "after": "False"
+      },
+      "notes": {
+        "before": "May inspect supplied input, not necessarily external records.",
+        "after": "Read includes explicitly inspecting existing caller-supplied material; network remains not_stated."
+      }
+    }
+  },
+  {
+    "original_csv_record": 61,
+    "tool_id": "census_v2:39151",
+    "effect": "write",
+    "reason": "Fill required mode. The no-rewrite denial is clear and conditional, not ambiguous merely because it is conditional.",
+    "changes": {
+      "mode": {
+        "before": "",
+        "after": "unknown"
+      },
+      "needs_review": {
+        "before": "True",
+        "after": "False"
+      },
+      "notes": {
+        "before": "Conditional denial of vault rewrite only, not all writes.",
+        "after": "Denies rewriting this vault when field is absent; not a global write denial."
+      }
+    }
+  },
+  {
+    "original_csv_record": 70,
+    "tool_id": "census_v2:26770",
+    "effect": "read",
+    "reason": "Returning relevant existing design patterns describes information lookup; lack of source location alone is not uncertainty.",
+    "changes": {
+      "needs_review": {
+        "before": "True",
+        "after": "False"
+      },
+      "notes": {
+        "before": "Lookup/retrieval implied; data source not described.",
+        "after": "No network claim follows from returning design patterns."
+      }
+    }
+  },
+  {
+    "original_csv_record": 84,
+    "tool_id": "census_v2:54045",
+    "effect": "network",
+    "reason": "Any URL and page fetching establish an open domain; hypothetical hidden restrictions must not be assumed.",
+    "changes": {
+      "evidence": {
+        "before": "Fetches the page",
+        "after": "for any URL so AI crawlers (ChatGPT, Claude, Perplexity) can index the site cleanly. Fetches the page"
+      },
+      "needs_review": {
+        "before": "True",
+        "after": "False"
+      },
+      "notes": {
+        "before": "Any URL accepted per description; possible hidden allowlisting not stated.",
+        "after": "Description explicitly says any URL; no invented hidden allowlist."
+      }
+    }
+  },
+  {
+    "original_csv_record": 88,
+    "tool_id": "census_v2:25993",
+    "effect": "delete",
+    "reason": "Revocation clearly disables credentials but does not resolve whether records or authority are removed versus status changed.",
+    "changes": {
+      "polarity": {
+        "before": "affirmed",
+        "after": "uncertain"
+      },
+      "notes": {
+        "before": "Revocation disables credentials; whether physical deletion occurs is not stated.",
+        "after": "Keep deletion uncertain pending a general revocation rule; a separate modifying write captures explicit revocation."
+      }
+    }
+  },
+  {
+    "original_csv_record": 92,
+    "tool_id": "census_v2:56462",
+    "effect": "write",
+    "reason": "Saving a key-value pair does not explicitly say whether it creates a new key or replaces an existing one.",
+    "changes": {
+      "mode": {
+        "before": "additive",
+        "after": "unknown"
+      },
+      "needs_review": {
+        "before": "False",
+        "after": "True"
+      },
+      "notes": {
+        "before": "",
+        "after": "Write is affirmed; additive versus modifying is unresolved."
+      }
+    }
+  },
+  {
+    "original_csv_record": 96,
+    "tool_id": "census_v2:52440",
+    "effect": "read",
+    "reason": "Comparison/inspection of existing clauses supports read even when supplied by the caller.",
+    "changes": {
+      "needs_review": {
+        "before": "True",
+        "after": "False"
+      },
+      "notes": {
+        "before": "May use caller supplied market data; fetching not explicit.",
+        "after": "Inspection of clause content is stated; no claim of fetching it over a network."
+      }
+    }
+  },
+  {
+    "original_csv_record": 107,
+    "tool_id": "census_v2:69446",
+    "effect": "write",
+    "reason": "Fill required mode for denied write.",
+    "changes": {
+      "mode": {
+        "before": "",
+        "after": "unknown"
+      }
+    }
+  },
+  {
+    "original_csv_record": 110,
+    "tool_id": "census_v2:69446",
+    "effect": "network",
+    "reason": "A method and relative API path alone do not establish network transport or a named destination.",
+    "changes": {
+      "polarity": {
+        "before": "affirmed",
+        "after": "uncertain"
+      },
+      "target": {
+        "before": "named_service",
+        "after": "unspecified"
+      },
+      "notes": {
+        "before": "API GET named as action; location and transport not guaranteed.",
+        "after": "Relative API operation suggests communication; no destination or network transport is explicit."
+      }
+    }
+  },
+  {
+    "original_csv_record": 116,
+    "tool_id": "census_v2:69614",
+    "effect": "network",
+    "reason": "API method/body syntax suggests interaction, but an explicit network communication verb or transport is absent; domain also remains unspecified.",
+    "changes": {
+      "polarity": {
+        "before": "affirmed",
+        "after": "uncertain"
+      },
+      "needs_review": {
+        "before": "False",
+        "after": "True"
+      },
+      "notes": {
+        "before": "",
+        "after": "Named service identifies destination, not proof of network capability. Apply the same method-only threshold as other API-style descriptions."
+      }
+    }
+  },
+  {
+    "original_csv_record": 117,
+    "tool_id": "census_v2:35417",
+    "effect": "read",
+    "reason": "Composing a chart from API surfaces does not resolve fetching data versus composing a client-side app specification.",
+    "changes": {
+      "polarity": {
+        "before": "affirmed",
+        "after": "uncertain"
+      },
+      "evidence": {
+        "before": "combine announcements with predictions",
+        "after": "Build a generic MCP Apps chart from one or more FXMacroData endpoint families"
+      },
+      "notes": {
+        "before": "Data accessed through approved API surfaces; potentially fetched.",
+        "after": "Data use is explicit but acquisition by this tool versus generated app remains unresolved."
+      }
+    }
+  },
+  {
+    "original_csv_record": 121,
+    "tool_id": "census_v2:35417",
+    "effect": "network",
+    "reason": "API surface composition does not explicitly establish a request by this tool; only-approved wording does establish a bounded collection.",
+    "changes": {
+      "polarity": {
+        "before": "affirmed",
+        "after": "uncertain"
+      },
+      "evidence": {
+        "before": "approved FXMacroData API surfaces",
+        "after": "it only composes approved FXMacroData API surfaces into the comparison chart app"
+      },
+      "notes": {
+        "before": "Approved APIs constrain surfaces, not necessarily host allowlisting.",
+        "after": "Network capability uncertain; approved surfaces explicitly bound the domain. Do not demand host allowlisting to recognize a bounded collection."
+      }
+    }
+  },
+  {
+    "original_csv_record": 123,
+    "tool_id": "census_v2:60950",
+    "effect": "write",
+    "reason": "Fill required mode for denied write.",
+    "changes": {
+      "mode": {
+        "before": "",
+        "after": "unknown"
+      }
+    }
+  },
+  {
+    "original_csv_record": 127,
+    "tool_id": "census_v2:71489",
+    "effect": "read",
+    "reason": "Registration versus subsequent monitoring is unclear; the description does not explicitly assign monitoring to provider lifecycle.",
+    "changes": {
+      "actor": {
+        "before": "provider",
+        "after": "unknown"
+      },
+      "notes": {
+        "before": "Registration itself vs subsequent watcher checks distinct.",
+        "after": "Monitoring may be a deferred part of tool service; execution phase and actor are unresolved. Freshness alone is not the evidence."
+      }
+    }
+  },
+  {
+    "original_csv_record": 131,
+    "tool_id": "census_v2:71489",
+    "effect": "network",
+    "reason": "Do not assume provider attribution or a caller-supplied destination solely from custom endpoints.",
+    "changes": {
+      "actor": {
+        "before": "provider",
+        "after": "unknown"
+      },
+      "target": {
+        "before": "caller_supplied",
+        "after": "unspecified"
+      },
+      "evidence": {
+        "before": "custom API endpoints",
+        "after": "real-time monitoring of prices, gas, weather, wallet balances/txs, or custom API endpoints"
+      },
+      "notes": {
+        "before": "Monitoring service may fetch URL later; tool registration alone does not.",
+        "after": "Subsequent endpoint monitoring suggests communication; actor, phase, destination selection and domain are unresolved."
+      }
+    }
+  },
+  {
+    "original_csv_record": 132,
+    "tool_id": "census_v2:2573",
+    "effect": "read",
+    "reason": "Explicitly validating existing manifest fields is inspection; supplied input does not prevent read.",
+    "changes": {
+      "needs_review": {
+        "before": "True",
+        "after": "False"
+      },
+      "notes": {
+        "before": "Reading input for validation, no external reads established.",
+        "after": "Read of supplied manifest is stated; no external retrieval inferred."
+      }
+    }
+  },
+  {
+    "original_csv_record": 133,
+    "tool_id": "census_v2:2573",
+    "effect": "read",
+    "reason": "Evidence must include the negation, not only the positive-looking coordinated fragment.",
+    "changes": {
+      "evidence": {
+        "before": "or loads provider secrets",
+        "after": "It never executes plugin code or loads provider secrets."
+      }
+    }
+  },
+  {
+    "original_csv_record": 144,
+    "tool_id": "census_v2:59913",
+    "effect": "read",
+    "reason": "Use evidence naming the actual search operation, rather than only an instruction to supply text.",
+    "changes": {
+      "evidence": {
+        "before": "Pass the text you already pulled",
+        "after": "Semantic search INSIDE a fetched record."
+      }
+    }
+  },
+  {
+    "original_csv_record": 150,
+    "tool_id": "census_v2:9322",
+    "effect": "write",
+    "reason": "A persistent workspace is described, but provisioning versus returning an existing environment is unresolved.",
+    "changes": {
+      "polarity": {
+        "before": "affirmed",
+        "after": "uncertain"
+      },
+      "mode": {
+        "before": "additive",
+        "after": "unknown"
+      },
+      "notes": {
+        "before": "Persistent workspace implies state creation, actual writes unspecified.",
+        "after": "State creation is plausible, not explicitly established by persistence alone."
+      }
+    }
+  },
+  {
+    "original_csv_record": 153,
+    "tool_id": "census_v2:9322",
+    "effect": "network",
+    "reason": "Scraping suggests interaction; destination selection is not stated. Uncertainty is not based on hypothetical restrictions.",
+    "changes": {
+      "target": {
+        "before": "caller_supplied",
+        "after": "unspecified"
+      },
+      "notes": {
+        "before": "Permissive/restrictive modes may restrict network; no guarantee.",
+        "after": "Scraping suggests network capability but does not explicitly specify network transport or destination selection; no hidden restrictions assumed."
+      }
+    }
+  },
+  {
+    "original_csv_record": 159,
+    "tool_id": "census_v2:42102",
+    "effect": "network",
+    "reason": "Relative PATCH path alone does not establish network transport or a named API destination; Pluggy attribution concerns categorization.",
+    "changes": {
+      "polarity": {
+        "before": "affirmed",
+        "after": "uncertain"
+      },
+      "target": {
+        "before": "named_service",
+        "after": "unspecified"
+      },
+      "notes": {
+        "before": "PATCH path indicates API mutation; transport not explicitly detailed.",
+        "after": "API-style route suggests network; no explicit request to a named host is described."
+      }
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:13401",
+    "effect": "read",
+    "reason": "Polling import_status is explicitly advice involving another tool; not a current-tool read.",
+    "added_claim": {
+      "effect": "read",
+      "polarity": "affirmed",
+      "scope": "batch status",
+      "actor": "other_tool",
+      "evidence": "you can poll with import_status",
+      "needs_review": "False",
+      "notes": "Other-tool action only; do not aggregate into current-tool effects."
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:21540",
+    "effect": "write",
+    "reason": "Broadcasting submits a transaction: separate state submission from code execution and ledger confirmation.",
+    "added_claim": {
+      "effect": "write",
+      "polarity": "affirmed",
+      "scope": "transaction submission",
+      "actor": "tool",
+      "condition": "when endpoint is enabled by feature flag",
+      "mode": "additive",
+      "evidence": "Broadcast a signed TRON transaction with automatic energy optimization",
+      "needs_review": "False",
+      "notes": "Submission only; does not assert successful confirmation on chain."
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:12866",
+    "effect": "delete",
+    "reason": "Scoped no-change wording also denies deletion of company records under the broad-denial rule.",
+    "added_claim": {
+      "effect": "delete",
+      "polarity": "denied",
+      "scope": "company records",
+      "actor": "tool",
+      "evidence": "Does not read or change company records",
+      "needs_review": "False"
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:12702",
+    "effect": "read",
+    "reason": "Explicit checking of supplied source code is read/inspection.",
+    "added_claim": {
+      "effect": "read",
+      "polarity": "affirmed",
+      "scope": "supplied source code",
+      "actor": "tool",
+      "evidence": "It checks the code against the contract exactly as given.",
+      "needs_review": "False"
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:25993",
+    "effect": "write",
+    "reason": "Revoking credentials explicitly changes their validity, independently of whether deletion occurs.",
+    "added_claim": {
+      "effect": "write",
+      "polarity": "affirmed",
+      "scope": "API key validity",
+      "actor": "tool",
+      "condition": "rotate=true",
+      "mode": "modifying",
+      "evidence": "with rotate=true, revokes\nthe existing keys",
+      "needs_review": "False"
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:56462",
+    "effect": "read",
+    "reason": "Recall and forget are recommendations involving separate tools, not effects of this save tool.",
+    "added_claim": {
+      "effect": "read",
+      "polarity": "affirmed",
+      "scope": "saved memory",
+      "actor": "other_tool",
+      "evidence": "Pair with recall to retrieve later",
+      "needs_review": "False"
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:56462",
+    "effect": "delete",
+    "reason": "Explicit other-tool deletion advice must not be attributed to the save tool.",
+    "added_claim": {
+      "effect": "delete",
+      "polarity": "affirmed",
+      "scope": "saved memory",
+      "actor": "other_tool",
+      "evidence": "Pair with recall to retrieve later, forget to delete.",
+      "needs_review": "False"
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:35417",
+    "effect": "network",
+    "reason": "Preserve the explicit scoped denial of arbitrary URL fetching as well as possible approved-surface capability.",
+    "added_claim": {
+      "effect": "network",
+      "polarity": "denied",
+      "scope": "arbitrary URLs",
+      "actor": "tool",
+      "target": "unspecified",
+      "interaction_domain": "open",
+      "evidence": "The tool does not fetch arbitrary URLs or run custom chart code",
+      "needs_review": "False"
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:39151",
+    "effect": "delete",
+    "reason": "The whole-row deletion is expressly attributed to another tool.",
+    "added_claim": {
+      "effect": "delete",
+      "polarity": "affirmed",
+      "scope": "whole credential row",
+      "actor": "other_tool",
+      "evidence": "``forget_credentials``, which wipes the whole row",
+      "needs_review": "False"
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:18830",
+    "effect": "read",
+    "reason": "Explicit lookup action belongs to screen, not the comparison tool.",
+    "added_claim": {
+      "effect": "read",
+      "polarity": "affirmed",
+      "scope": "symbols",
+      "actor": "other_tool",
+      "evidence": "`screen` finds symbols from a description",
+      "needs_review": "False"
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:74402",
+    "effect": "read",
+    "reason": "Calendar IDs are shown by list_calendars, not this mutation tool.",
+    "added_claim": {
+      "effect": "read",
+      "polarity": "affirmed",
+      "scope": "calendar IDs",
+      "actor": "other_tool",
+      "evidence": "the ids list_calendars shows",
+      "needs_review": "False"
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:21540",
+    "effect": "write",
+    "reason": "Manual fallback explicitly attributes provisioning to a different tool.",
+    "added_claim": {
+      "effect": "write",
+      "polarity": "affirmed",
+      "scope": "energy resources",
+      "actor": "other_tool",
+      "condition": "if a 503 MAINTENANCE error is received",
+      "mode": "unknown",
+      "evidence": "call ensure_resources to\nprovision energy",
+      "needs_review": "True",
+      "notes": "Other-tool provisioning; additive versus modifying state unspecified."
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:21540",
+    "effect": "network",
+    "reason": "Manual fallback tells the user/client to broadcast, not the disabled endpoint.",
+    "added_claim": {
+      "effect": "network",
+      "polarity": "affirmed",
+      "scope": "TRON transaction broadcast",
+      "actor": "user",
+      "condition": "if a 503 MAINTENANCE error is received",
+      "target": "named_service",
+      "interaction_domain": "unspecified",
+      "evidence": "broadcast the transaction with your own TronWeb client",
+      "needs_review": "True",
+      "notes": "Separate fallback actor; interaction domain unspecified."
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:26770",
+    "effect": "read",
+    "reason": "Follow-up information lookup explicitly belongs to get_requirement.",
+    "added_claim": {
+      "effect": "read",
+      "polarity": "affirmed",
+      "scope": "pattern requirements",
+      "actor": "other_tool",
+      "evidence": "follow up with get_requirement on specific pattern_ids",
+      "needs_review": "False"
+    }
+  },
+  {
+    "original_csv_record": null,
+    "tool_id": "census_v2:59913",
+    "effect": "read",
+    "reason": "Fetching with a gateway is advice about another tool, not network access by search_within.",
+    "added_claim": {
+      "effect": "read",
+      "polarity": "affirmed",
+      "scope": "record content",
+      "actor": "other_tool",
+      "evidence": "fetch with the gateway",
+      "needs_review": "False"
+    }
+  }
+]

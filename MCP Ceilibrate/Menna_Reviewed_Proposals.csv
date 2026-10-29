@@ -1,0 +1,827 @@
+﻿tool_id,description,effect,polarity,scope,actor,condition,mode,target,interaction_domain,evidence,needs_review,notes
+census_v2:13401,"Add a single YouTuber to the database and trigger the full enrichment pipeline (tags, niches, description, similarity, sponsor detection). Returns a batchId you can poll with import_status. Prefer passing a channel ID (UCxxxxxxxxxxxxxxxxxxxxxx, 24 chars) — handles ('@xxx') and URLs work too but cost an extra YouTube API quota point per call to resolve.",read,affirmed,batch status,other_tool,,,,,you can poll with import_status,False,Other-tool action only; do not aggregate into current-tool effects.
+census_v2:13401,"Add a single YouTuber to the database and trigger the full enrichment pipeline (tags, niches, description, similarity, sponsor detection). Returns a batchId you can poll with import_status. Prefer passing a channel ID (UCxxxxxxxxxxxxxxxxxxxxxx, 24 chars) — handles ('@xxx') and URLs work too but cost an extra YouTube API quota point per call to resolve.",write,affirmed,database,tool,,additive,,,Add a single YouTuber to the database,False,
+census_v2:13401,"Add a single YouTuber to the database and trigger the full enrichment pipeline (tags, niches, description, similarity, sponsor detection). Returns a batchId you can poll with import_status. Prefer passing a channel ID (UCxxxxxxxxxxxxxxxxxxxxxx, 24 chars) — handles ('@xxx') and URLs work too but cost an extra YouTube API quota point per call to resolve.",delete,not_stated,,,,,,,,,
+census_v2:13401,"Add a single YouTuber to the database and trigger the full enrichment pipeline (tags, niches, description, similarity, sponsor detection). Returns a batchId you can poll with import_status. Prefer passing a channel ID (UCxxxxxxxxxxxxxxxxxxxxxx, 24 chars) — handles ('@xxx') and URLs work too but cost an extra YouTube API quota point per call to resolve.",execute,not_stated,,,,,,,,,
+census_v2:13401,"Add a single YouTuber to the database and trigger the full enrichment pipeline (tags, niches, description, similarity, sponsor detection). Returns a batchId you can poll with import_status. Prefer passing a channel ID (UCxxxxxxxxxxxxxxxxxxxxxx, 24 chars) — handles ('@xxx') and URLs work too but cost an extra YouTube API quota point per call to resolve.",network,uncertain,YouTube API,tool,when passing a handle or URL,,named_service,unspecified,handles ('@xxx') and URLs work too but cost an extra YouTube API quota point per call to resolve,True,"Proposed rule: operation-linked API quota is uncertain network, not affirmed; destination alone does not prove transport."
+census_v2:18830,"Lay two to five named companies side by side on the same measures, gaps marked as gaps.
+
+    ★ AN ABSENT FIGURE STAYS ABSENT, AND THE COMPANY STAYS ON THE TABLE. A blank cell is reported
+    as `available: false`, never filled with a zero, a previous period, or by quietly dropping the
+    column. Dropping is the worst of the three: it converts ""we do not hold this measure for that
+    company"" into ""you did not ask about that company"".
+
+    ★ EACH CELL NAMES ITS OWN SOURCE. Margins and institutional flows come from different datasets,
+    so one citation for the whole table would imply every figure came from one query.
+
+    ★ NOT `screen` AND NOT `find_related`. `screen` finds symbols from a description when you have
+    none; `find_related` walks supply-chain links. This one needs you to already know which two to
+    five companies you mean.
+
+    ⚠️ Placing figures next to each other is not ranking them. A measure one company publishes and
+    another does not is a coverage difference, not evidence about either.
+    Args: tickers (2-5), metrics, optional pre-fetched rows_by_ticker, optional as_of.
+    ",read,uncertain,company metrics,tool,,,,,Margins and institutional flows come from different datasets,True,Data-source relationship is explicit; tool retrieval versus supplied rows is unresolved. This is not an automatic inference from computation.
+census_v2:18830,"Lay two to five named companies side by side on the same measures, gaps marked as gaps.
+
+    ★ AN ABSENT FIGURE STAYS ABSENT, AND THE COMPANY STAYS ON THE TABLE. A blank cell is reported
+    as `available: false`, never filled with a zero, a previous period, or by quietly dropping the
+    column. Dropping is the worst of the three: it converts ""we do not hold this measure for that
+    company"" into ""you did not ask about that company"".
+
+    ★ EACH CELL NAMES ITS OWN SOURCE. Margins and institutional flows come from different datasets,
+    so one citation for the whole table would imply every figure came from one query.
+
+    ★ NOT `screen` AND NOT `find_related`. `screen` finds symbols from a description when you have
+    none; `find_related` walks supply-chain links. This one needs you to already know which two to
+    five companies you mean.
+
+    ⚠️ Placing figures next to each other is not ranking them. A measure one company publishes and
+    another does not is a coverage difference, not evidence about either.
+    Args: tickers (2-5), metrics, optional pre-fetched rows_by_ticker, optional as_of.
+    ",read,affirmed,symbols,other_tool,,,,,`screen` finds symbols from a description,False,
+census_v2:18830,"Lay two to five named companies side by side on the same measures, gaps marked as gaps.
+
+    ★ AN ABSENT FIGURE STAYS ABSENT, AND THE COMPANY STAYS ON THE TABLE. A blank cell is reported
+    as `available: false`, never filled with a zero, a previous period, or by quietly dropping the
+    column. Dropping is the worst of the three: it converts ""we do not hold this measure for that
+    company"" into ""you did not ask about that company"".
+
+    ★ EACH CELL NAMES ITS OWN SOURCE. Margins and institutional flows come from different datasets,
+    so one citation for the whole table would imply every figure came from one query.
+
+    ★ NOT `screen` AND NOT `find_related`. `screen` finds symbols from a description when you have
+    none; `find_related` walks supply-chain links. This one needs you to already know which two to
+    five companies you mean.
+
+    ⚠️ Placing figures next to each other is not ranking them. A measure one company publishes and
+    another does not is a coverage difference, not evidence about either.
+    Args: tickers (2-5), metrics, optional pre-fetched rows_by_ticker, optional as_of.
+    ",write,not_stated,,,,,,,,,
+census_v2:18830,"Lay two to five named companies side by side on the same measures, gaps marked as gaps.
+
+    ★ AN ABSENT FIGURE STAYS ABSENT, AND THE COMPANY STAYS ON THE TABLE. A blank cell is reported
+    as `available: false`, never filled with a zero, a previous period, or by quietly dropping the
+    column. Dropping is the worst of the three: it converts ""we do not hold this measure for that
+    company"" into ""you did not ask about that company"".
+
+    ★ EACH CELL NAMES ITS OWN SOURCE. Margins and institutional flows come from different datasets,
+    so one citation for the whole table would imply every figure came from one query.
+
+    ★ NOT `screen` AND NOT `find_related`. `screen` finds symbols from a description when you have
+    none; `find_related` walks supply-chain links. This one needs you to already know which two to
+    five companies you mean.
+
+    ⚠️ Placing figures next to each other is not ranking them. A measure one company publishes and
+    another does not is a coverage difference, not evidence about either.
+    Args: tickers (2-5), metrics, optional pre-fetched rows_by_ticker, optional as_of.
+    ",delete,not_stated,,,,,,,,,
+census_v2:18830,"Lay two to five named companies side by side on the same measures, gaps marked as gaps.
+
+    ★ AN ABSENT FIGURE STAYS ABSENT, AND THE COMPANY STAYS ON THE TABLE. A blank cell is reported
+    as `available: false`, never filled with a zero, a previous period, or by quietly dropping the
+    column. Dropping is the worst of the three: it converts ""we do not hold this measure for that
+    company"" into ""you did not ask about that company"".
+
+    ★ EACH CELL NAMES ITS OWN SOURCE. Margins and institutional flows come from different datasets,
+    so one citation for the whole table would imply every figure came from one query.
+
+    ★ NOT `screen` AND NOT `find_related`. `screen` finds symbols from a description when you have
+    none; `find_related` walks supply-chain links. This one needs you to already know which two to
+    five companies you mean.
+
+    ⚠️ Placing figures next to each other is not ranking them. A measure one company publishes and
+    another does not is a coverage difference, not evidence about either.
+    Args: tickers (2-5), metrics, optional pre-fetched rows_by_ticker, optional as_of.
+    ",execute,not_stated,,,,,,,,,
+census_v2:18830,"Lay two to five named companies side by side on the same measures, gaps marked as gaps.
+
+    ★ AN ABSENT FIGURE STAYS ABSENT, AND THE COMPANY STAYS ON THE TABLE. A blank cell is reported
+    as `available: false`, never filled with a zero, a previous period, or by quietly dropping the
+    column. Dropping is the worst of the three: it converts ""we do not hold this measure for that
+    company"" into ""you did not ask about that company"".
+
+    ★ EACH CELL NAMES ITS OWN SOURCE. Margins and institutional flows come from different datasets,
+    so one citation for the whole table would imply every figure came from one query.
+
+    ★ NOT `screen` AND NOT `find_related`. `screen` finds symbols from a description when you have
+    none; `find_related` walks supply-chain links. This one needs you to already know which two to
+    five companies you mean.
+
+    ⚠️ Placing figures next to each other is not ranking them. A measure one company publishes and
+    another does not is a coverage difference, not evidence about either.
+    Args: tickers (2-5), metrics, optional pre-fetched rows_by_ticker, optional as_of.
+    ",network,not_stated,,,,,,,,,
+census_v2:25575,"List every product category with its item count and sample products. Use to establish what the catalogue covers before searching, or to answer what kinds of items are available.",read,affirmed,product catalogue,tool,,,,,List every product category with its item count and sample products,False,
+census_v2:25575,"List every product category with its item count and sample products. Use to establish what the catalogue covers before searching, or to answer what kinds of items are available.",write,not_stated,,,,,,,,,
+census_v2:25575,"List every product category with its item count and sample products. Use to establish what the catalogue covers before searching, or to answer what kinds of items are available.",delete,not_stated,,,,,,,,,
+census_v2:25575,"List every product category with its item count and sample products. Use to establish what the catalogue covers before searching, or to answer what kinds of items are available.",execute,not_stated,,,,,,,,,
+census_v2:25575,"List every product category with its item count and sample products. Use to establish what the catalogue covers before searching, or to answer what kinds of items are available.",network,not_stated,,,,,,,,,
+census_v2:74402,"Change a calendar: its name, or whether it shows Saturdays and Sundays (weekends). Pass only what changes. `add_data_sources` adds sources of events and `remove_data_source_ids` removes sources by the ids list_calendars shows (798); every other source stays as it is. Ids come from list_calendars.",read,affirmed,calendar IDs,other_tool,,,,,the ids list_calendars shows,False,
+census_v2:74402,"Change a calendar: its name, or whether it shows Saturdays and Sundays (weekends). Pass only what changes. `add_data_sources` adds sources of events and `remove_data_source_ids` removes sources by the ids list_calendars shows (798); every other source stays as it is. Ids come from list_calendars.",write,affirmed,calendar,tool,,modifying,,,"Change a calendar: its name, or whether it shows Saturdays and Sundays (weekends)",False,
+census_v2:74402,"Change a calendar: its name, or whether it shows Saturdays and Sundays (weekends). Pass only what changes. `add_data_sources` adds sources of events and `remove_data_source_ids` removes sources by the ids list_calendars shows (798); every other source stays as it is. Ids come from list_calendars.",write,affirmed,calendar data sources,tool,when add_data_sources is supplied,additive,,,`add_data_sources` adds sources of events,False,
+census_v2:74402,"Change a calendar: its name, or whether it shows Saturdays and Sundays (weekends). Pass only what changes. `add_data_sources` adds sources of events and `remove_data_source_ids` removes sources by the ids list_calendars shows (798); every other source stays as it is. Ids come from list_calendars.",delete,affirmed,calendar data sources,tool,when remove_data_source_ids is supplied,,,,`remove_data_source_ids` removes sources,False,
+census_v2:74402,"Change a calendar: its name, or whether it shows Saturdays and Sundays (weekends). Pass only what changes. `add_data_sources` adds sources of events and `remove_data_source_ids` removes sources by the ids list_calendars shows (798); every other source stays as it is. Ids come from list_calendars.",execute,not_stated,,,,,,,,,
+census_v2:74402,"Change a calendar: its name, or whether it shows Saturdays and Sundays (weekends). Pass only what changes. `add_data_sources` adds sources of events and `remove_data_source_ids` removes sources by the ids list_calendars shows (798); every other source stays as it is. Ids come from list_calendars.",network,not_stated,,,,,,,,,
+census_v2:39392,"Get order history for the active Schwab account.
+
+Returns one markdown row per order:
+
+  - **<orderId>** [<status>] <orderType> | <leg1> / <leg2> / ... |
+    Price: $X @ $avg_fill | Filled: <qty> | <enteredTime>
+
+Each leg formats as ""<instruction> <quantity>x <symbol>"" (e.g.
+""BUY 1x AAPL"", ""SELL_TO_OPEN 5x AAPL  240315C00185000""). The avg_fill
+suffix is the average across all executionLegs.price values for the
+order; omitted if the order has no fills yet.
+
+Date-window default — when from_date and to_date are both blank, the
+tool defaults to the last 30 days (in UTC). Pass either parameter to
+override; if you pass one, pass both.
+
+Schwab's order status enum (values you can pass to status_filter):
+  AWAITING_PARENT_ORDER, AWAITING_CONDITION, AWAITING_STOP_CONDITION,
+  AWAITING_MANUAL_REVIEW, ACCEPTED, AWAITING_UR_OUT, PENDING_ACTIVATION,
+  QUEUED, WORKING, REJECTED, PENDING_CANCEL, CANCELED, PENDING_REPLACE,
+  REPLACED, FILLED, EXPIRED, NEW.",read,affirmed,Schwab order history,tool,,,,,Get order history for the active Schwab account,False,
+census_v2:39392,"Get order history for the active Schwab account.
+
+Returns one markdown row per order:
+
+  - **<orderId>** [<status>] <orderType> | <leg1> / <leg2> / ... |
+    Price: $X @ $avg_fill | Filled: <qty> | <enteredTime>
+
+Each leg formats as ""<instruction> <quantity>x <symbol>"" (e.g.
+""BUY 1x AAPL"", ""SELL_TO_OPEN 5x AAPL  240315C00185000""). The avg_fill
+suffix is the average across all executionLegs.price values for the
+order; omitted if the order has no fills yet.
+
+Date-window default — when from_date and to_date are both blank, the
+tool defaults to the last 30 days (in UTC). Pass either parameter to
+override; if you pass one, pass both.
+
+Schwab's order status enum (values you can pass to status_filter):
+  AWAITING_PARENT_ORDER, AWAITING_CONDITION, AWAITING_STOP_CONDITION,
+  AWAITING_MANUAL_REVIEW, ACCEPTED, AWAITING_UR_OUT, PENDING_ACTIVATION,
+  QUEUED, WORKING, REJECTED, PENDING_CANCEL, CANCELED, PENDING_REPLACE,
+  REPLACED, FILLED, EXPIRED, NEW.",write,not_stated,,,,,,,,,
+census_v2:39392,"Get order history for the active Schwab account.
+
+Returns one markdown row per order:
+
+  - **<orderId>** [<status>] <orderType> | <leg1> / <leg2> / ... |
+    Price: $X @ $avg_fill | Filled: <qty> | <enteredTime>
+
+Each leg formats as ""<instruction> <quantity>x <symbol>"" (e.g.
+""BUY 1x AAPL"", ""SELL_TO_OPEN 5x AAPL  240315C00185000""). The avg_fill
+suffix is the average across all executionLegs.price values for the
+order; omitted if the order has no fills yet.
+
+Date-window default — when from_date and to_date are both blank, the
+tool defaults to the last 30 days (in UTC). Pass either parameter to
+override; if you pass one, pass both.
+
+Schwab's order status enum (values you can pass to status_filter):
+  AWAITING_PARENT_ORDER, AWAITING_CONDITION, AWAITING_STOP_CONDITION,
+  AWAITING_MANUAL_REVIEW, ACCEPTED, AWAITING_UR_OUT, PENDING_ACTIVATION,
+  QUEUED, WORKING, REJECTED, PENDING_CANCEL, CANCELED, PENDING_REPLACE,
+  REPLACED, FILLED, EXPIRED, NEW.",delete,not_stated,,,,,,,,,
+census_v2:39392,"Get order history for the active Schwab account.
+
+Returns one markdown row per order:
+
+  - **<orderId>** [<status>] <orderType> | <leg1> / <leg2> / ... |
+    Price: $X @ $avg_fill | Filled: <qty> | <enteredTime>
+
+Each leg formats as ""<instruction> <quantity>x <symbol>"" (e.g.
+""BUY 1x AAPL"", ""SELL_TO_OPEN 5x AAPL  240315C00185000""). The avg_fill
+suffix is the average across all executionLegs.price values for the
+order; omitted if the order has no fills yet.
+
+Date-window default — when from_date and to_date are both blank, the
+tool defaults to the last 30 days (in UTC). Pass either parameter to
+override; if you pass one, pass both.
+
+Schwab's order status enum (values you can pass to status_filter):
+  AWAITING_PARENT_ORDER, AWAITING_CONDITION, AWAITING_STOP_CONDITION,
+  AWAITING_MANUAL_REVIEW, ACCEPTED, AWAITING_UR_OUT, PENDING_ACTIVATION,
+  QUEUED, WORKING, REJECTED, PENDING_CANCEL, CANCELED, PENDING_REPLACE,
+  REPLACED, FILLED, EXPIRED, NEW.",execute,not_stated,,,,,,,,,
+census_v2:39392,"Get order history for the active Schwab account.
+
+Returns one markdown row per order:
+
+  - **<orderId>** [<status>] <orderType> | <leg1> / <leg2> / ... |
+    Price: $X @ $avg_fill | Filled: <qty> | <enteredTime>
+
+Each leg formats as ""<instruction> <quantity>x <symbol>"" (e.g.
+""BUY 1x AAPL"", ""SELL_TO_OPEN 5x AAPL  240315C00185000""). The avg_fill
+suffix is the average across all executionLegs.price values for the
+order; omitted if the order has no fills yet.
+
+Date-window default — when from_date and to_date are both blank, the
+tool defaults to the last 30 days (in UTC). Pass either parameter to
+override; if you pass one, pass both.
+
+Schwab's order status enum (values you can pass to status_filter):
+  AWAITING_PARENT_ORDER, AWAITING_CONDITION, AWAITING_STOP_CONDITION,
+  AWAITING_MANUAL_REVIEW, ACCEPTED, AWAITING_UR_OUT, PENDING_ACTIVATION,
+  QUEUED, WORKING, REJECTED, PENDING_CANCEL, CANCELED, PENDING_REPLACE,
+  REPLACED, FILLED, EXPIRED, NEW.",network,not_stated,,,,,,,,,
+census_v2:21540,"Broadcast a signed TRON transaction with automatic energy optimization.
+If the target address lacks sufficient energy, MERX purchases the deficit at the best
+market price before broadcasting. One call: estimate, buy energy, wait for delegation, broadcast.
+
+Requires MERX_API_KEY with the ""broadcast"" scope, and a pre-signed transaction.
+Returns txid on success, refunds on timeout.
+
+NOTE: This endpoint is currently behind a feature flag and disabled by default in production.
+If you get a 503 MAINTENANCE error, use the manual flow instead: call ensure_resources to
+provision energy, then sign and broadcast the transaction with your own TronWeb client.",read,not_stated,,,,,,,,,
+census_v2:21540,"Broadcast a signed TRON transaction with automatic energy optimization.
+If the target address lacks sufficient energy, MERX purchases the deficit at the best
+market price before broadcasting. One call: estimate, buy energy, wait for delegation, broadcast.
+
+Requires MERX_API_KEY with the ""broadcast"" scope, and a pre-signed transaction.
+Returns txid on success, refunds on timeout.
+
+NOTE: This endpoint is currently behind a feature flag and disabled by default in production.
+If you get a 503 MAINTENANCE error, use the manual flow instead: call ensure_resources to
+provision energy, then sign and broadcast the transaction with your own TronWeb client.",write,affirmed,energy purchase,tool,if target address lacks sufficient energy and endpoint is enabled,additive,,,"MERX purchases the deficit at the best
+market price before broadcasting",False,
+census_v2:21540,"Broadcast a signed TRON transaction with automatic energy optimization.
+If the target address lacks sufficient energy, MERX purchases the deficit at the best
+market price before broadcasting. One call: estimate, buy energy, wait for delegation, broadcast.
+
+Requires MERX_API_KEY with the ""broadcast"" scope, and a pre-signed transaction.
+Returns txid on success, refunds on timeout.
+
+NOTE: This endpoint is currently behind a feature flag and disabled by default in production.
+If you get a 503 MAINTENANCE error, use the manual flow instead: call ensure_resources to
+provision energy, then sign and broadcast the transaction with your own TronWeb client.",write,affirmed,refund,unknown,on timeout,unknown,,,refunds on timeout,True,Actor attribution and refund state semantics unresolved; do not classify as provider lifecycle solely because it is billing.
+census_v2:21540,"Broadcast a signed TRON transaction with automatic energy optimization.
+If the target address lacks sufficient energy, MERX purchases the deficit at the best
+market price before broadcasting. One call: estimate, buy energy, wait for delegation, broadcast.
+
+Requires MERX_API_KEY with the ""broadcast"" scope, and a pre-signed transaction.
+Returns txid on success, refunds on timeout.
+
+NOTE: This endpoint is currently behind a feature flag and disabled by default in production.
+If you get a 503 MAINTENANCE error, use the manual flow instead: call ensure_resources to
+provision energy, then sign and broadcast the transaction with your own TronWeb client.",write,affirmed,transaction submission,tool,when endpoint is enabled by feature flag,additive,,,Broadcast a signed TRON transaction with automatic energy optimization,False,Submission only; does not assert successful confirmation on chain.
+census_v2:21540,"Broadcast a signed TRON transaction with automatic energy optimization.
+If the target address lacks sufficient energy, MERX purchases the deficit at the best
+market price before broadcasting. One call: estimate, buy energy, wait for delegation, broadcast.
+
+Requires MERX_API_KEY with the ""broadcast"" scope, and a pre-signed transaction.
+Returns txid on success, refunds on timeout.
+
+NOTE: This endpoint is currently behind a feature flag and disabled by default in production.
+If you get a 503 MAINTENANCE error, use the manual flow instead: call ensure_resources to
+provision energy, then sign and broadcast the transaction with your own TronWeb client.",write,affirmed,energy resources,other_tool,if a 503 MAINTENANCE error is received,unknown,,,"call ensure_resources to
+provision energy",True,Other-tool provisioning; additive versus modifying state unspecified.
+census_v2:21540,"Broadcast a signed TRON transaction with automatic energy optimization.
+If the target address lacks sufficient energy, MERX purchases the deficit at the best
+market price before broadcasting. One call: estimate, buy energy, wait for delegation, broadcast.
+
+Requires MERX_API_KEY with the ""broadcast"" scope, and a pre-signed transaction.
+Returns txid on success, refunds on timeout.
+
+NOTE: This endpoint is currently behind a feature flag and disabled by default in production.
+If you get a 503 MAINTENANCE error, use the manual flow instead: call ensure_resources to
+provision energy, then sign and broadcast the transaction with your own TronWeb client.",delete,not_stated,,,,,,,,,
+census_v2:21540,"Broadcast a signed TRON transaction with automatic energy optimization.
+If the target address lacks sufficient energy, MERX purchases the deficit at the best
+market price before broadcasting. One call: estimate, buy energy, wait for delegation, broadcast.
+
+Requires MERX_API_KEY with the ""broadcast"" scope, and a pre-signed transaction.
+Returns txid on success, refunds on timeout.
+
+NOTE: This endpoint is currently behind a feature flag and disabled by default in production.
+If you get a 503 MAINTENANCE error, use the manual flow instead: call ensure_resources to
+provision energy, then sign and broadcast the transaction with your own TronWeb client.",execute,not_stated,,,,,,,,,
+census_v2:21540,"Broadcast a signed TRON transaction with automatic energy optimization.
+If the target address lacks sufficient energy, MERX purchases the deficit at the best
+market price before broadcasting. One call: estimate, buy energy, wait for delegation, broadcast.
+
+Requires MERX_API_KEY with the ""broadcast"" scope, and a pre-signed transaction.
+Returns txid on success, refunds on timeout.
+
+NOTE: This endpoint is currently behind a feature flag and disabled by default in production.
+If you get a 503 MAINTENANCE error, use the manual flow instead: call ensure_resources to
+provision energy, then sign and broadcast the transaction with your own TronWeb client.",network,affirmed,TRON network,tool,when endpoint is enabled by feature flag,,named_service,unspecified,Broadcast a signed TRON transaction with automatic energy optimization,True,Broadcast communication is explicit. External interaction domain is not described; no confirmation of ledger inclusion is claimed.
+census_v2:21540,"Broadcast a signed TRON transaction with automatic energy optimization.
+If the target address lacks sufficient energy, MERX purchases the deficit at the best
+market price before broadcasting. One call: estimate, buy energy, wait for delegation, broadcast.
+
+Requires MERX_API_KEY with the ""broadcast"" scope, and a pre-signed transaction.
+Returns txid on success, refunds on timeout.
+
+NOTE: This endpoint is currently behind a feature flag and disabled by default in production.
+If you get a 503 MAINTENANCE error, use the manual flow instead: call ensure_resources to
+provision energy, then sign and broadcast the transaction with your own TronWeb client.",network,affirmed,TRON transaction broadcast,user,if a 503 MAINTENANCE error is received,,named_service,unspecified,broadcast the transaction with your own TronWeb client,True,Separate fallback actor; interaction domain unspecified.
+census_v2:10422,"Append a new content block to a link-in-bio page. The block must match one of the 14 allowed types (link, social_row, whatsapp, phone_call, email_contact, image, gallery, video_embed, text, map_embed, product_card, lead_form, reviews, save_contact) with that type's strict props. The server generates the block id and returns it in the response. For already-published pages, this saves an unpublished latest revision only. Do not call page_publish in the same assistant turn after this edit. Stop and tell the user the draft/preview was updated, then wait for a separate user message that explicitly asks to update the live link, publish, or make the changes public before calling page_publish. Do NOT call page_unpublish either — the live page should stay public; only unpublish when the user explicitly asks to take it down. The response includes nextSteps: after adding a block, share these hints with the user so they know what else would make the page more complete.",read,not_stated,,,,,,,,,
+census_v2:10422,"Append a new content block to a link-in-bio page. The block must match one of the 14 allowed types (link, social_row, whatsapp, phone_call, email_contact, image, gallery, video_embed, text, map_embed, product_card, lead_form, reviews, save_contact) with that type's strict props. The server generates the block id and returns it in the response. For already-published pages, this saves an unpublished latest revision only. Do not call page_publish in the same assistant turn after this edit. Stop and tell the user the draft/preview was updated, then wait for a separate user message that explicitly asks to update the live link, publish, or make the changes public before calling page_publish. Do NOT call page_unpublish either — the live page should stay public; only unpublish when the user explicitly asks to take it down. The response includes nextSteps: after adding a block, share these hints with the user so they know what else would make the page more complete.",write,affirmed,page content,tool,,additive,,,Append a new content block to a link-in-bio page,False,
+census_v2:10422,"Append a new content block to a link-in-bio page. The block must match one of the 14 allowed types (link, social_row, whatsapp, phone_call, email_contact, image, gallery, video_embed, text, map_embed, product_card, lead_form, reviews, save_contact) with that type's strict props. The server generates the block id and returns it in the response. For already-published pages, this saves an unpublished latest revision only. Do not call page_publish in the same assistant turn after this edit. Stop and tell the user the draft/preview was updated, then wait for a separate user message that explicitly asks to update the live link, publish, or make the changes public before calling page_publish. Do NOT call page_unpublish either — the live page should stay public; only unpublish when the user explicitly asks to take it down. The response includes nextSteps: after adding a block, share these hints with the user so they know what else would make the page more complete.",write,affirmed,page draft,tool,for already-published pages,modifying,,,this saves an unpublished latest revision only,False,
+census_v2:10422,"Append a new content block to a link-in-bio page. The block must match one of the 14 allowed types (link, social_row, whatsapp, phone_call, email_contact, image, gallery, video_embed, text, map_embed, product_card, lead_form, reviews, save_contact) with that type's strict props. The server generates the block id and returns it in the response. For already-published pages, this saves an unpublished latest revision only. Do not call page_publish in the same assistant turn after this edit. Stop and tell the user the draft/preview was updated, then wait for a separate user message that explicitly asks to update the live link, publish, or make the changes public before calling page_publish. Do NOT call page_unpublish either — the live page should stay public; only unpublish when the user explicitly asks to take it down. The response includes nextSteps: after adding a block, share these hints with the user so they know what else would make the page more complete.",delete,not_stated,,,,,,,,,
+census_v2:10422,"Append a new content block to a link-in-bio page. The block must match one of the 14 allowed types (link, social_row, whatsapp, phone_call, email_contact, image, gallery, video_embed, text, map_embed, product_card, lead_form, reviews, save_contact) with that type's strict props. The server generates the block id and returns it in the response. For already-published pages, this saves an unpublished latest revision only. Do not call page_publish in the same assistant turn after this edit. Stop and tell the user the draft/preview was updated, then wait for a separate user message that explicitly asks to update the live link, publish, or make the changes public before calling page_publish. Do NOT call page_unpublish either — the live page should stay public; only unpublish when the user explicitly asks to take it down. The response includes nextSteps: after adding a block, share these hints with the user so they know what else would make the page more complete.",execute,not_stated,,,,,,,,,
+census_v2:10422,"Append a new content block to a link-in-bio page. The block must match one of the 14 allowed types (link, social_row, whatsapp, phone_call, email_contact, image, gallery, video_embed, text, map_embed, product_card, lead_form, reviews, save_contact) with that type's strict props. The server generates the block id and returns it in the response. For already-published pages, this saves an unpublished latest revision only. Do not call page_publish in the same assistant turn after this edit. Stop and tell the user the draft/preview was updated, then wait for a separate user message that explicitly asks to update the live link, publish, or make the changes public before calling page_publish. Do NOT call page_unpublish either — the live page should stay public; only unpublish when the user explicitly asks to take it down. The response includes nextSteps: after adding a block, share these hints with the user so they know what else would make the page more complete.",network,not_stated,,,,,,,,,
+census_v2:12866,Returns shared company-context interview guidance and the update schema. Supports conversation or synthesis from supplied material. Does not read or change company records.,read,denied,company records,tool,,,,,Does not read or change company records,False,
+census_v2:12866,Returns shared company-context interview guidance and the update schema. Supports conversation or synthesis from supplied material. Does not read or change company records.,write,denied,company records,tool,,unknown,,,Does not read or change company records,False,
+census_v2:12866,Returns shared company-context interview guidance and the update schema. Supports conversation or synthesis from supplied material. Does not read or change company records.,delete,denied,company records,tool,,,,,Does not read or change company records,False,
+census_v2:12866,Returns shared company-context interview guidance and the update schema. Supports conversation or synthesis from supplied material. Does not read or change company records.,execute,not_stated,,,,,,,,,
+census_v2:12866,Returns shared company-context interview guidance and the update schema. Supports conversation or synthesis from supplied material. Does not read or change company records.,network,not_stated,,,,,,,,,
+census_v2:8566,"Returns a 0-100 federal prime-contract award momentum score (USAspending.gov top-100 obligated dollars, recent 45-day vs prior 45-day, weekly) with award_momentum_score and recent_vs_prior_ratio. Call when the user asks about federal procurement trends, government contract awards accelerating or slowing, defense contractor demand, or GovCon spending, or when timing contractor revenue forecasts or contracting-officer outreach — obligation dates lead earnings by 1-2 quarters. Updates: weekly.",read,not_stated,,,,,,,,,
+census_v2:8566,"Returns a 0-100 federal prime-contract award momentum score (USAspending.gov top-100 obligated dollars, recent 45-day vs prior 45-day, weekly) with award_momentum_score and recent_vs_prior_ratio. Call when the user asks about federal procurement trends, government contract awards accelerating or slowing, defense contractor demand, or GovCon spending, or when timing contractor revenue forecasts or contracting-officer outreach — obligation dates lead earnings by 1-2 quarters. Updates: weekly.",write,not_stated,,,,,,,,,
+census_v2:8566,"Returns a 0-100 federal prime-contract award momentum score (USAspending.gov top-100 obligated dollars, recent 45-day vs prior 45-day, weekly) with award_momentum_score and recent_vs_prior_ratio. Call when the user asks about federal procurement trends, government contract awards accelerating or slowing, defense contractor demand, or GovCon spending, or when timing contractor revenue forecasts or contracting-officer outreach — obligation dates lead earnings by 1-2 quarters. Updates: weekly.",delete,not_stated,,,,,,,,,
+census_v2:8566,"Returns a 0-100 federal prime-contract award momentum score (USAspending.gov top-100 obligated dollars, recent 45-day vs prior 45-day, weekly) with award_momentum_score and recent_vs_prior_ratio. Call when the user asks about federal procurement trends, government contract awards accelerating or slowing, defense contractor demand, or GovCon spending, or when timing contractor revenue forecasts or contracting-officer outreach — obligation dates lead earnings by 1-2 quarters. Updates: weekly.",execute,not_stated,,,,,,,,,
+census_v2:8566,"Returns a 0-100 federal prime-contract award momentum score (USAspending.gov top-100 obligated dollars, recent 45-day vs prior 45-day, weekly) with award_momentum_score and recent_vs_prior_ratio. Call when the user asks about federal procurement trends, government contract awards accelerating or slowing, defense contractor demand, or GovCon spending, or when timing contractor revenue forecasts or contracting-officer outreach — obligation dates lead earnings by 1-2 quarters. Updates: weekly.",network,not_stated,,,,,,,,,
+census_v2:12702,"An outside check on code, executed in a sealed sandbox. Call it before code crosses a consequence boundary: before you merge it, deploy it, publish it, settle a payout on it, or report it done. A self-audit verifies consistency, never completeness: a check written inside the frame that produced the code passes on the code's own assumptions. This is the check that is not you. Also call it when a fix passes your own check but the target still fails; that means your check shares the code's assumption and cannot see the error.
+INPUT: code (JavaScript/Node or Python 3 source, deterministic only) plus ONE of: contract {fn, examples:[{call,expected}]} (copy call and expected from the test or spec the consequence depends on), or assumption (plain-language claim, weaker read). It checks the code against the contract exactly as given.
+VERDICTS (synchronous): BROKE: the code violates your contract, with the exact input and a rerunnable proof; do not proceed. HELD: the code meets the contract you gave; proceed on that contract, and nothing more. FINDINGS: a stated property strains under a generated input; check it before proceeding. DROP: not deterministically checkable.
+PAYMENT: 0.10 USDC per call, x402 v2 on Base, no account. Every delivered verdict is charged, HELD and DROP included. If no verdict is produced, the payment authorization is cancelled and you are not charged.",read,affirmed,supplied source code,tool,,,,,It checks the code against the contract exactly as given.,False,
+census_v2:12702,"An outside check on code, executed in a sealed sandbox. Call it before code crosses a consequence boundary: before you merge it, deploy it, publish it, settle a payout on it, or report it done. A self-audit verifies consistency, never completeness: a check written inside the frame that produced the code passes on the code's own assumptions. This is the check that is not you. Also call it when a fix passes your own check but the target still fails; that means your check shares the code's assumption and cannot see the error.
+INPUT: code (JavaScript/Node or Python 3 source, deterministic only) plus ONE of: contract {fn, examples:[{call,expected}]} (copy call and expected from the test or spec the consequence depends on), or assumption (plain-language claim, weaker read). It checks the code against the contract exactly as given.
+VERDICTS (synchronous): BROKE: the code violates your contract, with the exact input and a rerunnable proof; do not proceed. HELD: the code meets the contract you gave; proceed on that contract, and nothing more. FINDINGS: a stated property strains under a generated input; check it before proceeding. DROP: not deterministically checkable.
+PAYMENT: 0.10 USDC per call, x402 v2 on Base, no account. Every delivered verdict is charged, HELD and DROP included. If no verdict is produced, the payment authorization is cancelled and you are not charged.",write,affirmed,payment,unknown,if a verdict is delivered,unknown,,,Every delivered verdict is charged,True,Charge is explicit when verdict delivered; actor and exact state-write mode are unspecified.
+census_v2:12702,"An outside check on code, executed in a sealed sandbox. Call it before code crosses a consequence boundary: before you merge it, deploy it, publish it, settle a payout on it, or report it done. A self-audit verifies consistency, never completeness: a check written inside the frame that produced the code passes on the code's own assumptions. This is the check that is not you. Also call it when a fix passes your own check but the target still fails; that means your check shares the code's assumption and cannot see the error.
+INPUT: code (JavaScript/Node or Python 3 source, deterministic only) plus ONE of: contract {fn, examples:[{call,expected}]} (copy call and expected from the test or spec the consequence depends on), or assumption (plain-language claim, weaker read). It checks the code against the contract exactly as given.
+VERDICTS (synchronous): BROKE: the code violates your contract, with the exact input and a rerunnable proof; do not proceed. HELD: the code meets the contract you gave; proceed on that contract, and nothing more. FINDINGS: a stated property strains under a generated input; check it before proceeding. DROP: not deterministically checkable.
+PAYMENT: 0.10 USDC per call, x402 v2 on Base, no account. Every delivered verdict is charged, HELD and DROP included. If no verdict is produced, the payment authorization is cancelled and you are not charged.",delete,not_stated,,,,,,,,,
+census_v2:12702,"An outside check on code, executed in a sealed sandbox. Call it before code crosses a consequence boundary: before you merge it, deploy it, publish it, settle a payout on it, or report it done. A self-audit verifies consistency, never completeness: a check written inside the frame that produced the code passes on the code's own assumptions. This is the check that is not you. Also call it when a fix passes your own check but the target still fails; that means your check shares the code's assumption and cannot see the error.
+INPUT: code (JavaScript/Node or Python 3 source, deterministic only) plus ONE of: contract {fn, examples:[{call,expected}]} (copy call and expected from the test or spec the consequence depends on), or assumption (plain-language claim, weaker read). It checks the code against the contract exactly as given.
+VERDICTS (synchronous): BROKE: the code violates your contract, with the exact input and a rerunnable proof; do not proceed. HELD: the code meets the contract you gave; proceed on that contract, and nothing more. FINDINGS: a stated property strains under a generated input; check it before proceeding. DROP: not deterministically checkable.
+PAYMENT: 0.10 USDC per call, x402 v2 on Base, no account. Every delivered verdict is charged, HELD and DROP included. If no verdict is produced, the payment authorization is cancelled and you are not charged.",execute,affirmed,JavaScript/Node or Python 3,tool,,,,,"code, executed in a sealed sandbox",False,
+census_v2:12702,"An outside check on code, executed in a sealed sandbox. Call it before code crosses a consequence boundary: before you merge it, deploy it, publish it, settle a payout on it, or report it done. A self-audit verifies consistency, never completeness: a check written inside the frame that produced the code passes on the code's own assumptions. This is the check that is not you. Also call it when a fix passes your own check but the target still fails; that means your check shares the code's assumption and cannot see the error.
+INPUT: code (JavaScript/Node or Python 3 source, deterministic only) plus ONE of: contract {fn, examples:[{call,expected}]} (copy call and expected from the test or spec the consequence depends on), or assumption (plain-language claim, weaker read). It checks the code against the contract exactly as given.
+VERDICTS (synchronous): BROKE: the code violates your contract, with the exact input and a rerunnable proof; do not proceed. HELD: the code meets the contract you gave; proceed on that contract, and nothing more. FINDINGS: a stated property strains under a generated input; check it before proceeding. DROP: not deterministically checkable.
+PAYMENT: 0.10 USDC per call, x402 v2 on Base, no account. Every delivered verdict is charged, HELD and DROP included. If no verdict is produced, the payment authorization is cancelled and you are not charged.",network,not_stated,,,,,,,,,
+census_v2:60988,"Use before implementation handoff to statically check structured RevoGrid imports, configuration, dependencies, versions, and optional bounded source. Never executes code.",read,affirmed,supplied code/config,tool,,,,,"statically check structured RevoGrid imports, configuration, dependencies, versions, and optional bounded source",False,Read includes explicitly inspecting existing caller-supplied material; network remains not_stated.
+census_v2:60988,"Use before implementation handoff to statically check structured RevoGrid imports, configuration, dependencies, versions, and optional bounded source. Never executes code.",write,not_stated,,,,,,,,,
+census_v2:60988,"Use before implementation handoff to statically check structured RevoGrid imports, configuration, dependencies, versions, and optional bounded source. Never executes code.",delete,not_stated,,,,,,,,,
+census_v2:60988,"Use before implementation handoff to statically check structured RevoGrid imports, configuration, dependencies, versions, and optional bounded source. Never executes code.",execute,denied,code,tool,,,,,Never executes code,False,
+census_v2:60988,"Use before implementation handoff to statically check structured RevoGrid imports, configuration, dependencies, versions, and optional bounded source. Never executes code.",network,not_stated,,,,,,,,,
+census_v2:39151,"Remove a single operator secret field.
+
+Deletes one key from the operator's encrypted credential blob without
+touching the others — the field-level counterpart to
+``forget_credentials``, which wipes the whole row. Use it to retire a
+leftover after an SDK cutover (a Prefect key after Modal, or a stored
+but untemplated orphan like ``anthropic_api_key``) without taking the
+operator down for a full re-delivery.
+
+Stored-but-untemplated fields are first-class: the delete is keyed on
+what is vaulted, not on what the current template declares. Idempotent
+— already-absent fields report ``removed: false`` without rewriting
+the vault. RESTRICTED to the operator — requires proof (nsec-signed
+kind-27235 or a cached dpop_token phrase); patron proofs are rejected.
+A deletion is as destructive as a write.",read,not_stated,,,,,,,,,
+census_v2:39151,"Remove a single operator secret field.
+
+Deletes one key from the operator's encrypted credential blob without
+touching the others — the field-level counterpart to
+``forget_credentials``, which wipes the whole row. Use it to retire a
+leftover after an SDK cutover (a Prefect key after Modal, or a stored
+but untemplated orphan like ``anthropic_api_key``) without taking the
+operator down for a full re-delivery.
+
+Stored-but-untemplated fields are first-class: the delete is keyed on
+what is vaulted, not on what the current template declares. Idempotent
+— already-absent fields report ``removed: false`` without rewriting
+the vault. RESTRICTED to the operator — requires proof (nsec-signed
+kind-27235 or a cached dpop_token phrase); patron proofs are rejected.
+A deletion is as destructive as a write.",write,denied,operator credential vault,tool,field already absent,unknown,,,"already-absent fields report ``removed: false`` without rewriting
+the vault",False,Denies rewriting this vault when field is absent; not a global write denial.
+census_v2:39151,"Remove a single operator secret field.
+
+Deletes one key from the operator's encrypted credential blob without
+touching the others — the field-level counterpart to
+``forget_credentials``, which wipes the whole row. Use it to retire a
+leftover after an SDK cutover (a Prefect key after Modal, or a stored
+but untemplated orphan like ``anthropic_api_key``) without taking the
+operator down for a full re-delivery.
+
+Stored-but-untemplated fields are first-class: the delete is keyed on
+what is vaulted, not on what the current template declares. Idempotent
+— already-absent fields report ``removed: false`` without rewriting
+the vault. RESTRICTED to the operator — requires proof (nsec-signed
+kind-27235 or a cached dpop_token phrase); patron proofs are rejected.
+A deletion is as destructive as a write.",delete,affirmed,operator credentials,tool,requires operator proof,,,,"Deletes one key from the operator's encrypted credential blob without
+touching the others",False,
+census_v2:39151,"Remove a single operator secret field.
+
+Deletes one key from the operator's encrypted credential blob without
+touching the others — the field-level counterpart to
+``forget_credentials``, which wipes the whole row. Use it to retire a
+leftover after an SDK cutover (a Prefect key after Modal, or a stored
+but untemplated orphan like ``anthropic_api_key``) without taking the
+operator down for a full re-delivery.
+
+Stored-but-untemplated fields are first-class: the delete is keyed on
+what is vaulted, not on what the current template declares. Idempotent
+— already-absent fields report ``removed: false`` without rewriting
+the vault. RESTRICTED to the operator — requires proof (nsec-signed
+kind-27235 or a cached dpop_token phrase); patron proofs are rejected.
+A deletion is as destructive as a write.",delete,affirmed,whole credential row,other_tool,,,,,"``forget_credentials``, which wipes the whole row",False,
+census_v2:39151,"Remove a single operator secret field.
+
+Deletes one key from the operator's encrypted credential blob without
+touching the others — the field-level counterpart to
+``forget_credentials``, which wipes the whole row. Use it to retire a
+leftover after an SDK cutover (a Prefect key after Modal, or a stored
+but untemplated orphan like ``anthropic_api_key``) without taking the
+operator down for a full re-delivery.
+
+Stored-but-untemplated fields are first-class: the delete is keyed on
+what is vaulted, not on what the current template declares. Idempotent
+— already-absent fields report ``removed: false`` without rewriting
+the vault. RESTRICTED to the operator — requires proof (nsec-signed
+kind-27235 or a cached dpop_token phrase); patron proofs are rejected.
+A deletion is as destructive as a write.",execute,not_stated,,,,,,,,,
+census_v2:39151,"Remove a single operator secret field.
+
+Deletes one key from the operator's encrypted credential blob without
+touching the others — the field-level counterpart to
+``forget_credentials``, which wipes the whole row. Use it to retire a
+leftover after an SDK cutover (a Prefect key after Modal, or a stored
+but untemplated orphan like ``anthropic_api_key``) without taking the
+operator down for a full re-delivery.
+
+Stored-but-untemplated fields are first-class: the delete is keyed on
+what is vaulted, not on what the current template declares. Idempotent
+— already-absent fields report ``removed: false`` without rewriting
+the vault. RESTRICTED to the operator — requires proof (nsec-signed
+kind-27235 or a cached dpop_token phrase); patron proofs are rejected.
+A deletion is as destructive as a write.",network,not_stated,,,,,,,,,
+census_v2:55458,"List kata authored by a Codewars username; returns each kata's ID, slug, name, rank, tags, and languages it supports.",read,affirmed,Codewars kata,tool,,,,,List kata authored by a Codewars username,False,
+census_v2:55458,"List kata authored by a Codewars username; returns each kata's ID, slug, name, rank, tags, and languages it supports.",write,not_stated,,,,,,,,,
+census_v2:55458,"List kata authored by a Codewars username; returns each kata's ID, slug, name, rank, tags, and languages it supports.",delete,not_stated,,,,,,,,,
+census_v2:55458,"List kata authored by a Codewars username; returns each kata's ID, slug, name, rank, tags, and languages it supports.",execute,not_stated,,,,,,,,,
+census_v2:55458,"List kata authored by a Codewars username; returns each kata's ID, slug, name, rank, tags, and languages it supports.",network,not_stated,,,,,,,,,
+census_v2:26770,"Given a natural-language task description (e.g., 'I'm building a tool-using agent that runs shell commands'), return the most relevant patterns grouped by suite. Use this as a starting point for any cross-cutting design question; then follow up with get_requirement on specific pattern_ids. Defaults to verbosity='compact' (cheap triage); pass 'full' to inline snippets and confidence flags.",read,affirmed,design patterns,tool,,,,,return the most relevant patterns grouped by suite,False,No network claim follows from returning design patterns.
+census_v2:26770,"Given a natural-language task description (e.g., 'I'm building a tool-using agent that runs shell commands'), return the most relevant patterns grouped by suite. Use this as a starting point for any cross-cutting design question; then follow up with get_requirement on specific pattern_ids. Defaults to verbosity='compact' (cheap triage); pass 'full' to inline snippets and confidence flags.",read,affirmed,pattern requirements,other_tool,,,,,follow up with get_requirement on specific pattern_ids,False,
+census_v2:26770,"Given a natural-language task description (e.g., 'I'm building a tool-using agent that runs shell commands'), return the most relevant patterns grouped by suite. Use this as a starting point for any cross-cutting design question; then follow up with get_requirement on specific pattern_ids. Defaults to verbosity='compact' (cheap triage); pass 'full' to inline snippets and confidence flags.",write,not_stated,,,,,,,,,
+census_v2:26770,"Given a natural-language task description (e.g., 'I'm building a tool-using agent that runs shell commands'), return the most relevant patterns grouped by suite. Use this as a starting point for any cross-cutting design question; then follow up with get_requirement on specific pattern_ids. Defaults to verbosity='compact' (cheap triage); pass 'full' to inline snippets and confidence flags.",delete,not_stated,,,,,,,,,
+census_v2:26770,"Given a natural-language task description (e.g., 'I'm building a tool-using agent that runs shell commands'), return the most relevant patterns grouped by suite. Use this as a starting point for any cross-cutting design question; then follow up with get_requirement on specific pattern_ids. Defaults to verbosity='compact' (cheap triage); pass 'full' to inline snippets and confidence flags.",execute,not_stated,,,,,,,,,
+census_v2:26770,"Given a natural-language task description (e.g., 'I'm building a tool-using agent that runs shell commands'), return the most relevant patterns grouped by suite. Use this as a starting point for any cross-cutting design question; then follow up with get_requirement on specific pattern_ids. Defaults to verbosity='compact' (cheap triage); pass 'full' to inline snippets and confidence flags.",network,not_stated,,,,,,,,,
+census_v2:36678,"Returns the latest version/status info for a vault. Analysis is async; if status is 'processing', poll with exponential backoff (5s, 10s, 20s, 40s, max 60s). Analysis can be as quick as 20-30 minutes for under 500,000 lines of code. Larger codebases can take much longer, especially with the security scan. This endpoint always returns the latest version only; once reanalysis starts, prior versions are no longer accessible here. Requires X-API-Key (existing users can generate an API key in the web app). If headers aren't supported, pass api_key in arguments.",read,affirmed,vault status,tool,,,,,Returns the latest version/status info for a vault,False,
+census_v2:36678,"Returns the latest version/status info for a vault. Analysis is async; if status is 'processing', poll with exponential backoff (5s, 10s, 20s, 40s, max 60s). Analysis can be as quick as 20-30 minutes for under 500,000 lines of code. Larger codebases can take much longer, especially with the security scan. This endpoint always returns the latest version only; once reanalysis starts, prior versions are no longer accessible here. Requires X-API-Key (existing users can generate an API key in the web app). If headers aren't supported, pass api_key in arguments.",write,not_stated,,,,,,,,,
+census_v2:36678,"Returns the latest version/status info for a vault. Analysis is async; if status is 'processing', poll with exponential backoff (5s, 10s, 20s, 40s, max 60s). Analysis can be as quick as 20-30 minutes for under 500,000 lines of code. Larger codebases can take much longer, especially with the security scan. This endpoint always returns the latest version only; once reanalysis starts, prior versions are no longer accessible here. Requires X-API-Key (existing users can generate an API key in the web app). If headers aren't supported, pass api_key in arguments.",delete,not_stated,,,,,,,,,
+census_v2:36678,"Returns the latest version/status info for a vault. Analysis is async; if status is 'processing', poll with exponential backoff (5s, 10s, 20s, 40s, max 60s). Analysis can be as quick as 20-30 minutes for under 500,000 lines of code. Larger codebases can take much longer, especially with the security scan. This endpoint always returns the latest version only; once reanalysis starts, prior versions are no longer accessible here. Requires X-API-Key (existing users can generate an API key in the web app). If headers aren't supported, pass api_key in arguments.",execute,not_stated,,,,,,,,,
+census_v2:36678,"Returns the latest version/status info for a vault. Analysis is async; if status is 'processing', poll with exponential backoff (5s, 10s, 20s, 40s, max 60s). Analysis can be as quick as 20-30 minutes for under 500,000 lines of code. Larger codebases can take much longer, especially with the security scan. This endpoint always returns the latest version only; once reanalysis starts, prior versions are no longer accessible here. Requires X-API-Key (existing users can generate an API key in the web app). If headers aren't supported, pass api_key in arguments.",network,not_stated,,,,,,,,,
+census_v2:54045,"Generate a production-ready llms.txt file for any URL so AI crawlers (ChatGPT, Claude, Perplexity) can index the site cleanly. Fetches the page, extracts title/description/key links, and emits the standard llms.txt markdown format. Output is a single text blob ready to drop at site-root/llms.txt. Useful for: getting a client's site indexed by AI, drafting llms.txt for your own project, or auditing how an AI crawler would see a competitor.",read,affirmed,caller URL page,tool,,,,,"Fetches the page, extracts title/description/key links",False,
+census_v2:54045,"Generate a production-ready llms.txt file for any URL so AI crawlers (ChatGPT, Claude, Perplexity) can index the site cleanly. Fetches the page, extracts title/description/key links, and emits the standard llms.txt markdown format. Output is a single text blob ready to drop at site-root/llms.txt. Useful for: getting a client's site indexed by AI, drafting llms.txt for your own project, or auditing how an AI crawler would see a competitor.",write,not_stated,,,,,,,,,
+census_v2:54045,"Generate a production-ready llms.txt file for any URL so AI crawlers (ChatGPT, Claude, Perplexity) can index the site cleanly. Fetches the page, extracts title/description/key links, and emits the standard llms.txt markdown format. Output is a single text blob ready to drop at site-root/llms.txt. Useful for: getting a client's site indexed by AI, drafting llms.txt for your own project, or auditing how an AI crawler would see a competitor.",delete,not_stated,,,,,,,,,
+census_v2:54045,"Generate a production-ready llms.txt file for any URL so AI crawlers (ChatGPT, Claude, Perplexity) can index the site cleanly. Fetches the page, extracts title/description/key links, and emits the standard llms.txt markdown format. Output is a single text blob ready to drop at site-root/llms.txt. Useful for: getting a client's site indexed by AI, drafting llms.txt for your own project, or auditing how an AI crawler would see a competitor.",execute,not_stated,,,,,,,,,
+census_v2:54045,"Generate a production-ready llms.txt file for any URL so AI crawlers (ChatGPT, Claude, Perplexity) can index the site cleanly. Fetches the page, extracts title/description/key links, and emits the standard llms.txt markdown format. Output is a single text blob ready to drop at site-root/llms.txt. Useful for: getting a client's site indexed by AI, drafting llms.txt for your own project, or auditing how an AI crawler would see a competitor.",network,affirmed,caller URL,tool,,,caller_supplied,open,"for any URL so AI crawlers (ChatGPT, Claude, Perplexity) can index the site cleanly. Fetches the page",False,Description explicitly says any URL; no invented hidden allowlist.
+census_v2:25993,"Issue Key
+
+Idempotently issue a user's API key and ALWAYS return the paste-able
+connect block. Returns the email's existing active key (or mints one) so a
+user keeps a single key across dashboard reloads; with rotate=true, revokes
+the existing keys and mints a fresh one. Admin-gated — the dashboard's
+per-user provision route (which verifies the user's Firebase token) calls
+this server-side, never the browser.
+
+### Responses:
+
+**200**: Successful Response (Success Response)
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""api_key"": ""Api Key"",
+  ""tier"": ""Tier"",
+  ""limits"": {}
+}
+```
+**422**: Validation Error
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""detail"": [
+    {
+      ""loc"": [],
+      ""msg"": ""Message"",
+      ""type"": ""Error Type"",
+      ""ctx"": {}
+    }
+  ]
+}
+```",read,affirmed,API keys,tool,when existing active key present,,,,Returns the email's existing active key,False,
+census_v2:25993,"Issue Key
+
+Idempotently issue a user's API key and ALWAYS return the paste-able
+connect block. Returns the email's existing active key (or mints one) so a
+user keeps a single key across dashboard reloads; with rotate=true, revokes
+the existing keys and mints a fresh one. Admin-gated — the dashboard's
+per-user provision route (which verifies the user's Firebase token) calls
+this server-side, never the browser.
+
+### Responses:
+
+**200**: Successful Response (Success Response)
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""api_key"": ""Api Key"",
+  ""tier"": ""Tier"",
+  ""limits"": {}
+}
+```
+**422**: Validation Error
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""detail"": [
+    {
+      ""loc"": [],
+      ""msg"": ""Message"",
+      ""type"": ""Error Type"",
+      ""ctx"": {}
+    }
+  ]
+}
+```",write,affirmed,API keys,tool,when no existing key,additive,,,or mints one,False,
+census_v2:25993,"Issue Key
+
+Idempotently issue a user's API key and ALWAYS return the paste-able
+connect block. Returns the email's existing active key (or mints one) so a
+user keeps a single key across dashboard reloads; with rotate=true, revokes
+the existing keys and mints a fresh one. Admin-gated — the dashboard's
+per-user provision route (which verifies the user's Firebase token) calls
+this server-side, never the browser.
+
+### Responses:
+
+**200**: Successful Response (Success Response)
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""api_key"": ""Api Key"",
+  ""tier"": ""Tier"",
+  ""limits"": {}
+}
+```
+**422**: Validation Error
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""detail"": [
+    {
+      ""loc"": [],
+      ""msg"": ""Message"",
+      ""type"": ""Error Type"",
+      ""ctx"": {}
+    }
+  ]
+}
+```",write,affirmed,API keys,tool,rotate=true,additive,,,mints a fresh one,False,
+census_v2:25993,"Issue Key
+
+Idempotently issue a user's API key and ALWAYS return the paste-able
+connect block. Returns the email's existing active key (or mints one) so a
+user keeps a single key across dashboard reloads; with rotate=true, revokes
+the existing keys and mints a fresh one. Admin-gated — the dashboard's
+per-user provision route (which verifies the user's Firebase token) calls
+this server-side, never the browser.
+
+### Responses:
+
+**200**: Successful Response (Success Response)
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""api_key"": ""Api Key"",
+  ""tier"": ""Tier"",
+  ""limits"": {}
+}
+```
+**422**: Validation Error
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""detail"": [
+    {
+      ""loc"": [],
+      ""msg"": ""Message"",
+      ""type"": ""Error Type"",
+      ""ctx"": {}
+    }
+  ]
+}
+```",write,affirmed,API key validity,tool,rotate=true,modifying,,,"with rotate=true, revokes
+the existing keys",False,
+census_v2:25993,"Issue Key
+
+Idempotently issue a user's API key and ALWAYS return the paste-able
+connect block. Returns the email's existing active key (or mints one) so a
+user keeps a single key across dashboard reloads; with rotate=true, revokes
+the existing keys and mints a fresh one. Admin-gated — the dashboard's
+per-user provision route (which verifies the user's Firebase token) calls
+this server-side, never the browser.
+
+### Responses:
+
+**200**: Successful Response (Success Response)
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""api_key"": ""Api Key"",
+  ""tier"": ""Tier"",
+  ""limits"": {}
+}
+```
+**422**: Validation Error
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""detail"": [
+    {
+      ""loc"": [],
+      ""msg"": ""Message"",
+      ""type"": ""Error Type"",
+      ""ctx"": {}
+    }
+  ]
+}
+```",delete,uncertain,API keys,tool,rotate=true,,,,"revokes
+the existing keys",True,Keep deletion uncertain pending a general revocation rule; a separate modifying write captures explicit revocation.
+census_v2:25993,"Issue Key
+
+Idempotently issue a user's API key and ALWAYS return the paste-able
+connect block. Returns the email's existing active key (or mints one) so a
+user keeps a single key across dashboard reloads; with rotate=true, revokes
+the existing keys and mints a fresh one. Admin-gated — the dashboard's
+per-user provision route (which verifies the user's Firebase token) calls
+this server-side, never the browser.
+
+### Responses:
+
+**200**: Successful Response (Success Response)
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""api_key"": ""Api Key"",
+  ""tier"": ""Tier"",
+  ""limits"": {}
+}
+```
+**422**: Validation Error
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""detail"": [
+    {
+      ""loc"": [],
+      ""msg"": ""Message"",
+      ""type"": ""Error Type"",
+      ""ctx"": {}
+    }
+  ]
+}
+```",execute,not_stated,,,,,,,,,
+census_v2:25993,"Issue Key
+
+Idempotently issue a user's API key and ALWAYS return the paste-able
+connect block. Returns the email's existing active key (or mints one) so a
+user keeps a single key across dashboard reloads; with rotate=true, revokes
+the existing keys and mints a fresh one. Admin-gated — the dashboard's
+per-user provision route (which verifies the user's Firebase token) calls
+this server-side, never the browser.
+
+### Responses:
+
+**200**: Successful Response (Success Response)
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""api_key"": ""Api Key"",
+  ""tier"": ""Tier"",
+  ""limits"": {}
+}
+```
+**422**: Validation Error
+Content-Type: application/json
+
+**Example Response:**
+```json
+{
+  ""detail"": [
+    {
+      ""loc"": [],
+      ""msg"": ""Message"",
+      ""type"": ""Error Type"",
+      ""ctx"": {}
+    }
+  ]
+}
+```",network,not_stated,,,,,,,,,
+census_v2:56462,"Save data the agent will need to reuse later — across this conversation or across sessions. Use when you discover something worth carrying forward (a resolved ticker, a target address, a user preference, a research subject) so you don't have to look it up again. Stored as a key-value pair scoped by your identifier. Authenticated users get persistent memory; anonymous sessions retain memory for 24 hours. Pair with recall to retrieve later, forget to delete.",read,affirmed,saved memory,other_tool,,,,,Pair with recall to retrieve later,False,
+census_v2:56462,"Save data the agent will need to reuse later — across this conversation or across sessions. Use when you discover something worth carrying forward (a resolved ticker, a target address, a user preference, a research subject) so you don't have to look it up again. Stored as a key-value pair scoped by your identifier. Authenticated users get persistent memory; anonymous sessions retain memory for 24 hours. Pair with recall to retrieve later, forget to delete.",write,affirmed,agent memory,tool,,unknown,,,Stored as a key-value pair scoped by your identifier,True,Write is affirmed; additive versus modifying is unresolved.
+census_v2:56462,"Save data the agent will need to reuse later — across this conversation or across sessions. Use when you discover something worth carrying forward (a resolved ticker, a target address, a user preference, a research subject) so you don't have to look it up again. Stored as a key-value pair scoped by your identifier. Authenticated users get persistent memory; anonymous sessions retain memory for 24 hours. Pair with recall to retrieve later, forget to delete.",delete,affirmed,saved memory,other_tool,,,,,"Pair with recall to retrieve later, forget to delete.",False,
+census_v2:56462,"Save data the agent will need to reuse later — across this conversation or across sessions. Use when you discover something worth carrying forward (a resolved ticker, a target address, a user preference, a research subject) so you don't have to look it up again. Stored as a key-value pair scoped by your identifier. Authenticated users get persistent memory; anonymous sessions retain memory for 24 hours. Pair with recall to retrieve later, forget to delete.",execute,not_stated,,,,,,,,,
+census_v2:56462,"Save data the agent will need to reuse later — across this conversation or across sessions. Use when you discover something worth carrying forward (a resolved ticker, a target address, a user preference, a research subject) so you don't have to look it up again. Stored as a key-value pair scoped by your identifier. Authenticated users get persistent memory; anonymous sessions retain memory for 24 hours. Pair with recall to retrieve later, forget to delete.",network,not_stated,,,,,,,,,
+census_v2:52440,"Field-by-field diff of TWO markets' settlement clauses (one from each of `a` and `b`; either can be Polymarket or Kalshi) — runs resolution_audit on both sides and compares source, settle time, precision, and evidence standard. Returns `equivalent`: ""true"" only when both sides parsed with enough confidence to compare AND no field conflicts; ""false"" when a specific conflict was found (differing_fields names which — e.g. [""source"",""settle_time""] for a Polymarket Bitcoin market settling on Binance's 1-minute candle at noon ET versus a Kalshi KXBTCD market settling on CF Benchmarks' BRTI 60-second average at 5pm EDT — SAME asset, DIFFERENT contract); ""unclear"" when one or both sides could not be confidently parsed (an absence of evidence is not evidence of equivalence — read raw_clause yourself in that case). Only flags a field as differing when BOTH sides gave a SPECIFIC comparable answer — a named source (e.g. ""Associated Press, Fox News, NBC"") against a generic one (e.g. Kalshi's ""consensus of media organizations"") is treated as the same evidence standard, not a conflict, since that is standard election-market boilerplate on both venues. Use this before sizing a polymarket_kalshi_spread pair as a real cross-venue arb, or standalone to sanity-check any two markets you suspect settle on different things.",read,affirmed,market settlement clauses,tool,,,,,"runs resolution_audit on both sides and compares source, settle time, precision, and evidence standard",False,Inspection of clause content is stated; no claim of fetching it over a network.
+census_v2:52440,"Field-by-field diff of TWO markets' settlement clauses (one from each of `a` and `b`; either can be Polymarket or Kalshi) — runs resolution_audit on both sides and compares source, settle time, precision, and evidence standard. Returns `equivalent`: ""true"" only when both sides parsed with enough confidence to compare AND no field conflicts; ""false"" when a specific conflict was found (differing_fields names which — e.g. [""source"",""settle_time""] for a Polymarket Bitcoin market settling on Binance's 1-minute candle at noon ET versus a Kalshi KXBTCD market settling on CF Benchmarks' BRTI 60-second average at 5pm EDT — SAME asset, DIFFERENT contract); ""unclear"" when one or both sides could not be confidently parsed (an absence of evidence is not evidence of equivalence — read raw_clause yourself in that case). Only flags a field as differing when BOTH sides gave a SPECIFIC comparable answer — a named source (e.g. ""Associated Press, Fox News, NBC"") against a generic one (e.g. Kalshi's ""consensus of media organizations"") is treated as the same evidence standard, not a conflict, since that is standard election-market boilerplate on both venues. Use this before sizing a polymarket_kalshi_spread pair as a real cross-venue arb, or standalone to sanity-check any two markets you suspect settle on different things.",write,not_stated,,,,,,,,,
+census_v2:52440,"Field-by-field diff of TWO markets' settlement clauses (one from each of `a` and `b`; either can be Polymarket or Kalshi) — runs resolution_audit on both sides and compares source, settle time, precision, and evidence standard. Returns `equivalent`: ""true"" only when both sides parsed with enough confidence to compare AND no field conflicts; ""false"" when a specific conflict was found (differing_fields names which — e.g. [""source"",""settle_time""] for a Polymarket Bitcoin market settling on Binance's 1-minute candle at noon ET versus a Kalshi KXBTCD market settling on CF Benchmarks' BRTI 60-second average at 5pm EDT — SAME asset, DIFFERENT contract); ""unclear"" when one or both sides could not be confidently parsed (an absence of evidence is not evidence of equivalence — read raw_clause yourself in that case). Only flags a field as differing when BOTH sides gave a SPECIFIC comparable answer — a named source (e.g. ""Associated Press, Fox News, NBC"") against a generic one (e.g. Kalshi's ""consensus of media organizations"") is treated as the same evidence standard, not a conflict, since that is standard election-market boilerplate on both venues. Use this before sizing a polymarket_kalshi_spread pair as a real cross-venue arb, or standalone to sanity-check any two markets you suspect settle on different things.",delete,not_stated,,,,,,,,,
+census_v2:52440,"Field-by-field diff of TWO markets' settlement clauses (one from each of `a` and `b`; either can be Polymarket or Kalshi) — runs resolution_audit on both sides and compares source, settle time, precision, and evidence standard. Returns `equivalent`: ""true"" only when both sides parsed with enough confidence to compare AND no field conflicts; ""false"" when a specific conflict was found (differing_fields names which — e.g. [""source"",""settle_time""] for a Polymarket Bitcoin market settling on Binance's 1-minute candle at noon ET versus a Kalshi KXBTCD market settling on CF Benchmarks' BRTI 60-second average at 5pm EDT — SAME asset, DIFFERENT contract); ""unclear"" when one or both sides could not be confidently parsed (an absence of evidence is not evidence of equivalence — read raw_clause yourself in that case). Only flags a field as differing when BOTH sides gave a SPECIFIC comparable answer — a named source (e.g. ""Associated Press, Fox News, NBC"") against a generic one (e.g. Kalshi's ""consensus of media organizations"") is treated as the same evidence standard, not a conflict, since that is standard election-market boilerplate on both venues. Use this before sizing a polymarket_kalshi_spread pair as a real cross-venue arb, or standalone to sanity-check any two markets you suspect settle on different things.",execute,not_stated,,,,,,,,,
+census_v2:52440,"Field-by-field diff of TWO markets' settlement clauses (one from each of `a` and `b`; either can be Polymarket or Kalshi) — runs resolution_audit on both sides and compares source, settle time, precision, and evidence standard. Returns `equivalent`: ""true"" only when both sides parsed with enough confidence to compare AND no field conflicts; ""false"" when a specific conflict was found (differing_fields names which — e.g. [""source"",""settle_time""] for a Polymarket Bitcoin market settling on Binance's 1-minute candle at noon ET versus a Kalshi KXBTCD market settling on CF Benchmarks' BRTI 60-second average at 5pm EDT — SAME asset, DIFFERENT contract); ""unclear"" when one or both sides could not be confidently parsed (an absence of evidence is not evidence of equivalence — read raw_clause yourself in that case). Only flags a field as differing when BOTH sides gave a SPECIFIC comparable answer — a named source (e.g. ""Associated Press, Fox News, NBC"") against a generic one (e.g. Kalshi's ""consensus of media organizations"") is treated as the same evidence standard, not a conflict, since that is standard election-market boilerplate on both venues. Use this before sizing a polymarket_kalshi_spread pair as a real cross-venue arb, or standalone to sanity-check any two markets you suspect settle on different things.",network,not_stated,,,,,,,,,
+census_v2:36107,"Estimateur de scope pentest — Gapup agent-payable C-suite expertise (RISK). Returns a structured, audited deliverable. Answers: For a <scope_type> pentest on <tech_stack> with <N> assets, what is the effort and cost estimate? · How much should I budget for a web application + API penetration test for SOC 2 Type II compliance? · What is the standard engagement plan (PTES phases + deliverables) for a <scope_type> pentest? · Which engagement type (black-box/grey-box/white-box/red-team) is recommended for my context? · What are the prerequisites and risks for a pentest engagement on my cloud infrastructure? Reference case: Acme SaaS Inc — Fintech B2B EU · web-app + API REST · 12 microservices Node.js AWS · . Inputs are validated server-side — send the documented case fields.",read,not_stated,,,,,,,,,
+census_v2:36107,"Estimateur de scope pentest — Gapup agent-payable C-suite expertise (RISK). Returns a structured, audited deliverable. Answers: For a <scope_type> pentest on <tech_stack> with <N> assets, what is the effort and cost estimate? · How much should I budget for a web application + API penetration test for SOC 2 Type II compliance? · What is the standard engagement plan (PTES phases + deliverables) for a <scope_type> pentest? · Which engagement type (black-box/grey-box/white-box/red-team) is recommended for my context? · What are the prerequisites and risks for a pentest engagement on my cloud infrastructure? Reference case: Acme SaaS Inc — Fintech B2B EU · web-app + API REST · 12 microservices Node.js AWS · . Inputs are validated server-side — send the documented case fields.",write,not_stated,,,,,,,,,
+census_v2:36107,"Estimateur de scope pentest — Gapup agent-payable C-suite expertise (RISK). Returns a structured, audited deliverable. Answers: For a <scope_type> pentest on <tech_stack> with <N> assets, what is the effort and cost estimate? · How much should I budget for a web application + API penetration test for SOC 2 Type II compliance? · What is the standard engagement plan (PTES phases + deliverables) for a <scope_type> pentest? · Which engagement type (black-box/grey-box/white-box/red-team) is recommended for my context? · What are the prerequisites and risks for a pentest engagement on my cloud infrastructure? Reference case: Acme SaaS Inc — Fintech B2B EU · web-app + API REST · 12 microservices Node.js AWS · . Inputs are validated server-side — send the documented case fields.",delete,not_stated,,,,,,,,,
+census_v2:36107,"Estimateur de scope pentest — Gapup agent-payable C-suite expertise (RISK). Returns a structured, audited deliverable. Answers: For a <scope_type> pentest on <tech_stack> with <N> assets, what is the effort and cost estimate? · How much should I budget for a web application + API penetration test for SOC 2 Type II compliance? · What is the standard engagement plan (PTES phases + deliverables) for a <scope_type> pentest? · Which engagement type (black-box/grey-box/white-box/red-team) is recommended for my context? · What are the prerequisites and risks for a pentest engagement on my cloud infrastructure? Reference case: Acme SaaS Inc — Fintech B2B EU · web-app + API REST · 12 microservices Node.js AWS · . Inputs are validated server-side — send the documented case fields.",execute,not_stated,,,,,,,,,
+census_v2:36107,"Estimateur de scope pentest — Gapup agent-payable C-suite expertise (RISK). Returns a structured, audited deliverable. Answers: For a <scope_type> pentest on <tech_stack> with <N> assets, what is the effort and cost estimate? · How much should I budget for a web application + API penetration test for SOC 2 Type II compliance? · What is the standard engagement plan (PTES phases + deliverables) for a <scope_type> pentest? · Which engagement type (black-box/grey-box/white-box/red-team) is recommended for my context? · What are the prerequisites and risks for a pentest engagement on my cloud infrastructure? Reference case: Acme SaaS Inc — Fintech B2B EU · web-app + API REST · 12 microservices Node.js AWS · . Inputs are validated server-side — send the documented case fields.",network,not_stated,,,,,,,,,
+census_v2:69446,List expected payments (READ ONLY). API: GET /expected_payments.,read,affirmed,expected payments,tool,,,,,List expected payments (READ ONLY),False,
+census_v2:69446,List expected payments (READ ONLY). API: GET /expected_payments.,write,denied,global,tool,,unknown,,,(READ ONLY),False,
+census_v2:69446,List expected payments (READ ONLY). API: GET /expected_payments.,delete,denied,global,tool,,,,,(READ ONLY),False,
+census_v2:69446,List expected payments (READ ONLY). API: GET /expected_payments.,execute,not_stated,,,,,,,,,
+census_v2:69446,List expected payments (READ ONLY). API: GET /expected_payments.,network,uncertain,expected payments API,tool,,,unspecified,unspecified,API: GET /expected_payments,True,Relative API operation suggests communication; no destination or network transport is explicit.
+census_v2:69614,"MUTATES Raisely data: updates a fundraising profile's goal/name/story. Raisely API: PATCH /profiles/{path} with the body wrapped as { data: {...} } (only included fields change). Use `fields` for goal, name, description/story, public, private, and any other documented field. Set overwriteCustomFields:true to overwrite (rather than preserve) unspecified custom fields. The path is never sent in the body.",read,not_stated,,,,,,,,,
+census_v2:69614,"MUTATES Raisely data: updates a fundraising profile's goal/name/story. Raisely API: PATCH /profiles/{path} with the body wrapped as { data: {...} } (only included fields change). Use `fields` for goal, name, description/story, public, private, and any other documented field. Set overwriteCustomFields:true to overwrite (rather than preserve) unspecified custom fields. The path is never sent in the body.",write,affirmed,Raisely fundraising profile,tool,,modifying,,,updates a fundraising profile's goal/name/story,False,
+census_v2:69614,"MUTATES Raisely data: updates a fundraising profile's goal/name/story. Raisely API: PATCH /profiles/{path} with the body wrapped as { data: {...} } (only included fields change). Use `fields` for goal, name, description/story, public, private, and any other documented field. Set overwriteCustomFields:true to overwrite (rather than preserve) unspecified custom fields. The path is never sent in the body.",write,affirmed,custom fields,tool,overwriteCustomFields:true,modifying,,,Set overwriteCustomFields:true to overwrite (rather than preserve) unspecified custom fields,False,
+census_v2:69614,"MUTATES Raisely data: updates a fundraising profile's goal/name/story. Raisely API: PATCH /profiles/{path} with the body wrapped as { data: {...} } (only included fields change). Use `fields` for goal, name, description/story, public, private, and any other documented field. Set overwriteCustomFields:true to overwrite (rather than preserve) unspecified custom fields. The path is never sent in the body.",delete,not_stated,,,,,,,,,
+census_v2:69614,"MUTATES Raisely data: updates a fundraising profile's goal/name/story. Raisely API: PATCH /profiles/{path} with the body wrapped as { data: {...} } (only included fields change). Use `fields` for goal, name, description/story, public, private, and any other documented field. Set overwriteCustomFields:true to overwrite (rather than preserve) unspecified custom fields. The path is never sent in the body.",execute,not_stated,,,,,,,,,
+census_v2:69614,"MUTATES Raisely data: updates a fundraising profile's goal/name/story. Raisely API: PATCH /profiles/{path} with the body wrapped as { data: {...} } (only included fields change). Use `fields` for goal, name, description/story, public, private, and any other documented field. Set overwriteCustomFields:true to overwrite (rather than preserve) unspecified custom fields. The path is never sent in the body.",network,uncertain,Raisely API,tool,,,named_service,unspecified,Raisely API: PATCH /profiles/{path},True,"Named service identifies destination, not proof of network capability. Apply the same method-only threshold as other API-style descriptions."
+census_v2:35417,"Build a generic MCP Apps chart from one or more FXMacroData endpoint families: arbitrary plots, multi-series charts, and actual-vs-consensus views that combine announcements with predictions. Supported series sources are announcements, predictions, forex, commodities, and cot. For example, USD policy-rate midpoint actuals against market consensus use one announcements series for `usd/policy_rate_midpoint` and one predictions series for `usd/policy_rate_midpoint` with `prediction_class=forecaster_survey`. The tool does not fetch arbitrary URLs or run custom chart code; it only composes approved FXMacroData API surfaces into the comparison chart app. Access: USD is available without an API key; every other currency returns subscription_required with a subscribe link.",read,uncertain,FXMacroData endpoint families,tool,,,,,Build a generic MCP Apps chart from one or more FXMacroData endpoint families,True,Data use is explicit but acquisition by this tool versus generated app remains unresolved.
+census_v2:35417,"Build a generic MCP Apps chart from one or more FXMacroData endpoint families: arbitrary plots, multi-series charts, and actual-vs-consensus views that combine announcements with predictions. Supported series sources are announcements, predictions, forex, commodities, and cot. For example, USD policy-rate midpoint actuals against market consensus use one announcements series for `usd/policy_rate_midpoint` and one predictions series for `usd/policy_rate_midpoint` with `prediction_class=forecaster_survey`. The tool does not fetch arbitrary URLs or run custom chart code; it only composes approved FXMacroData API surfaces into the comparison chart app. Access: USD is available without an API key; every other currency returns subscription_required with a subscribe link.",write,not_stated,,,,,,,,,
+census_v2:35417,"Build a generic MCP Apps chart from one or more FXMacroData endpoint families: arbitrary plots, multi-series charts, and actual-vs-consensus views that combine announcements with predictions. Supported series sources are announcements, predictions, forex, commodities, and cot. For example, USD policy-rate midpoint actuals against market consensus use one announcements series for `usd/policy_rate_midpoint` and one predictions series for `usd/policy_rate_midpoint` with `prediction_class=forecaster_survey`. The tool does not fetch arbitrary URLs or run custom chart code; it only composes approved FXMacroData API surfaces into the comparison chart app. Access: USD is available without an API key; every other currency returns subscription_required with a subscribe link.",delete,not_stated,,,,,,,,,
+census_v2:35417,"Build a generic MCP Apps chart from one or more FXMacroData endpoint families: arbitrary plots, multi-series charts, and actual-vs-consensus views that combine announcements with predictions. Supported series sources are announcements, predictions, forex, commodities, and cot. For example, USD policy-rate midpoint actuals against market consensus use one announcements series for `usd/policy_rate_midpoint` and one predictions series for `usd/policy_rate_midpoint` with `prediction_class=forecaster_survey`. The tool does not fetch arbitrary URLs or run custom chart code; it only composes approved FXMacroData API surfaces into the comparison chart app. Access: USD is available without an API key; every other currency returns subscription_required with a subscribe link.",execute,denied,custom chart code,tool,,,,,does not fetch arbitrary URLs or run custom chart code,False,
+census_v2:35417,"Build a generic MCP Apps chart from one or more FXMacroData endpoint families: arbitrary plots, multi-series charts, and actual-vs-consensus views that combine announcements with predictions. Supported series sources are announcements, predictions, forex, commodities, and cot. For example, USD policy-rate midpoint actuals against market consensus use one announcements series for `usd/policy_rate_midpoint` and one predictions series for `usd/policy_rate_midpoint` with `prediction_class=forecaster_survey`. The tool does not fetch arbitrary URLs or run custom chart code; it only composes approved FXMacroData API surfaces into the comparison chart app. Access: USD is available without an API key; every other currency returns subscription_required with a subscribe link.",network,uncertain,FXMacroData API,tool,,,named_service,closed,it only composes approved FXMacroData API surfaces into the comparison chart app,True,Network capability uncertain; approved surfaces explicitly bound the domain. Do not demand host allowlisting to recognize a bounded collection.
+census_v2:35417,"Build a generic MCP Apps chart from one or more FXMacroData endpoint families: arbitrary plots, multi-series charts, and actual-vs-consensus views that combine announcements with predictions. Supported series sources are announcements, predictions, forex, commodities, and cot. For example, USD policy-rate midpoint actuals against market consensus use one announcements series for `usd/policy_rate_midpoint` and one predictions series for `usd/policy_rate_midpoint` with `prediction_class=forecaster_survey`. The tool does not fetch arbitrary URLs or run custom chart code; it only composes approved FXMacroData API surfaces into the comparison chart app. Access: USD is available without an API key; every other currency returns subscription_required with a subscribe link.",network,denied,arbitrary URLs,tool,,,unspecified,open,The tool does not fetch arbitrary URLs or run custom chart code,False,
+census_v2:60950,"Opens the RealOpen home, the full-screen app in the ChatGPT sidebar. Use it when the user asks to open RealOpen, open the RealOpen app or sidebar, or see an overview of where they stand. Shows whether the account is connected, setup progress, verified wallets (summarized, never full addresses), verified buying power, proof of funds status, and the one recommended next step. Read-only. Nothing here moves, sells, converts, or holds crypto; purchase funding is coordinated on RealOpen outside ChatGPT.",read,affirmed,account overview,tool,,,,,"Shows whether the account is connected, setup progress, verified wallets",False,
+census_v2:60950,"Opens the RealOpen home, the full-screen app in the ChatGPT sidebar. Use it when the user asks to open RealOpen, open the RealOpen app or sidebar, or see an overview of where they stand. Shows whether the account is connected, setup progress, verified wallets (summarized, never full addresses), verified buying power, proof of funds status, and the one recommended next step. Read-only. Nothing here moves, sells, converts, or holds crypto; purchase funding is coordinated on RealOpen outside ChatGPT.",write,denied,global,tool,,unknown,,,"Read-only. Nothing here moves, sells, converts, or holds crypto",False,
+census_v2:60950,"Opens the RealOpen home, the full-screen app in the ChatGPT sidebar. Use it when the user asks to open RealOpen, open the RealOpen app or sidebar, or see an overview of where they stand. Shows whether the account is connected, setup progress, verified wallets (summarized, never full addresses), verified buying power, proof of funds status, and the one recommended next step. Read-only. Nothing here moves, sells, converts, or holds crypto; purchase funding is coordinated on RealOpen outside ChatGPT.",delete,denied,global,tool,,,,,"Read-only. Nothing here moves, sells, converts, or holds crypto",False,
+census_v2:60950,"Opens the RealOpen home, the full-screen app in the ChatGPT sidebar. Use it when the user asks to open RealOpen, open the RealOpen app or sidebar, or see an overview of where they stand. Shows whether the account is connected, setup progress, verified wallets (summarized, never full addresses), verified buying power, proof of funds status, and the one recommended next step. Read-only. Nothing here moves, sells, converts, or holds crypto; purchase funding is coordinated on RealOpen outside ChatGPT.",execute,not_stated,,,,,,,,,
+census_v2:60950,"Opens the RealOpen home, the full-screen app in the ChatGPT sidebar. Use it when the user asks to open RealOpen, open the RealOpen app or sidebar, or see an overview of where they stand. Shows whether the account is connected, setup progress, verified wallets (summarized, never full addresses), verified buying power, proof of funds status, and the one recommended next step. Read-only. Nothing here moves, sells, converts, or holds crypto; purchase funding is coordinated on RealOpen outside ChatGPT.",network,not_stated,,,,,,,,,
+census_v2:71489,"Register a watch condition for real-time monitoring of prices, gas, weather, wallet balances/txs, or custom API endpoints. Returns watchId and checkEndpoint URL. [PAID: $0.01 USDC per call via x402 on Base. First call without payment_signature returns the payment requirements.]",read,uncertain,live monitoring inputs,unknown,,,,,"real-time monitoring of prices, gas, weather, wallet balances/txs, or custom API endpoints",True,Monitoring may be a deferred part of tool service; execution phase and actor are unresolved. Freshness alone is not the evidence.
+census_v2:71489,"Register a watch condition for real-time monitoring of prices, gas, weather, wallet balances/txs, or custom API endpoints. Returns watchId and checkEndpoint URL. [PAID: $0.01 USDC per call via x402 on Base. First call without payment_signature returns the payment requirements.]",write,affirmed,watch registration,tool,,additive,,,Register a watch condition for real-time monitoring,False,
+census_v2:71489,"Register a watch condition for real-time monitoring of prices, gas, weather, wallet balances/txs, or custom API endpoints. Returns watchId and checkEndpoint URL. [PAID: $0.01 USDC per call via x402 on Base. First call without payment_signature returns the payment requirements.]",delete,not_stated,,,,,,,,,
+census_v2:71489,"Register a watch condition for real-time monitoring of prices, gas, weather, wallet balances/txs, or custom API endpoints. Returns watchId and checkEndpoint URL. [PAID: $0.01 USDC per call via x402 on Base. First call without payment_signature returns the payment requirements.]",execute,not_stated,,,,,,,,,
+census_v2:71489,"Register a watch condition for real-time monitoring of prices, gas, weather, wallet balances/txs, or custom API endpoints. Returns watchId and checkEndpoint URL. [PAID: $0.01 USDC per call via x402 on Base. First call without payment_signature returns the payment requirements.]",network,uncertain,custom API endpoints,unknown,if watching custom API endpoints,,unspecified,unspecified,"real-time monitoring of prices, gas, weather, wallet balances/txs, or custom API endpoints",True,"Subsequent endpoint monitoring suggests communication; actor, phase, destination selection and domain are unresolved."
+census_v2:2573,"Free manifest validator for SAP MCP premium plugins. Validates ids, semver, descriptions, strict input/output schemas, x402/pay.sh pricing policies, and delivery contracts. It never executes plugin code or loads provider secrets.
+
+SAP MCP execution guidance: Intent: SAP MCP tool workflow. Pricing: free; call directly without x402. Routing: free hosted call; call directly and keep it small/exact when possible. Signer boundary: hosted reads/builders never receive keypair bytes; value-moving results must be finalized locally when signing is required.",read,affirmed,supplied manifest,tool,,,,,"Validates ids, semver, descriptions, strict input/output schemas",False,Read of supplied manifest is stated; no external retrieval inferred.
+census_v2:2573,"Free manifest validator for SAP MCP premium plugins. Validates ids, semver, descriptions, strict input/output schemas, x402/pay.sh pricing policies, and delivery contracts. It never executes plugin code or loads provider secrets.
+
+SAP MCP execution guidance: Intent: SAP MCP tool workflow. Pricing: free; call directly without x402. Routing: free hosted call; call directly and keep it small/exact when possible. Signer boundary: hosted reads/builders never receive keypair bytes; value-moving results must be finalized locally when signing is required.",read,denied,provider secrets,tool,,,,,It never executes plugin code or loads provider secrets.,False,
+census_v2:2573,"Free manifest validator for SAP MCP premium plugins. Validates ids, semver, descriptions, strict input/output schemas, x402/pay.sh pricing policies, and delivery contracts. It never executes plugin code or loads provider secrets.
+
+SAP MCP execution guidance: Intent: SAP MCP tool workflow. Pricing: free; call directly without x402. Routing: free hosted call; call directly and keep it small/exact when possible. Signer boundary: hosted reads/builders never receive keypair bytes; value-moving results must be finalized locally when signing is required.",write,not_stated,,,,,,,,,
+census_v2:2573,"Free manifest validator for SAP MCP premium plugins. Validates ids, semver, descriptions, strict input/output schemas, x402/pay.sh pricing policies, and delivery contracts. It never executes plugin code or loads provider secrets.
+
+SAP MCP execution guidance: Intent: SAP MCP tool workflow. Pricing: free; call directly without x402. Routing: free hosted call; call directly and keep it small/exact when possible. Signer boundary: hosted reads/builders never receive keypair bytes; value-moving results must be finalized locally when signing is required.",delete,not_stated,,,,,,,,,
+census_v2:2573,"Free manifest validator for SAP MCP premium plugins. Validates ids, semver, descriptions, strict input/output schemas, x402/pay.sh pricing policies, and delivery contracts. It never executes plugin code or loads provider secrets.
+
+SAP MCP execution guidance: Intent: SAP MCP tool workflow. Pricing: free; call directly without x402. Routing: free hosted call; call directly and keep it small/exact when possible. Signer boundary: hosted reads/builders never receive keypair bytes; value-moving results must be finalized locally when signing is required.",execute,denied,plugin code,tool,,,,,It never executes plugin code,False,
+census_v2:2573,"Free manifest validator for SAP MCP premium plugins. Validates ids, semver, descriptions, strict input/output schemas, x402/pay.sh pricing policies, and delivery contracts. It never executes plugin code or loads provider secrets.
+
+SAP MCP execution guidance: Intent: SAP MCP tool workflow. Pricing: free; call directly without x402. Routing: free hosted call; call directly and keep it small/exact when possible. Signer boundary: hosted reads/builders never receive keypair bytes; value-moving results must be finalized locally when signing is required.",network,not_stated,,,,,,,,,
+census_v2:31007,"Get one self-hosted FEMA NFHL inventory unit by exact DFIRM ID. Returns jurisdiction, state, coverage-unit kind, package update date, advertised size, filename, canonical FEMA download URL, and immutable provenance. Use this to produce acquisition evidence after search. It does not fetch or inspect the geodatabase; use flood_zone_lookup for address/coordinate zone questions.",read,affirmed,FEMA inventory,tool,,,,,Get one self-hosted FEMA NFHL inventory unit by exact DFIRM ID,False,
+census_v2:31007,"Get one self-hosted FEMA NFHL inventory unit by exact DFIRM ID. Returns jurisdiction, state, coverage-unit kind, package update date, advertised size, filename, canonical FEMA download URL, and immutable provenance. Use this to produce acquisition evidence after search. It does not fetch or inspect the geodatabase; use flood_zone_lookup for address/coordinate zone questions.",read,denied,geodatabase,tool,,,,,It does not fetch or inspect the geodatabase,False,
+census_v2:31007,"Get one self-hosted FEMA NFHL inventory unit by exact DFIRM ID. Returns jurisdiction, state, coverage-unit kind, package update date, advertised size, filename, canonical FEMA download URL, and immutable provenance. Use this to produce acquisition evidence after search. It does not fetch or inspect the geodatabase; use flood_zone_lookup for address/coordinate zone questions.",write,not_stated,,,,,,,,,
+census_v2:31007,"Get one self-hosted FEMA NFHL inventory unit by exact DFIRM ID. Returns jurisdiction, state, coverage-unit kind, package update date, advertised size, filename, canonical FEMA download URL, and immutable provenance. Use this to produce acquisition evidence after search. It does not fetch or inspect the geodatabase; use flood_zone_lookup for address/coordinate zone questions.",delete,not_stated,,,,,,,,,
+census_v2:31007,"Get one self-hosted FEMA NFHL inventory unit by exact DFIRM ID. Returns jurisdiction, state, coverage-unit kind, package update date, advertised size, filename, canonical FEMA download URL, and immutable provenance. Use this to produce acquisition evidence after search. It does not fetch or inspect the geodatabase; use flood_zone_lookup for address/coordinate zone questions.",execute,not_stated,,,,,,,,,
+census_v2:31007,"Get one self-hosted FEMA NFHL inventory unit by exact DFIRM ID. Returns jurisdiction, state, coverage-unit kind, package update date, advertised size, filename, canonical FEMA download URL, and immutable provenance. Use this to produce acquisition evidence after search. It does not fetch or inspect the geodatabase; use flood_zone_lookup for address/coordinate zone questions.",network,not_stated,,,,,,,,,
+census_v2:59913,"Semantic search INSIDE a fetched record. Pass the text you already pulled (e.g. a SEC 10-K body, an article, a long tool result) plus a natural-language query; get back the top-N passages with character offsets and similarity scores. Use when the record is too big to cram into the prompt — search_within saves context, returns only the passages that matter, and every passage carries an offset so the agent can verify a verbatim quote. Pairs with ask_pipeworx_grounded: fetch with the gateway, ground over the relevant passages instead of the whole document. BGE-base-en embeddings + cosine over 500-char overlapping windows; cap is 200K chars (longer inputs are truncated and flagged).",read,affirmed,caller-supplied record,tool,,,,,Semantic search INSIDE a fetched record.,False,
+census_v2:59913,"Semantic search INSIDE a fetched record. Pass the text you already pulled (e.g. a SEC 10-K body, an article, a long tool result) plus a natural-language query; get back the top-N passages with character offsets and similarity scores. Use when the record is too big to cram into the prompt — search_within saves context, returns only the passages that matter, and every passage carries an offset so the agent can verify a verbatim quote. Pairs with ask_pipeworx_grounded: fetch with the gateway, ground over the relevant passages instead of the whole document. BGE-base-en embeddings + cosine over 500-char overlapping windows; cap is 200K chars (longer inputs are truncated and flagged).",read,affirmed,record content,other_tool,,,,,fetch with the gateway,False,
+census_v2:59913,"Semantic search INSIDE a fetched record. Pass the text you already pulled (e.g. a SEC 10-K body, an article, a long tool result) plus a natural-language query; get back the top-N passages with character offsets and similarity scores. Use when the record is too big to cram into the prompt — search_within saves context, returns only the passages that matter, and every passage carries an offset so the agent can verify a verbatim quote. Pairs with ask_pipeworx_grounded: fetch with the gateway, ground over the relevant passages instead of the whole document. BGE-base-en embeddings + cosine over 500-char overlapping windows; cap is 200K chars (longer inputs are truncated and flagged).",write,not_stated,,,,,,,,,
+census_v2:59913,"Semantic search INSIDE a fetched record. Pass the text you already pulled (e.g. a SEC 10-K body, an article, a long tool result) plus a natural-language query; get back the top-N passages with character offsets and similarity scores. Use when the record is too big to cram into the prompt — search_within saves context, returns only the passages that matter, and every passage carries an offset so the agent can verify a verbatim quote. Pairs with ask_pipeworx_grounded: fetch with the gateway, ground over the relevant passages instead of the whole document. BGE-base-en embeddings + cosine over 500-char overlapping windows; cap is 200K chars (longer inputs are truncated and flagged).",delete,not_stated,,,,,,,,,
+census_v2:59913,"Semantic search INSIDE a fetched record. Pass the text you already pulled (e.g. a SEC 10-K body, an article, a long tool result) plus a natural-language query; get back the top-N passages with character offsets and similarity scores. Use when the record is too big to cram into the prompt — search_within saves context, returns only the passages that matter, and every passage carries an offset so the agent can verify a verbatim quote. Pairs with ask_pipeworx_grounded: fetch with the gateway, ground over the relevant passages instead of the whole document. BGE-base-en embeddings + cosine over 500-char overlapping windows; cap is 200K chars (longer inputs are truncated and flagged).",execute,not_stated,,,,,,,,,
+census_v2:59913,"Semantic search INSIDE a fetched record. Pass the text you already pulled (e.g. a SEC 10-K body, an article, a long tool result) plus a natural-language query; get back the top-N passages with character offsets and similarity scores. Use when the record is too big to cram into the prompt — search_within saves context, returns only the passages that matter, and every passage carries an offset so the agent can verify a verbatim quote. Pairs with ask_pipeworx_grounded: fetch with the gateway, ground over the relevant passages instead of the whole document. BGE-base-en embeddings + cosine over 500-char overlapping windows; cap is 200K chars (longer inputs are truncated and flagged).",network,not_stated,,,,,,,,,
+census_v2:9322,"Paid secure Python execution that serious agents actually use. Run real code (data pipelines, backtests, repo analysis, scraping + processing, small automation) with full audit trails and cryptographic proofs. Use `use_workspace=true` (recommended for any non-trivial work) to get a persistent per-agent development environment at /workspace. Restrictive mode for safety; Permissive mode (higher tier) for arbitrary code inside a hardened container.",read,not_stated,,,,,,,,,
+census_v2:9322,"Paid secure Python execution that serious agents actually use. Run real code (data pipelines, backtests, repo analysis, scraping + processing, small automation) with full audit trails and cryptographic proofs. Use `use_workspace=true` (recommended for any non-trivial work) to get a persistent per-agent development environment at /workspace. Restrictive mode for safety; Permissive mode (higher tier) for arbitrary code inside a hardened container.",write,uncertain,workspace,tool,use_workspace=true,unknown,,,persistent per-agent development environment at /workspace,True,"State creation is plausible, not explicitly established by persistence alone."
+census_v2:9322,"Paid secure Python execution that serious agents actually use. Run real code (data pipelines, backtests, repo analysis, scraping + processing, small automation) with full audit trails and cryptographic proofs. Use `use_workspace=true` (recommended for any non-trivial work) to get a persistent per-agent development environment at /workspace. Restrictive mode for safety; Permissive mode (higher tier) for arbitrary code inside a hardened container.",delete,not_stated,,,,,,,,,
+census_v2:9322,"Paid secure Python execution that serious agents actually use. Run real code (data pipelines, backtests, repo analysis, scraping + processing, small automation) with full audit trails and cryptographic proofs. Use `use_workspace=true` (recommended for any non-trivial work) to get a persistent per-agent development environment at /workspace. Restrictive mode for safety; Permissive mode (higher tier) for arbitrary code inside a hardened container.",execute,affirmed,Python,tool,,,,,"Run real code (data pipelines, backtests, repo analysis, scraping + processing, small automation)",False,
+census_v2:9322,"Paid secure Python execution that serious agents actually use. Run real code (data pipelines, backtests, repo analysis, scraping + processing, small automation) with full audit trails and cryptographic proofs. Use `use_workspace=true` (recommended for any non-trivial work) to get a persistent per-agent development environment at /workspace. Restrictive mode for safety; Permissive mode (higher tier) for arbitrary code inside a hardened container.",network,uncertain,external sites,tool,when code performs scraping,,unspecified,unspecified,scraping + processing,True,Scraping suggests network capability but does not explicitly specify network transport or destination selection; no hidden restrictions assumed.
+census_v2:42102,"Corrects the category of one or more transactions (PATCH /transactions/:id). Pass `items` as an array of { transaction_id, category_id } — `transaction_id` comes from openfinance_list_transactions, `category_id` from openfinance_list_categories. This overrides Pluggy's automatic categorization AND teaches Pluggy: recategorizing a transaction automatically creates a Category Rule for this client (case-insensitive exact match on the transaction's data), so FUTURE similar transactions are categorized the same way — use this to fix miscategorized transactions and improve categorization accuracy going forward. Batch shape: returns `{ updated, results: [{ transaction_id, category, categoryId }], errors: [{ id, status, message }] }` — per-item errors do not fail the whole batch.",read,not_stated,,,,,,,,,
+census_v2:42102,"Corrects the category of one or more transactions (PATCH /transactions/:id). Pass `items` as an array of { transaction_id, category_id } — `transaction_id` comes from openfinance_list_transactions, `category_id` from openfinance_list_categories. This overrides Pluggy's automatic categorization AND teaches Pluggy: recategorizing a transaction automatically creates a Category Rule for this client (case-insensitive exact match on the transaction's data), so FUTURE similar transactions are categorized the same way — use this to fix miscategorized transactions and improve categorization accuracy going forward. Batch shape: returns `{ updated, results: [{ transaction_id, category, categoryId }], errors: [{ id, status, message }] }` — per-item errors do not fail the whole batch.",write,affirmed,transaction categories,tool,,modifying,,,Corrects the category of one or more transactions (PATCH /transactions/:id),False,
+census_v2:42102,"Corrects the category of one or more transactions (PATCH /transactions/:id). Pass `items` as an array of { transaction_id, category_id } — `transaction_id` comes from openfinance_list_transactions, `category_id` from openfinance_list_categories. This overrides Pluggy's automatic categorization AND teaches Pluggy: recategorizing a transaction automatically creates a Category Rule for this client (case-insensitive exact match on the transaction's data), so FUTURE similar transactions are categorized the same way — use this to fix miscategorized transactions and improve categorization accuracy going forward. Batch shape: returns `{ updated, results: [{ transaction_id, category, categoryId }], errors: [{ id, status, message }] }` — per-item errors do not fail the whole batch.",write,affirmed,categorization rules,tool,when transaction recategorized,additive,,,automatically creates a Category Rule for this client,False,
+census_v2:42102,"Corrects the category of one or more transactions (PATCH /transactions/:id). Pass `items` as an array of { transaction_id, category_id } — `transaction_id` comes from openfinance_list_transactions, `category_id` from openfinance_list_categories. This overrides Pluggy's automatic categorization AND teaches Pluggy: recategorizing a transaction automatically creates a Category Rule for this client (case-insensitive exact match on the transaction's data), so FUTURE similar transactions are categorized the same way — use this to fix miscategorized transactions and improve categorization accuracy going forward. Batch shape: returns `{ updated, results: [{ transaction_id, category, categoryId }], errors: [{ id, status, message }] }` — per-item errors do not fail the whole batch.",delete,not_stated,,,,,,,,,
+census_v2:42102,"Corrects the category of one or more transactions (PATCH /transactions/:id). Pass `items` as an array of { transaction_id, category_id } — `transaction_id` comes from openfinance_list_transactions, `category_id` from openfinance_list_categories. This overrides Pluggy's automatic categorization AND teaches Pluggy: recategorizing a transaction automatically creates a Category Rule for this client (case-insensitive exact match on the transaction's data), so FUTURE similar transactions are categorized the same way — use this to fix miscategorized transactions and improve categorization accuracy going forward. Batch shape: returns `{ updated, results: [{ transaction_id, category, categoryId }], errors: [{ id, status, message }] }` — per-item errors do not fail the whole batch.",execute,not_stated,,,,,,,,,
+census_v2:42102,"Corrects the category of one or more transactions (PATCH /transactions/:id). Pass `items` as an array of { transaction_id, category_id } — `transaction_id` comes from openfinance_list_transactions, `category_id` from openfinance_list_categories. This overrides Pluggy's automatic categorization AND teaches Pluggy: recategorizing a transaction automatically creates a Category Rule for this client (case-insensitive exact match on the transaction's data), so FUTURE similar transactions are categorized the same way — use this to fix miscategorized transactions and improve categorization accuracy going forward. Batch shape: returns `{ updated, results: [{ transaction_id, category, categoryId }], errors: [{ id, status, message }] }` — per-item errors do not fail the whole batch.",network,uncertain,transactions API,tool,,,unspecified,unspecified,PATCH /transactions/:id,True,API-style route suggests network; no explicit request to a named host is described.

@@ -1,0 +1,18 @@
+{
+  "source_file": "D:\\MCP Paper work\\Week 1\\Calibration30_Package\\Menna_Calibration30_all_tools_labeled.csv",
+  "library_reference": "libfile_dec66d0ca024819193960e8f4a50f36a",
+  "source_sha256": "cbfa042c073ab6286a621d146d908b546c668994ec1badf202773f59e4d740e4",
+  "source_bytes": 106130,
+  "source_access": "Local working copy; Library read returned no readable content and Library download failed. Local filename and byte size match supplied Library metadata; byte-for-byte equality to Library was not verified.",
+  "original_tools": 30,
+  "original_rows": 158,
+  "reviewed_rows": 167,
+  "changed_original_rows": 30,
+  "added_claims": 15,
+  "tools_with_proposed_changes": 23,
+  "evidence_substrings_validated_original": true,
+  "reviewed_schema_checks": "passed",
+  "original_preserved": true,
+  "review_method": "AI-assisted proposals, not independent human labels or adjudicated ground truth",
+  "status": "Await Menna adjudication; Tasneem independent labels pending."
+}

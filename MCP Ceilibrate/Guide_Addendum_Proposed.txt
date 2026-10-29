@@ -1,0 +1,11 @@
+PROPOSED CALIBRATION ADDENDUM - NOT FROZEN
+1. Keep tool operation effects distinct from autonomous provider lifecycle and other-tool advice. Backend service involvement alone does not establish provider lifecycle. Unknown attribution => actor unknown and review.
+2. Network capability and destination are separate. Operation-linked quota supports uncertain network. Method/relative-route syntax without explicit communication supports uncertain network. A named service identifies a possible target, not transport proof. No hypothetical hidden allowlists.
+3. Freshness, retrieval/inspection, and computation are distinct. Periodic score updates alone => no read claim. A concrete unresolved acquisition relationship may support uncertain read. Inspecting/searching supplied existing material can affirm read. Generic calculation does not automatically affirm read.
+4. Generic pipeline triggering and transaction broadcasting do not affirm execute unless code, scripts, programs or commands are actually described. Submission does not assert ledger confirmation.
+5. Revocation explicitly changes credential validity; represent modifying write. Deletion remains uncertain until logical-removal versus status-change convention is adjudicated.
+6. Every write claim, including denials, has a mode; use unknown where the text does not resolve it. Network domain unspecified => review. Conditions alone do not create uncertainty.
+7. A negation evidence span must include the negation operator, not just a coordinated positive fragment.
+8. Returns a new text/chart blob does not automatically mean persistent write. Provisioning versus returning an existing workspace may remain unresolved.
+9. Record explicit other-tool actions separately with their actor. Do not extract illustrative examples or instructions to invoke tools as capabilities of the current tool. This review records named actions; it does not exhaustively label every workflow prohibition or contextual example.
+10. Preserve original human labels. AI-reviewed proposals are calibration material, not independent human ground truth. Await Tasneem independent file before human agreement/adjudication.
