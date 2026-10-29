@@ -257,7 +257,6 @@ dunialabs/peta-core,7dd6e247d0b5957b3a130e3d57fd810e9b6e751e,ok,0,252,6,4,0,0,0,
 273v/kaos-content,1ef0fe61cd460ed9e896f0141b7d3b3a645538ff,ok,196,0,0,0,0,0,0,57.4,
 mrfentmen/whitebit-mcp,,unreachable,,,,,,,,2.9,
 evan-moon/memex,19aae2c4923628507b4a46d80123f7a3217ef56b,no_hints,1,258,0,0,,,,4.8,
-shuaiyuan17/grub-radar,fb015e42a14fa4436bf328a6143a417160e660e7,error,0,271,,,,,,9.6,RuntimeError: Node.js v24.12.0
 kaka-sangi/mcp-telegram-cloud-deploy,9c0e4ea0de096a0a49c6b9d5a81f008f7b664ca3,ok,0,317,362,362,0,0,0,14.7,
 mrfentmen/ui-avatars-mcp,,unreachable,,,,,,,,3.4,
 HasData/tiktok-mcp,35cd703c535a4fc0cedb45437c40727be33518cd,no_hints,1,2,0,0,,,,5.0,
@@ -508,7 +507,6 @@ mrfentmen/gopher-mcp,,unreachable,,,,,,,,0.7,
 donnywin85/arb-dex-mcp,,unreachable,,,,,,,,0.8,
 acrylicfiddle/x402-services,,unreachable,,,,,,,,0.6,
 mrfentmen/upcitemdb-mcp,,unreachable,,,,,,,,3874.2,
-stevendaix/cfdx_dev,,timeout,,,,,,,,3878.2,
 chiaha-ai/discreterate-site,,unreachable,,,,,,,,3878.3,
 gradebg96/candidatehub,,unreachable,,,,,,,,1.4,
 RCOLKITT/VasperaPM,,unreachable,,,,,,,,1.1,
@@ -837,7 +835,6 @@ grynienM/kalkulatory-place-mcp,0ce8672cb72d440e81ce9bdc01bb74308f36b4cb,no_hints
 sassoftware/sas-mcp-server,72915b1cb7268ed187dc58e93ea435e68883aae2,ok,77,1,94,0,0,0,0,10.8,
 J25b/kudiflow,9c1205e0c3e145ba093dc64b71f627390300bc11,ok,0,102,5,5,0,0,0,6.8,
 Shuo-O/cam-automation-studio,8feb620e40d7acf389a852c3647db22f4a874b3e,ok,42,1,4,4,0,0,0,6.3,
-pol197kuba-collab/J.A.R.V.I.S.,73e3133e5bcf3c425716a286c4f815a5c279ef1e,error,1,473,,,,,,27.3,RuntimeError: Node.js v24.12.0
 mardukasoka/chess-atlas,17bf4537d649ab5f4f372bb5e9232dbd637b304c,ok,0,214,0,0,0,0,0,14.8,
 mambalabsdev/mcp-website-traffic-rank-estimator,2d221b956a1441454e6e6d410d11a486defabb6b,ok,0,7,1,1,0,0,0,2.6,
 shy-tangerine/sieve,e222998fbd9e4b16ae65ebb455ac4981c5904b23,ok,221,0,10,10,0,0,0,27.4,
@@ -908,8 +905,6 @@ vaderjunior/Grind-never-stops,f2e91da77c39d4122ae42bb1c62fd1c318b17fcc,ok,65,359
 gollumw/TelcoLadder,c4e1a134328d733012d0360ebc2291d60adac955,no_hints,194,31,0,0,,,,21.0,
 ms-cc-org/DSU-Hackathon-2026-Team-JAMS,63ea3a108759f0f5d581209539e8c959a402495b,ok,10,59,0,0,0,0,0,215.0,
 Qiskit/mcp-servers,b763581b5a2958a172092c02cc6ac32bcbd46be9,no_hints,77,0,0,0,,,,116.7,
-hanzoai/insights,3df36215fba20510fbfeb503ed64cf5154ebb29d,error,,,,,,,,301.0,RuntimeError: download budget exceeded
-aimtowin/Super,908d6db69bbfa0a894c65cc8a9e23f5d9514dd5d,error,,,,,,,,301.1,RuntimeError: download budget exceeded
 luoyjx/mini-loop,c65073a4635fc7725b95e19d21f1593a756ea21b,ok,645,19,0,0,0,0,0,305.0,
 abdoneem/koon.edu.sa,2cbee4d548de5b17b336d43053eb6743b83277e2,ok,24,180,0,0,0,0,0,51.5,
 packetloss404/PacketBench,e5d31084e5d2c4861723dca4d4c2931a64b0f732,ok,3,921,0,0,0,0,0,51.9,
@@ -928,7 +923,6 @@ SirAllap/agentglass,2223fa64ffaf603c525e4252db092e9e6f6febbd,ok,11,2594,0,0,0,0,
 vibeflowing-inc/convex-mcp,24b2431a1c5ec575edfd6b61c6a5790ee7c68fcb,ok,0,19,1,1,0,0,0,13.6,
 360madden/riftreader,4da67f9288b3374b5fd961ba999253e4156cb107,ok,637,26,36,17,5,5,0,150.0,
 zhaomo08/memmy-agent,60b29d19635a48b320e78468e6996945c76990a5,ok,1,1113,3,1,0,0,0,82.1,
-ed1868/anwcc-command-center,a3a4cb95d60473c86608c47d2f0fc46185269efc,error,,,,,,,,301.5,RuntimeError: download budget exceeded
 soumendrak/openodia-hub,653608a29be16d374a984c60437408ecb94e4689,ok,3,340,1,1,0,0,0,26.7,
 ensemblr-hq/ensemblr,aab746a09bc3fade28006ce7e21c7183cf579219,ok,0,3035,56,1,0,0,0,170.5,
 spongioblast/spopi,11f5ba16a93db706fff5bdd594762017881b290e,ok,0,819,0,0,0,0,0,63.7,
@@ -936,29 +930,13 @@ Harshaaalll/opsagent,5d2986114ec72954e42f1320661321f8969de795,ok,38,0,0,0,0,0,0,
 tom-sherman/rsc-effect,f9a3dacec565f72ac1ceab393e1e4b27a0b9c2a5,ok,0,1582,0,0,0,0,0,137.3,
 Auto-Tournament/auto-tournament,f5dca972c533501579ad458b78cf7438e6e25c24,ok,0,1611,48,48,48,48,10,176.7,
 CorporateTravelDC/ctdi-dispatch,ec6673bc1e8053bf42b83eed457c0723c81786ca,ok,497,39,0,0,0,0,0,55.7,
-mikipalet/gigainvestors,fbe254ee744cdc4fa497e6eeed94437b770b5a4a,error,,,,,,,,301.1,RuntimeError: download budget exceeded
 bhrumom/fabushi,edde714def34e6eb5ae133dba20790c80a355c85,ok,55,1663,142,140,9,9,0,277.1,
 arcahyadi/odysseus,dd055ee6e36581ad8c9c539e02b5b9963fbac2a1,ok,865,160,17,0,0,0,0,129.2,
 BinYuanc/magic_Resume,8bb31fa3c3aebe9e1ebb70a32f07528fda10950e,ok,0,397,1,1,0,0,0,105.3,
 verkyyi/claude-fleet,aaff3e308b61cd2b25510a866562d90328e0f60c,ok,256,185,15,15,0,0,0,177.3,
 HarnessRouter/starter-kit,65cc392cb66738ed467fce2905fd34ebf49579b2,ok,16,173,7,2,0,0,0,34.5,
 davejohnson/hypervibe,40e1cee10867642b43674954879abc52d242b3d9,ok,0,787,1,1,0,0,0,61.4,
-wysisoft/webcode.host,3e2d06ac1f21cd5f798b4494ad07eb07430fe60e,error,,,,,,,,301.9,RuntimeError: download budget exceeded
-AlexVazquezATX/Urban-Simple-2.0,9a436f8e112bac7b1c7f38b78718e913bebee9a5,error,,,,,,,,302.0,RuntimeError: download budget exceeded
-DerrickYifeng/shipflare,79d25bfb6482453dd42aa05a16881c23e22fb19d,error,,,,,,,,302.1,RuntimeError: download budget exceeded
-aadorian/MinimalVS,d016f0faa4b9aed590f799c6d26ec6204bedd86a,error,,,,,,,,302.5,RuntimeError: download budget exceeded
-ogisetiawan/bm-ai-orchestrator,4f8a4c20fde19e245aa6ad8e6a4065fd3775166c,error,,,,,,,,302.9,RuntimeError: download budget exceeded
-20000419/fauxnix,a2ee3cd96fb20e023a7d1f39d8fb5a6d72fb0f4d,error,,,,,,,,303.2,RuntimeError: download budget exceeded
-vedangvatsa/PDFtoWebsite,e5e6a756206962ee46a50be9fd1afea25f505e98,error,,,,,,,,303.6,RuntimeError: download budget exceeded
-melgarafael/DeskcommCRM,19f4d0d7d228d751e83c21109c778de79cdd8fbe,error,,,,,,,,305.9,RuntimeError: download budget exceeded
 Sidd27/infrawise,857a8c181a974ebb3a2bd6c69ec99f6ba9716430,ok,3,105,22,22,1,1,0,262.9,
-shreed27/razor-oss,2527702d4f96a70bab7ca06d25b0c12f055060ed,error,,,,,,,,301.3,RuntimeError: download budget exceeded
-plm66/hermes-delegate,285d2a56ee813355b4ff8376583b850bf9b7b476,error,,,,,,,,301.8,RuntimeError: download budget exceeded
-LLaammTTeerr/DuckOJ,b49571f800c369c0aeaae53e6994a8b5c29887e7,error,,,,,,,,301.9,RuntimeError: download budget exceeded
-1995F150/cridergpt,1ade63ef161afeda6be068cc2c6ffc2c36f82244,error,,,,,,,,301.5,RuntimeError: download budget exceeded
-nolindnaidoo/paths-le,03cc0fd00da3e41478169496f93a0a34e9ee1712,error,,,,,,,,302.0,RuntimeError: download budget exceeded
-boboboda/buyoungsil-dev-web,12f809dec2786c758673df19dc38dd7574aadeac,error,,,,,,,,302.4,RuntimeError: download budget exceeded
-drQedwards/PPM,e5cf8be81c8b5e958d62903d4979e09e8fb10fed,error,,,,,,,,301.9,RuntimeError: download budget exceeded
 dheepakkaran/incident-triage-agent,5241f69e059f1103b2ffeaef8fa1fbbda9f70795,ok,58,0,5,5,0,0,0,10.6,
 Sahil170595/Chimeraforge,ace76f8f6f1d5deed58927cb5f06f69a8de381e6,no_hints,614,0,0,0,,,,13.6,
 Institute-of-Business-Growth/company-brain,56a291ea0699133838e28ba21e7ffa3614e3b091,ok,0,369,7,6,0,0,0,15.6,
@@ -968,15 +946,10 @@ manhquydev/SecuSense,51a1cb647075b75d8cc1e4d680072d321ed102e9,ok,252,187,3,1,0,0
 Master0fFate/LatentContext-MCP,e42a13c21b339af039b9f0ac5663856d6607354e,ok,0,30,11,11,5,4,0,5.1,
 Tuvren/framework,498dc6d0a6c6a7be19e91c8af5569c0bd88ccf09,ok,29,727,2,1,0,0,0,71.7,
 khromov/mochi,91d550d3a5d626b02c73cdafdcec0f824422e63f,ok,0,746,0,0,0,0,0,225.9,
-Tane1101/premier-news-DB,e0e29d16697580baebeb43160d832d3501b38b72,error,,,,,,,,301.0,RuntimeError: download budget exceeded
-kunalvaghani/Jarvis,0199c16317a882e6d9ec8224507473cf2cc50eb7,error,,,,,,,,301.2,RuntimeError: download budget exceeded
 luciferyu666/codemind-graph,59616a15fa5d29181aa6373a897dfd6d456415d3,ok,0,35,5,5,0,0,0,14.5,
-carlosdh12335-ship-it/INTELIGENCIA-VASTA-DA-IA-,7be0cb05a56df6ad86d48b0d2bf4049bdcb17008,error,,,,,,,,300.9,RuntimeError: download budget exceeded
 mallikcheripally/session-steward,3c394b2674e066c00268155823c7e04d783ebbc0,ok,0,83,3,3,0,0,0,15.5,
 Rehan-khan999/find-it-again-website,4da73523954f3ba14b8f439c7af0df13855ad847,ok,0,152,8,8,0,0,0,7.4,
 PugarHuda/batas,2823385842c59baa04f2602839df7afa237041eb,ok,0,107,1,1,0,0,0,13.8,
-mcp-tool-shop-org/mcp-arcade-cabinets,fd7039f130cbd2f95da7f99eeaf85954814dec01,error,,,,,,,,300.9,RuntimeError: download budget exceeded
-baobabprince/roey-tzena-podcast,a970d0517cd36fec132498f31b761807d67416c4,error,,,,,,,,300.9,RuntimeError: download budget exceeded
 SankrityaT/Aperture,a63cc21be59fb4b0cf728a69ef308b4f07cb5008,ok,8,98,12,12,0,0,0,18.7,
 johnny4young/lingua,6e400d5563d8e3e89bb93ef1012686ed32dbc72a,ok,0,2285,4,4,1,1,0,80.0,
 AVTAVANTTOUT2/JarvisAPI,67968ed5bd4dee2cf402efe5088f6ac48bc94d19,ok,771,130,0,0,0,0,0,31.2,
@@ -1004,7 +977,6 @@ jacob7choi-xyz/fli-tracker,aea2f97651d934f361018a2dda464d6a3f2a1107,ok,97,0,2,2,
 ThaGuff/GHL-MCP-REPO,6fb4287bdafbbfa031fa9c16a756a3886e603136,ok,1,372,592,4,0,0,0,8.2,
 MythologIQ-Labs-LLC/job-ranger,6ebe4001a8330d4670c3fa8e2e7060afe58690cf,ok,6,457,0,0,0,0,0,10.6,
 Glaube-TY/siyuan-homepage,e71da0f4b60a74bbb458ef3d90748dd010a9f04d,ok,0,980,10,0,0,0,0,32.7,
-jiangxxxue/KOCO-bench,786c801ee9938ba7e0bebac04219622f7a4b9739,error,,,,,,,,300.7,RuntimeError: download budget exceeded
 gustavoatar/remodeleriq-mcp,8d274e9e478b01598026bd0e2821fbcbf7fd1afa,ok,1,256,13,10,4,4,0,128.6,
 fedec65/bettercallclaude-espana,438294068b8d37f1de791f93c661f5ce9bebdd4c,ok,0,12,5,5,2,2,0,31.0,
 nolindnaidoo/versions-le,9633b59c7ea8ffdb9b5323a4bb46e4ebf4a7544b,no_hints,1,84,0,0,,,,2.9,
@@ -1013,10 +985,7 @@ PAYES3/speedex-signages-da53374d,b210bba1e371d97e4fe365231f6f64ddd699fba4,ok,0,1
 mhmdrzkyystiawnn/avunel-agent,470f184ac092f5bcf7be44e7f6eb9fbffc322c4c,ok,8071,4485,13,1,0,0,0,296.3,
 Hello-QM/catgo-codex-plugin,698c91c7c3bdca7dd1f7da361cf5a718d0c367e5,ok,7,16,0,0,0,0,0,7.9,
 thetahealth/mirobody,002508a0bee2040e8e1a3a8df7e1bd332048f88a,ok,420,34,7,7,0,0,0,26.0,
-odphineguy/web-main,2f00ed52e64f602afa17638d1ebf76b94fbbe22b,error,,,,,,,,300.8,RuntimeError: download budget exceeded
-KaraAliOsman/framedex,0207763cf3a14111e0070c5ea7e668dba3fdfeda,error,,,,,,,,300.9,RuntimeError: download budget exceeded
 sybil-solutions/local-studio,f65c8af78582f741b62546c93d7c66439f0cd5b1,ok,10,18500,2,2,0,0,0,309.3,
-marolinik/waggle-os,2af0904df01ca3d374cc78ba95b60dc579dd6a7a,error,,,,,,,,300.9,RuntimeError: download budget exceeded
 vinaykhosya/genesis-civilizations,0bbd7150a9023a3e3a624fd5fcae3c429de0f66b,ok,54,162,3,3,0,0,0,37.9,
 letmepost/letmepost.dev,4c9d605267454255641ca0790fa4fb4892e0760f,no_hints,3,417,0,0,,,,15.5,
 koraussie7/-AI-agent,2a32ccd8346b59bfd82d886204db052b2b337818,ok,3474,18733,2,1,0,0,0,423.6,
@@ -1034,17 +1003,11 @@ nikolasdehor/projetogerminacao,4df7e762f6123766198e42e9a059f75bbcb581e7,ok,28,1,
 ANI717/Dify-AI-Docker-Wrapper,65af81af8fc52533d6e90dd7847563efe283cb50,ok,3716,0,0,0,0,0,0,65.4,
 chase-sets/chase-sets,f49d8db2177191044f82966ac2851ed092f28e02,ok,22,7112,14,11,0,0,0,130.0,
 ehabalabdo/LOOPJO.COM,747f1661b5904608e34f22c90cc1bd8eff6f2c3c,ok,0,4,3,3,0,0,0,47.3,
-Embassy-of-the-Free-Mind/sourcelibrary-v2,c215338490b134d979f54bf153639ff409140722,error,,,,,,,,123.9,RuntimeError: archive too large
-samma1997/sammapix,4f1bf7eb90fe6e1c166b8773df1766374c1ffb70,error,,,,,,,,241.1,RuntimeError: archive too large
 DevHusnainAi/zerodom,a2fc6ea496de2e9b773aef4f5e60ad8214ab0add,no_hints,52,12,0,0,,,,4.0,
-irhaapparelsofficial-ctrl/irha-global-craft-f3881330,a432f0450b14a4f9bf3080a6b19aeaf953c01b3b,error,,,,,,,,70.7,RuntimeError: archive too large
 wvianna/mcp-kicad-vscode,c3ce61a2aab0528fc7c5fdf11bcd317f2dc3aeb9,ok,245,58,248,0,0,0,0,15.0,
-leviethang2509/QUANLYNHASACH_TICHHOPNHANDIEN,4f9b197d8c0639a031405452991c0bf7b6a01c5b,error,,,,,,,,56.3,RuntimeError: archive too large
-lijk7677-dev/lovanet-fr-4dc85ff8,3076f5fb58209995808cd35db362f6eb1deb5a82,error,,,,,,,,102.5,RuntimeError: archive too large
 itsmaxjeffrey/hypergreen,67b6bb40d60a2283e307065b35596b3121312f8f,ok,3,122,5,4,0,0,0,14.5,
 ognjhunt/Blueprint-WebApp,76f263507ca8ea60c8fc8d40a56eefbc88643e65,ok,63,2249,27,2,0,0,0,118.3,
 JustinWCola/5d_teacher,2906e1e1e6ecbbf1af218ce04371f5b7f6fe7495,ok,0,85,0,0,0,0,0,13.0,
-BabylonJS/Editor,a11cf81bbbc584e5a57478d7afc2b83d6798eecf,error,,,,,,,,18.7,RuntimeError: archive too large
 systemfsoftware/pnpm-release-management,a3a0d8e3accd9701dc660d866272ee51b3818286,ok,7,19509,0,0,0,0,0,266.2,
 paulhshort/openclaude-azure,bd370dadddfe75974518ecaf486be33aed9393c4,ok,6,1969,1,0,0,0,0,42.3,
 Xeonice/cloud-agent-platform,e4c1d6dd65f57169f2d7a13b294a30f38c6057d2,ok,3,1280,1,1,0,0,0,28.2,
@@ -1097,7 +1060,6 @@ ADIKANT/datalens-dev-mcp,3fbb48bda5d71cc2611fb98744d6ae665df17666,ok,106,501,0,0
 gabrielmahia/haki-ya-kazi-mcp,0a0b9d0cf1d106d8178ca246ca4c69d65776acd8,ok,8,0,5,5,0,0,0,2.8,
 Bradliebs/moss-llm-harness,c91a6ddb273aff9908aba1293a83c057a8a5d1bc,ok,0,508,2,1,0,0,0,13.7,
 Vycari/pepper-cli,6c9e1d212f85a13fdeb68d83d18e9620468f899c,ok,95,0,0,0,0,0,0,6.7,
-DemonJianZ/banana-flow-studio,d804bc52d6ae1dc0eb259ac163f7436550e64fd0,error,,,,,,,,14.3,RuntimeError: archive too large
 Cyksei/tutor-plugins,c8510781e39678838df89d63d1210ebfaacd30d1,ok,8,0,0,0,0,0,0,2.5,
 mootboy/adam,7ca19c584284fc80af742d09d54bd10f936b06e0,ok,0,24,0,0,0,0,0,2.8,
 ricokahler/onshape-cadscript,8105dd2b5ea4c1d9b5df3b27c61d08780f922893,ok,1,61,12,12,2,2,0,3.7,
@@ -1191,7 +1153,6 @@ theluckystrike/mcp-bank-statement,3697eef7b21ca1bd10949ac3d1b8a48891c8fec3,ok,0,
 madonchik123/umbrella-mcp,1f6614b0984cc7f80e933b635f39e87095b0713d,ok,3,0,16,16,0,0,0,4.7,
 taecontrol/nook,a3b683b2897001ca87ba2097131bd4d3bdfd69c4,ok,0,378,9,9,1,1,0,21.2,
 mrfentmen/phemex-mcp,,unreachable,,,,,,,,1.8,
-mdbabumiamssm/AI-Agentic-Skills-by-Dr.-Mia,4ab689bd470406094fc2be73cb6dbb294ffcfd46,error,,,,,,,,36.3,RuntimeError: archive too large
 Thinkin-Project/thinkin-blog-next,06746d62b17704681df60f0b64416bab9d5b1785,ok,0,93,0,0,0,0,0,13.1,
 pdfops/pdfops-mcp,0a0f1631119970564239b92932ff1a73a2b2bd14,ok,0,2,5,5,3,3,0,3.0,
 jonschack/claude-codex-connector-updates,41dac09d561bc98f23f77b69b9f8649eab32d385,ok,22,0,0,0,0,0,0,19.6,
@@ -1224,7 +1185,6 @@ beadhive/beadhive,7c4c78226d17ea4e07df10f8c1b6e6cf969d8a7e,ok,1490,2,0,0,0,0,0,1
 OpenMario/OpenMario,c0c3364971aaaaf48851c7869928fab960688057,ok,0,491,26,26,0,0,0,35.2,
 supra126/taiwan-payroll,81bf20da1d98d08762033b15847538719a59b91d,ok,31,70,1,0,0,0,0,8.2,
 h2-technologies/website,590c2d142354e308825c8beabe7ea431da52e4a2,ok,0,46,0,0,0,0,0,8.5,
-KingInYellows/grok-obsidian,,timeout,,,,,,,,254.3,
 continual-ai/company-os,2439aa7cd7ac72aef4576ed5ee87c6d205367606,ok,0,777,1,1,0,0,0,3917.5,
 yyq8548/FindCheap-Agent,9937ec9ca249f494746a1abaccf7047259c42e84,ok,0,449,26,26,1,1,0,3910.0,
 hgillispie/backstage,3d99774566a97630ef222b78b5149b8df517171c,ok,0,6180,1,1,0,0,0,4137.1,
@@ -1878,7 +1838,6 @@ chrismarchant/SaaS-Cloner,c22111eca2c4bc84a084f12711f405b3e7422a40,ok,31,2540,18
 4mdosx/ownspire-raven,3d96f3e51af1483609216bb2757389afdc2562b8,ok,0,129,14,1,0,0,0,5.3,
 mkgiga/freedungeon,11785876880bae564c85ec0f44df96a106a913fa,ok,0,202,0,0,0,0,0,7.6,
 byteplus-sa/ark-mcp,4ae9fbc31c98246607f83d32d4381b6e27305666,ok,255,0,0,0,0,0,0,7.3,
-NVIDIA/TensorRT-LLM,448321fb9815af9482527327fa0b51708d20c963,error,,,,,,,,301.3,RuntimeError: download budget exceeded
 codywilliamson/diffle,f916cbc95448058aded7639fd0a44ccab7898ac5,ok,0,563,7,7,0,0,0,40.8,
 amrelaco/matra,1d5ed564594642de860286f718bb2160233f8dcf,ok,0,265,0,0,0,0,0,6.8,
 paulocsb/jira-mcp-server,9d9735486190e5c2b88c50fb8d11df7912dc81f7,ok,0,7,4,4,0,0,0,2.9,
@@ -1887,7 +1846,6 @@ cloud-ru/evo-ai-agents-labs,02d78cee13d27d8e75915cfbf0d1f4a32b5dc76f,ok,68,18,5,
 simonmak-ascent/hkex-filing-scraper,c79730fb3a2f0429eba7f2beec5c756f69a1e2b8,ok,68,1,6,6,0,0,0,4.9,
 thallylabs/starter,4eb36ce5d83d4f8c27b88daf52ca8ea6890e215c,ok,0,369,12,3,0,0,0,9.2,
 qail-io/qail,b4b179afef2bfac16b38573d8a98e37ede9629ed,ok,6,13,0,0,0,0,0,6.4,
-avshatalov48/bitrix24-core-corp,169be26ab73669259db9b5de59e9e11f5cd3efa1,error,,,,,,,,301.0,RuntimeError: download budget exceeded
 akhileshdasari2004/celigo,55b38f6fefe7faccbb08b2912d6515b3f01566e9,ok,24,0,0,0,0,0,0,2.7,
 kshitiz305/analytics-mcp-server,d5fb817cb5054d1aba83bee4b7e7ea350dca0d17,ok,9,0,5,5,0,0,0,1.8,
 liminal-ai/agent-comms,314437572cb5dd994ff3b739ea8ea11dda9bac6d,ok,0,293,2,1,0,0,0,16.8,
@@ -2135,7 +2093,6 @@ hholen/lodd-mcp-server,a518957d69e2bc13cbcbb289b43934b9716af89c,no_hints,0,31,0,
 mrfentmen/uniprot-mcp,,unreachable,,,,,,,,2.4,
 deventerprisesds/journey-voice,aeef3d3ec6d5a3ca74725b90d01bddef99d4cace,ok,0,299,8,8,0,0,0,8.9,
 denvey/ai-todos,e29ecb4d95d06d314d49ded791ee841e01c07537,ok,0,42,15,15,11,11,5,9.5,
-fabioc-aloha/Alex_Plug_In,def0c5fc1cb306d5a186110b0074bc917a147fbb,error,,,,,,,,234.5,RuntimeError: archive too large
 tomerkedem/bookforge,746a274c33c9d0949a33cca2fcb811032cf55ccb,no_hints,36,95,0,0,,,,63.4,
 oecsh/mcp-server,524378d5dfe88e33a7327600c7685d0c1473b9ad,ok,0,35,1,1,0,0,0,3.3,
 kleinrui/sub-box,c5474d16f026b858732eb68647bb72de636cc5b0,ok,0,187,0,0,0,0,0,4.9,
@@ -2163,7 +2120,6 @@ indexnetwork/mcp,875025f214dc86415015e4cacb39c5d84af5b328,ok,0,63,2,2,1,0,0,3.3,
 nikhilpatil79/mcp,b78d11d0ef987c55284fb85b3df9fa92d63d7023,ok,16,0,4,2,0,0,0,2.4,
 mmf-code/makeready,3478d3f53b07fe90c3f614b1dfbca55b71137f04,ok,0,126,8,7,2,2,0,5.7,
 Desearch-ai/mcp-desearch,23e1851c7ca201743cde14bdcf7a80240f84820b,ok,0,33,0,0,0,0,0,3.2,
-thierryc/Glyphs-mcp,73ce743f747f4a0c0c05a4a0eeba13961f4360ce,error,,,,,,,,300.9,RuntimeError: download budget exceeded
 sudo-ai-git/mcp-secret-scrub,c5b3a04274a90ac6865dc3909c130c54f9a5130c,no_hints,3,0,0,0,,,,1.3,
 jwmorris1980-png/global-lms,a36149a99b26058515a5922a10237482e340fb7e,ok,0,20,9,2,0,0,0,13.2,
 lesofi/handinloop,,unreachable,,,,,,,,0.7,
@@ -2434,7 +2390,6 @@ jallen/eurorack-reference,,unreachable,,,,,,,,0.8,
 Ariyaan321/daily-vibe-mcp,bbe5f2861bf77498540902ef9b6892cfb9aba850,ok,0,1,1,1,1,1,0,3.7,
 secure-workflows/mcp-server,a31b07c35b4f98568b13f8e8c827e7892ba19475,ok,1,256,1,1,0,0,0,12.1,
 mrfentmen/digimon-mcp,,unreachable,,,,,,,,0.9,
-mozilla-releng/staging-firefox,e33ac8a9b64e3946a203af8df5b2aa1bb4711d5c,error,,,,,,,,303.0,RuntimeError: download budget exceeded
 raphaelhhh/supremenergies,d20b35aa3ec9323a9931139e18d287bb26b56b31,ok,0,136,8,8,0,0,0,59.7,
 inity13/scenariosim-mcp,0489da646322fd43a95eb8fb8dc0b97cfe0a6304,no_hints,1,7,0,0,,,,6.4,
 iceener/video-streamable-mcp-server,10a3435503a5f5d9dd1951f2a9a5361b7b5e2f28,ok,0,38,1,0,0,0,0,3.7,
@@ -2458,7 +2413,6 @@ gutohbarbosa-coder/GHB-MCP,f4fcf2d1c4e61eca932e96912c212001854b57d7,ok,0,8,2,2,0
 RetrogradeLabs/lune-mcp-server,221b2c3714b6be3c36462110bd2f42ba31bd611d,ok,0,79,16,15,0,0,0,8.9,
 omnia-v/errorbar-mcp,43c2df4f32b2603798d8f3d765a6b4b93d2cefbb,ok,0,17,2,2,0,0,0,5.1,
 pipeworx-io/mcp-seo-competitors,9a4e49ac852b758a437dc09b6778b88a1f7c6c85,no_hints,0,3,0,0,,,,3.9,
-utahnlp/infinite-science-gym,2006f69872986e502074282ee4d23634e0cab689,error,68,0,,,,,,7.6,RuntimeError: TypeError: unhashable type: 'list'
 heroku/heroku-mcp-server,4afcbe1a042b78e81385280ac5adaeb0000dba6e,ok,0,51,37,0,0,0,0,6.8,
 0xzr/freellmpool,e4411650da95edf3002c6789ccd1c816aedae1d4,no_hints,146,7,0,0,,,,11.3,
 Zak-bo/real-estate-x402,11b824c4d8c0e68a371622e1dc0122e8cbff4832,ok,0,18,1,0,0,0,0,5.6,
@@ -2491,14 +2445,12 @@ BlackBadHope/integrity-next,ba4830a7b0723e530dd5c84cec898e72ffad1441,ok,601,8,98
 PranavTJ-05/agent-orchestrator,7ec99eba1238e635950006281f5fbb2497c6c3d3,ok,110,16,0,0,0,0,0,11.1,
 theseriouspdx/mirrorbox,37a6f50690cf4c2603c2316892a09da4e1a84900,no_hints,6,154,0,0,,,,177.0,
 Rib4ko/EXCELL-7ASSIBA,581bc40deabfb13358e7ac6b0a29cb9bbbd2e160,ok,29,2294,182,1,0,0,0,124.6,
-ReanSchwarzer1/SomniumEngine,9c41e29f9419c9b7395868d8a1d9989ea6dac265,error,,,,,,,,247.3,RuntimeError: archive too large
 a8122215/repo-relationship-graph,9fa95d56484bf545c85d560acad2ffc4b7cd84af,ok,55,1,0,0,0,0,0,7.8,
 figuard/figuard-core,9bc8430fe9babe910c52175450f8033a2b974998,no_hints,69,54,0,0,,,,9.4,
 mdvohra/agent-godmode,2763967fbbbfdc6df28de22302ac560a054e715d,no_hints,10,0,0,0,,,,4.2,
 guy16510/esp-rf-sense,d8b844afcf39c14dc4ab297fd4c878f546b8efe0,ok,27,127,0,0,0,0,0,105.1,
 houssame-dev/madrasio,fbb451a0ff4f5202603543fcd94b5b71fd57fc6c,no_hints,0,1043,0,0,,,,48.7,
 memonun/tavuk-sepeti,e69258b87b768c7e89fa5cc0efa9a4608f838fdd,ok,0,957,92,92,0,0,0,51.2,
-remotion-dev/remotion,97b942ceb86fd7361c011058b28632db1b227ffa,error,,,,,,,,173.9,RuntimeError: archive too large
 EliaukoaYoW/Codini,b8bd654f75615480327d1b250d5ce4fb046986bf,ok,503,0,0,0,0,0,0,32.2,
 hermitsh-ai/shrimp,,unreachable,,,,,,,,2.0,
 fvegiard/windows-apps-mcp,b222431ca40a0f5e2dcea798819a9246de8b9486,ok,1,0,10,10,0,0,0,4.1,
@@ -2580,7 +2532,6 @@ Rasalas/tau,4df3128d4301a066c5f1fef0c5be0bd18818b0ef,ok,3,3583,14,6,0,0,0,201.7,
 mzprov/mzprov,99a7a5afe2c53c283393f25572f44598c89d8761,ok,45,0,5,5,0,0,0,9.4,
 enuno/unifi-mcp-server,b4f4f1dd89f23ea6d9229e6f94cf1ae494556405,no_hints,378,14,0,0,,,,22.0,
 maierlars/animagent,27d356ddd72c9f92b86deef612b140ae6bb38d73,ok,61,0,0,0,0,0,0,8.4,
-infometa/workbuddyskills,b89a0d12d6aecc08c5d3d903b67e6cdb33d72de8,error,,,,,,,,181.7,RuntimeError: archive too large
 oooscoos/Benzi,02af93f3d556ccc307d58c7b8b5ed4c66cab82cf,no_hints,8,0,0,0,,,,13.4,
 chadjameso93-netizen/defragsrelationalswap,79c6342e25d20d87daf095703cd64ec907088f0f,ok,0,255,6,0,0,0,0,15.7,
 yongzooda/finshield,1e401b3a081d000e3bac5cee51b5805c6b496040,ok,9,442,0,0,0,0,0,37.7,
@@ -2629,13 +2580,10 @@ antideploy/antideploy-mcp,3add4408420bb6f2a9d53de181b1fc74c1a12eb5,ok,0,15,48,48
 rosasynthesiz/flstudio-mcp,e6eff37e45a076098ed81ee4e50fb7bf08aef11a,ok,80,0,67,67,0,0,0,15.3,
 limited/garmin-connect-mcp,61ce01258933c74213c38ac5f6086955abea0253,ok,11,0,11,11,0,0,0,5.3,
 pingcy/MCP-examples,bd265d55b5eea556857c2be9dfe625807eea6323,ok,72,0,34,2,1,0,0,32.1,
-opencampuslife/open-campus,d5ad3e16894fe18d8b61091d80467bd9612e5b8e,error,,,,,,,,292.6,RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)
-HAY2029/Amine-H-Ayoub,44ab6f972991225bc1bd9270ab95c2fcc1600d41,error,,,,,,,,422.0,RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)
 MrJamescot/ctfd-mcp-server,c75b77a145b9a0c11e3c6144475eed34fe289686,no_hints,21,0,0,0,,,,6.4,
 Aero123421/dsh-rolesubagents,604703761fa074e90c71862a784ac7d4701ad9a0,ok,0,144,0,0,0,0,0,295.2,
 muhammetarbag/motorlab,3daf9ec992cfd45becf8c44ffd0ef7a942c2ed41,ok,0,73,0,0,0,0,0,5.3,
 naufaldi/echoes-below,54909ebf11635ebdb163c4f50ddf4d3111d28017,ok,1,151,0,0,0,0,0,20.2,
-codewithmirza/gitring,9f5181f40c5bd60f31d3bdac3a29c5fe7fad7611,error,,,,,,,,302.0,RuntimeError: download budget exceeded
 fxjim/agent-commerce-guard,305b3422bc3f2b40085a18378dc7794d3e86c10e,no_hints,0,0,0,0,,,,2.1,
 tunacosgun/sim,3e24519c2fd8f9fe1ef83ce15b99fbf869e4eb41,ok,7,6494,33,23,0,0,0,640.2,
 pavanofficiall/hivemcp,ee83ea964191985a48ec889a3a8c4c5d8b24f4f7,ok,0,85,4,2,0,0,0,5.1,
@@ -2648,16 +2596,13 @@ Bishop81/wpgoldmine-mcp,cbc1e9fdcf5af6a7c8b82b6915b627fe8aad6166,no_hints,0,4,0,
 sunholo-data/ailang-parse,8734b40045f5e7c6e8137f2eb4207b4ff813029b,no_hints,78,27,0,0,,,,30.2,
 ThomsenDrake/threadkeeper,646f3bab6a7bac69451989b5cadbf0e67d425e82,ok,0,117,4,3,1,1,0,13.4,
 gostanos/smallprint-action,9522ae9da146de845136f39abb6a880c5eb8df86,ok,1,83,4,4,0,0,0,343.0,
-omeraydinai/designhub,da9f9bef2a42642425bcfa2d28dde75a4535fe13,error,,,,,,,,301.6,RuntimeError: download budget exceeded
 ammarqaisar11a55/google-docs-mcp,435bbf9f940eef371418a6bacdf3019d28711dfc,ok,0,69,22,22,0,0,0,3.7,
-johnnysparks/cadlad,7e7afb6ab05dbdf07d7171c6dad5652d84ddeb11,error,,,,,,,,301.6,RuntimeError: download budget exceeded
 amalshehu/backtick,9ecf62f1587b70550207522830e59eca01d08d7c,ok,0,100,4,4,3,3,0,3.4,
 dingdawg/dingdawg-governance,d9f09b8edf2ea19f30bc912eaace2c6daffcc27f,no_hints,0,12,0,0,,,,2.3,
 ogmake/ogmake-mcp,5e1e2877eb27d62afa9e3f68db49a297b710e0be,no_hints,0,11,0,0,,,,2.2,
 cech8858-boop/ia-,5b70869181bd1139c08a6e28ae1347832be65c03,ok,1,103,5,2,0,0,0,7.5,
 akeyless-community/claude-akeyless-connector,40ae11223079ffa07f4478f623213300834dd107,ok,0,19,4,4,1,0,0,2.5,
 handsontable/hyperformula-mcp,ba71c4bed4c9fed70d3aa3d2cd198a51a0b50d05,ok,0,3,6,6,6,6,0,2.4,
-Amaan-cmd/IDBI-Artificer,c77433bea4a8f216da66db26ad246f420a1c6f27,error,,,,,,,,301.8,RuntimeError: download budget exceeded
 agentIgris/agentfund,22ddb47e1f2d4e1abb2ed5f5bb6e4000145bd6c1,no_hints,0,152,0,0,,,,4.7,
 YummyTastyCode/colab-drive-mcp,765e1b066024c3eb28f3885303fb40b773653cb3,no_hints,7,0,0,0,,,,1.8,
 raullenchai/vnsh,605cb31371b89aa44468c4a468d223e4f4eb1d36,no_hints,0,72,0,0,,,,3.6,
@@ -2676,11 +2621,8 @@ mrfentmen/password-generator-mcp,,unreachable,,,,,,,,1.8,
 ZachBaker/AgentIndex,45f91d2b8d264e6011822b84f4c647526cba807d,ok,27,0,0,0,0,0,0,3.7,
 neverinfamous/sqlite-mcp-server,,unreachable,,,,,,,,0.8,
 antonbabenko/deliberation,ef84a71a66bfa2b77b866312036c59807fe050a0,ok,0,146,19,12,0,0,0,8.6,
-HELM-MSP/goose-Fork,0ed25adab034e86f3f092842e2762dc95de2c5f7,error,,,,,,,,301.0,RuntimeError: download budget exceeded
 new-village/money-forward-mcp-community,3bf8b6a62b43fd239d7e9ad3425b89453e25b0a0,ok,0,12,14,14,8,8,0,2.1,
-allr-ajmx/allr-agent,db0627e3c634a21423050b76ddfd9e50e2c632c9,error,,,,,,,,301.1,RuntimeError: download budget exceeded
 SaltfishSheep/AI-MCP-CNPCAPIAccess,7b87c4a35fafc8591aaa46c2c74c904f2ed6bd75,ok,0,12,2,2,0,0,0,2.4,
-GMOD/jbrowse-components,46ee9373d45637ed2d931ad70488422c04f1311a,error,,,,,,,,301.0,RuntimeError: download budget exceeded
 hs902/oxford-ledge-mcp,fe4d3cce6f0bba4158a28276e27198665dce14f7,no_hints,24,0,0,0,,,,2.2,
 arihov/civil3d-mcp-bridge,617479ad0a682eceb669647f297d900b6c80f855,ok,26,0,76,76,0,0,0,3.3,
 fyufvcg/MindPet,60e667cc5f63ec25d0187ffb429a4073d7928d9a,ok,5,172,1,0,0,0,0,21.6,
@@ -2803,7 +2745,6 @@ deBilla/bigquery-mcp,8967b5072a759c3f739da07caf40e043737e8af0,ok,36,0,0,0,0,0,0,
 hamzakammar/mcp-workspace,907d1d53312ed924e45583b97e25fc2823f987f1,ok,0,157,53,49,0,0,0,6.0,
 UmTemplates/UpDoc,2fc3231c4282a600bf6fa7b833bc44336705eed2,ok,0,116,6,3,0,0,0,59.8,
 doublej/consult-user-mcp,24676f5642fc2675d1acfd95126e641d735d3d89,ok,0,30,4,4,1,0,0,44.2,
-ErickWendel/localstudio,a9e3edb5edb328ffef4570b7c8446e0ee51cebbb,error,,,,,,,,301.5,RuntimeError: download budget exceeded
 madebypan/chatgpt-bookmark-site,90315ec4035527035572c9bddb6e9061b599b77b,ok,0,65,4,4,0,0,0,12.0,
 sidduHERE/agentpool,de87ff29e37fd8270b48bcf7711fd8ebbf8268d0,ok,75,0,29,16,0,0,0,4.1,
 mazherbashir/aisecurity,ddae0ebbb97a8a14b3f25e1f7b3ba5ae51ef7dc8,ok,78,2344,25,0,0,0,0,304.4,
@@ -2886,7 +2827,6 @@ vicennpacheco/AST-Navigator-MCP,ab4a37f21199d6a4d934b63db4655af2ff01ae9c,ok,0,39
 pipeworx-io/mcp-bpstat-pt,0617e26792b49216a390c2d2597d771c7796276c,no_hints,0,3,0,0,,,,1.9,
 AnglerfishChess/esca,5c801e7fa716a4a8691a51f4adcd33d9c362b93d,ok,53,0,9,9,0,0,0,3.6,
 Aarekaz/raindrop-mcp,10894cf2b0675253a4ce46bb728f4571c97337f0,ok,0,36,24,24,9,8,1,5.3,
-nj22az/nj22az.github.io,d4912912128e035c8336665a040e7c391f9580d8,error,,,,,,,,266.8,RuntimeError: archive too large
 tichara1/tool.leafdock,c0091f8e6f00cf7830e8cd4685c014672d77a07e,ok,0,24,7,7,0,0,0,2.9,
 SUGUKURU-CO-LTD/ssw-workforce-intel-mcp,fbcc533c7a71a32b761d72ea57a09b6eddc2eb15,ok,0,91,25,12,9,9,0,3.9,
 kgoedecke/doop,0531b70ea127a7390e1d1b2fcbb6ecfc2cafe85c,ok,0,478,40,38,16,16,0,19.0,
@@ -2946,7 +2886,6 @@ AyoJared/Ecuery,5fb72238c3d9f185c4e371f46436a1ecad4ee63b,ok,56,67,9,9,0,0,0,27.1
 kareltilcer/ws-tilcer-home,f5da62494c666c1fd281c7029637aae083461a4a,ok,2,250,0,0,0,0,0,11.1,
 colorjs/color-space,9a9ce42cec14d07fbb773d12271f7f8f9bab4e39,ok,2,593,0,0,0,0,0,21.3,
 till-muellers/bambu-studio-profile-mcp,bb2de0fae23a08949495e8f66606e9b9ab189b56,ok,0,51,14,14,0,0,0,3.3,
-jianghailong-xy/orbit,6ed0720f38e350e9c390649326d833d876def957,error,,,,,,,,300.9,RuntimeError: download budget exceeded
 LinusU/mise-mcp,abe5f9a2ee58e6cae6152536179e2f3191739d8e,ok,0,19,19,19,6,6,0,4.3,
 nehcuh/cmspark,fcfb5f397bd7fdbba8d04f5426fbf8e9e8b9fc21,ok,33,1942,3,0,0,0,0,69.5,
 gustavovalverde/zentity,f83164747e7c05b5b494f70fa87f8fab94c9ba63,ok,33,1049,5,5,0,0,0,32.6,
@@ -3025,7 +2964,6 @@ imfurkana/unrendered-ai-crawler-checker-mcp,,unreachable,,,,,,,,0.7,
 mjkatgithub/Decentra,27c731cf1e13524092a539ee0e44c70082f62485,no_hints,1,228,0,0,,,,6.1,
 webaesbyamin/agent-receipts,8bbb057df9a60069bc03fea8704838e1927deacd,no_hints,0,181,0,0,,,,4.0,
 jestatsio/screamingfrog-plugin,4b9fcad149bab28b86f41fbd24fcad2554f048b9,ok,0,30,10,9,3,2,0,4.2,
-SimonAmable/artificial-influence,2f04133ba7dbd4914dbac9d8101c44619f3e6063,error,,,,,,,,289.4,RuntimeError: archive too large
 lstpsche/coding-session-history-mcp,b7590d0417827b2cf9655efc33d095f4f73009a3,ok,0,20,4,4,0,0,0,2.9,
 alesav/smspm-mcp,4b1439aa46e6b3116a57e2460fd333024bb729d6,no_hints,0,1,0,0,,,,3.0,
 joaovjo/linkedin-mcp-server-ts,92dad28b4d92f3b9c249443763842ac655fbd5dc,ok,0,48,19,19,0,0,0,3.6,
@@ -3108,7 +3046,6 @@ evisoft/scio.md.plugin,cd021b95bbf299a70527a62461f954d40e8cefbf,ok,3,0,0,0,0,0,0
 hebcal/hebcal-mcp,a38b72d0e9bc793ce684fef0347a6e594d0bdc2c,no_hints,0,7,0,0,,,,1.6,
 runpod/runpod-mcp,8cfdf83e0dae10e2c229e70c2f3aac2714cbf64b,ok,0,119,95,95,1,0,35,4.5,
 zeithrold/memory,c3fc64ca9760cdab9ef2e5bdb6413133b703f2d1,ok,1,401,2,2,0,0,0,7.7,
-cosmincucu/local-observe,8ffa0cd0c03ff1e2e7ba1b960b39492c8c7b48ab,error,442,3,,,,,,22.1,RuntimeError: Node.js v24.12.0
 RishiksaiP/Pip-Nerdyhackathon,99c6ff92c9bbf6223b6e76eecc58b447086df431,ok,1,170,0,0,0,0,0,6.8,
 vedantggwp/terminal-mcp-server,2a24c9d5abfaa5a0d9ef6b53268f723e4f813f41,ok,0,17,13,13,3,3,0,2.2,
 KavyaAgarwal2001/geo-agent,533714542b2323bd39aaea4440c50df0e09f0a86,ok,5,0,3,3,0,0,0,5.8,
@@ -3227,7 +3164,6 @@ VeritasActa/verify,c170060400a18c128ea79b49c742911379c3d966,no_hints,7,141,0,0,,
 CloseSpan/CloseSpan,fabcdf36e206911efc31a2f5e39954135a7c0bcb,ok,2,982,0,0,0,0,0,48.0,
 okolovmark/odoo-fast-mcp,ae705a90ea15d67757ba5834b2e6a495a304061d,ok,27,0,19,19,0,0,0,2.4,
 Hyphae-Research-Foundation/hyphae,418a3da717c2f9ba0cf095423f392b3d496cb607,ok,284,36,0,0,0,0,0,17.4,
-David-Li0406/meta-skill-evloving,ca3a335628981df10c36e00cb9850df2c247ab9a,error,,,,,,,,301.1,RuntimeError: download budget exceeded
 pipeworx-io/mcp-opentopography,32c76073cf451d52f457b015483c3784f31a3b6d,no_hints,0,3,0,0,,,,3.1,
 Dicklesworthstone/ultimate_mcp_server,0303de1ff1d06ba4015e3ee66bcc445859208a40,ok,181,1,19,8,0,0,0,54.2,
 suleyman416/mcp-applemusic,1e4f312257b1837b3beb86bd943b1271a6b2cba9,ok,2,0,74,74,20,4,0,2.7,
@@ -3281,7 +3217,6 @@ andremolnar/open-open-design,2ae9a13ea71fd3bd30390a07789de51c22f0b472,ok,103,492
 Stephen2366/data-pilot,2e0e7683123b1a813b92d82533d930f87355c3b4,ok,377,44,1,1,0,0,0,9.5,
 CSOAI-ORG/workout-planner-ai-mcp,cef6d43ce14bba29ea885962c899dd69c9110f52,no_hints,4,0,0,0,,,,1.9,
 lucasreali/cortex-cli,9d4e86769075337e7824f94f65ae4351d43518fe,ok,0,323,6,4,0,0,0,6.3,
-jahidulislam-hello/kendisman,d7da025b740e2ee1b65b361d03e5309aef7f2d3a,error,,,,,,,,301.3,RuntimeError: download budget exceeded
 CSOAI-ORG/llm-compliance-comparison-mcp,ad2177b741c9a3468fe492e3386a10ea86427c0b,no_hints,4,0,0,0,,,,2.3,
 pipeworx-io/mcp-colombia-secop,51bab36baee748c53841ca7deb4a7787f34e6f5a,no_hints,0,3,0,0,,,,2.9,
 lifeafter619/walkie,1a5468b811ab3dfe67b174a1fdd72df13ae74c6c,ok,0,96,19,16,8,8,0,5.0,
@@ -3307,7 +3242,6 @@ Kaption-AI/mcp-extension,2e48574ef7719f3f17dc6d74150adb4dbd57312c,ok,0,20,22,3,0
 jkrumm/agent-gateway,15b9870f304ff428e15714786074980402822b31,ok,0,194,18,18,6,6,0,6.0,
 londereetechnologies/automailic,4f204631e53c4adb8a8db498fe0d2c12e16b19b3,ok,385,139,38,38,0,0,0,25.6,
 Zicongen/Flask-web-app,4416b615b78edcfcc7cf96f33b57676e7153c161,ok,0,8,4,4,4,4,4,2.4,
-GTX537/CP6,a6f9853be72547199ab8a38463d31d3c2adf7fb3,error,,,,,,,,301.2,RuntimeError: download budget exceeded
 romacv/marcus-source-code,9c4f48390fb508be05f04d146207f806c67a9f80,ok,0,37,19,19,7,0,17,27.6,
 enpitech/enpilink,9739a7e056157d1282e25630f6616f0292070cac,ok,0,586,15,3,0,0,0,23.6,
 cxy-lili/texun,770186d3953410ae03635fe75163d95f7a416698,ok,7,62,1,1,0,0,0,245.9,
@@ -3400,7 +3334,6 @@ hexablob/standfast.ai,a8d044b28cc8627f35e8956deb65f4f23b7ca885,ok,0,176,6,6,2,0,
 CassiaResearch/aircall-mcp-server,f81791d0c7971540734aae97178fd28893997cdb,ok,0,18,1,1,0,0,0,2.8,
 mrfentmen/pbdb-mcp,,unreachable,,,,,,,,0.9,
 kongshuilinhua/lingshu,fd45ade3733b105e299fc3bc1e6d18247bfcf637,ok,151,61,0,0,0,0,0,10.7,
-dbcodeio/public,2b75464f8dac03e32ec30c3fd2baeec150cc249d,error,,,,,,,,244.3,RuntimeError: archive too large
 NourMtir0722/echo-ui,b48730f2f326e372e7987617a73cf1d13277c11a,ok,1,1230,10,10,0,0,0,35.0,
 nirholas/data,,unreachable,,,,,,,,0.9,
 resistdesign/voltra,6af81565489fec3e1e4ab3ef3fe4b84a9f32794b,ok,0,425,1,0,0,0,0,11.3,
@@ -3464,7 +3397,6 @@ votal-ai-hq/ai-red-teaming,640e565ac7519d152cb6efd00c2e22b58a9877db,ok,13,418,13
 KyaniteLabs/Epoch,7c2eb9ae5562b9507eaccefbba854cc8a02f1a60,ok,2,206,2,0,0,0,0,7.9,
 ashikalik/smart-checkin-server,74fdc914cf8d46aba453acbbfdde8bd2fa59e5ed,ok,0,1131,18,18,3,0,0,17.3,
 satomasahiro2005/unicontext,bd311ecdd5c10cded94996fd87822a686f0ef08f,ok,1,640,44,43,0,0,0,12.1,
-kartAI/Atlas,47d2c3a2329d3608e165a07bc5726e878f95cb18,error,,,,,,,,195.6,RuntimeError: archive too large
 pastorsj/GSF,b7d28b2ac1f8092a3e82829afaf395d21b7f97f8,no_hints,330,319,0,0,,,,11.7,
 JeroTan/novel-writer-english,6d836f23281e240eed36d50529424e086c8ff42d,ok,1,5,9,9,0,0,0,3.1,
 raphaelpflieger/tipis-data-mcp,8848e149e9435ae09fe7a01458f859af30d36a00,ok,22,0,0,0,0,0,0,6.2,
@@ -3546,7 +3478,6 @@ ngai123/2026,e6b5404ccb6e97a7a32dd4e24392236666edd2e6,ok,157,2119,16,7,0,0,0,110
 patrickschiller/sourcebraid,287ef040e7d2141b8e85eee2e6df6bbb8a0eaf13,ok,23,17,0,0,0,0,0,13.5,
 justinstimatze/linear-strict,f0832033597e23a6ac57ead9719a393a5ddbfb18,ok,0,88,1,1,0,0,0,4.4,
 kody-w/brainstem-agent,06df49601056a5e8d94edd834d1bb090d9a67a28,ok,121,12,0,0,0,0,0,6.7,
-KiddPhenix/WorkGround2,eab115b7051f43c034d2e7bca250c9028335b96c,error,,,,,,,,302.2,RuntimeError: download budget exceeded
 azhard/homebrew-tap,c506b62a43d9f95d60ee1f1f71e73afcd57f76ad,no_hints,0,0,0,0,,,,1.4,
 meo9805/ponytail,1b2760d384c44e573a9d8c7a729fac616e5c3a76,ok,6,42,1,1,0,0,0,3.6,
 ikoskela/precision-desktop,58a56a60b2ff7fda10b3b8db3439de43878034c7,no_hints,6,0,0,0,,,,2.3,
@@ -3624,7 +3555,6 @@ geter-andru/mcp-server-andru-intelligence,8cabb735898994608b986eaacaeab90ba81f6b
 minimapletinytools/kumiki,f6476f73dafdee25d68f2ddf57009bcaaa241122,ok,253,176,1,1,0,0,0,41.4,
 yhnapoleon/rolecraft,4b069b2af77b187dbacedb03c2ed466c8268e4e3,ok,705,226,0,0,0,0,0,38.5,
 nel349/midnight-wallet-cli,be6ca44ad8148e6b07d8e7349d79b9b988a55bee,ok,0,236,31,30,0,0,0,11.6,
-obinopaul/agents-backend,abd0012547c42d3e57df61e507a9c631d392009b,error,,,,,,,,302.4,RuntimeError: download budget exceeded
 hostsmith/mcp-server,9aee223eafef81fe414adfe0a2de7823124866cc,ok,0,7,9,9,0,0,0,16.6,
 Garretts-Apps/buildwithnexus,6993cd1ffb178f1eb9d7b3f9d97e8923c2daed7f,ok,6,19,0,0,0,0,0,22.1,
 huihuangyue/agentic_llm2slmgate,2777ad4dfaf0c77b7d1092bba7e9b45456012939,ok,198,0,10,10,0,0,0,7.8,
@@ -3632,7 +3562,6 @@ Saidiibrahim/search-papers,a3dfae599ee66e9cde1879aa6b390bb69248ec8d,no_hints,0,2
 vornicx/Midas,ee9953c15a977343eb783de0b9f217aaf46e5b4e,ok,121,14,40,23,0,0,0,5.3,
 TraX22/HydraOps,d4be1e3d02d6e74a26b19a77e8f8e402f787e895,ok,0,149,0,0,0,0,0,7.1,
 CryptoAPIs-io/cryptoapis-mcp-hd-wallet,926cbb1ad9f915fceaf38034aee8f3c83db9359d,no_hints,0,50,0,0,,,,1.8,
-SenjuWoo/Ultimate-AI-Starter-Bundle,a3e860503c5de6ec7ccfb9703a8dceb8434c038e,error,,,,,,,,301.2,RuntimeError: download budget exceeded
 dipseth/google_workspace_fastmcp2,176462a08a333b0940e4bbd913585031043d578e,ok,558,12,114,103,5,4,0,27.0,
 psiQAQ/zotero-agent,78e939764a8aaf31e31f1de9d61d8c050062a7bd,ok,0,82,0,0,0,0,0,5.4,
 varun29ankuS/shodh-memory,902daf8394e74c93056be34fe5fdc5bb4f6bfbec,ok,47,155,51,0,0,0,0,32.3,
@@ -3677,7 +3606,6 @@ Mikerichardmail/clarik-mcp-server,9a5c610e2606c15483b6264f8ed02d4a7fd7dae2,no_hi
 wsmaisys/Resume-Builder-ATS-friendly,bd250bc005da69c8e3719dcbfef2c86cb07e1f4d,ok,37,1,6,6,0,0,0,3.8,
 jakobwennberg/fortnox-mcp,501ee1368f12ca4dd2e24a24bda8a47378b5c40a,ok,2,44,51,51,19,0,0,4.0,
 dionfananie/inside-lab,2229d3b1fb526ce9fcbc1ac0419fbe49b7809d2d,ok,0,113,0,0,0,0,0,4.2,
-bolucat/Archive,9c5e7aa28d7062522affaf8617ff5af3dadbd3c6,error,,,,,,,,301.2,RuntimeError: download budget exceeded
 haema3/ShipMCP,9c1239ba5fdbf371deebb68d2a2d2ab6cbb250b8,ok,6,0,6,6,0,0,0,5.4,
 LiteEagle262/Roblox-Client-MCP,0b6889a38e6aa75a7000a14616b7526b1cef6508,ok,0,45,31,31,0,0,0,2.6,
 Tom409114/research-repo-doctor,9bfac9bc41028e441f1649c3032f06585b0881d5,no_hints,81,0,0,0,,,,3.0,
@@ -3706,7 +3634,6 @@ Harlski/nspace,21b3bb6b910eb13cd53de4c1152971a142daf731,ok,2,628,0,0,0,0,0,42.0,
 Sumitkumar1007/Superset-Analytics-Assistant,7717c244b7a1ab9a868c222b6eea9b77fa589724,ok,1888,3622,1,0,0,0,0,272.8,
 jfarcand/iphone-mirroir-mcp,845a981163aa6d40999d343fee26778df8627843,no_hints,1,5,0,0,,,,6.1,
 Alex-Dev-Web-C-DE/scopeguard-mcp,b091b1916e296d1f10baab9047abdbc642709d35,no_hints,0,1,0,0,,,,2.0,
-Swastik023/kubernetes-sre-incident-platform,ef7cc6c756cfc56e33f7291c55a3656554dad958,error,,,,,,,,301.0,RuntimeError: download budget exceeded
 manuelinuxkr/substrate-b,803c64b08f079aefb6182ec556e2e3a059fe6814,no_hints,0,19,0,0,,,,3.3,
 pipeworx-io/mcp-arcgis-dc,da3a687f85a0155598d883f3a92ea271fc851788,no_hints,0,3,0,0,,,,2.1,
 ccomkhj/jocal,e16c1789d4fc26fbbba9feab278d63fe2e2517f0,ok,16,3,0,0,0,0,0,3.7,
@@ -3769,7 +3696,6 @@ arr-mcps/komga-mcp,9a5c5fa50b61a958a2cf1e55993bd52f42d3d1e2,ok,3,0,1,0,0,0,0,2.1
 osdeving/lets-learn-sentences,116f645fe3a0005c7d7b5210df37d5857edbdfcb,ok,7,65,0,0,0,0,0,68.9,
 NVIDIA/OSMO,a48a2414a50d1676a43b084afc4658bf2d406f83,ok,490,632,0,0,0,0,0,31.7,
 mefree2098/HomeBrainv2,e0ccd442b3d570f3a149f7675eae84bb714ff11e,ok,62,705,0,0,0,0,0,227.9,
-Hui-Ling-Zhen/Agentic-Verification,63899efc5a266360d10bb6d88f29d1c81df06fd2,error,5579,11,,,,,,236.1,RuntimeError: TypeError: unhashable type: 'list'
 srivastavaamishka-glitch/MCP-server,813e18f5746ff2604e614042c262337eeb06da16,ok,0,14,3,2,0,0,0,3.2,
 nfergu/memalot,f91d03b0ac06fbee5d9f900ad400004f173323bd,ok,43,0,2,2,0,0,0,4.3,
 Erieltondepaula/hymnal-harmony-forge,a4a4695ab8d59833de398abd7f06ff26ec4ff327,ok,0,125,4,4,0,0,0,4.6,
@@ -3788,7 +3714,6 @@ BartWaardenburg/isagentready-mcp,c44bb3d7c3b845fdb9b27f3ade2257b1789ae51f,ok,0,1
 jack1590/RokuMCP,f3b5cba3210b440c305950060ef990b38248c8ce,no_hints,0,21,0,0,,,,2.7,
 anomalyco/fiend,263ff7db3cd65287bedf9f46de598870cd3368f8,ok,0,21,12,7,0,0,0,5.0,
 Mysterio6193/Helix,740fb02bd10a57cf2ff08738682d06f7c5343f3b,ok,247,276,14,8,8,8,2,117.5,
-subramanyamnvr/PythonAIML,5465562173664235b1d09f56d59656de77439db1,error,,,,,,,,265.4,RuntimeError: archive too large
 josemirmoura/portico-infinity,2f267f64de1264106d59dfcc3a30e425b82c1657,no_hints,108,7,0,0,,,,7.2,
 victoriapraxedes-crypto/peladadapanela,067e6910483ce00a73db3d42dc31e3134ed86f17,ok,0,144,5,5,1,1,0,4.5,
 kv9898/positron-mcp,c89d47c3706add0bc1720d971cc27a67f9e746aa,ok,0,16,6,6,0,0,0,2.5,
@@ -3855,7 +3780,6 @@ garethpaul/benchkeeper,4c06b35bab591f99393938d1993cc7c76f451f33,ok,2,52,0,0,0,0,
 ivs-rodin/or-lens-plugin,95e9b65b3a99142b330da4eee155af43dbed2c08,ok,36,0,1,1,0,0,0,11.6,
 Aitejiu/jev-harness-lab,29ddf8210e3a96f9d383e9b479e3e5c39455c394,no_hints,31,1,0,0,,,,8.4,
 devnull03/webwork-mcp,a94281c984b1833015ddb5053f2575068197e1d2,ok,3,0,13,13,0,0,0,2.4,
-lmodirv-ship-it/smooth-route-guide,713e78ada282ddcac2022979e92a47d4101b6867,error,,,,,,,,301.1,RuntimeError: download budget exceeded
 bookmarkdown/mcp-server,30982c15ca50cf2ec3b64efe40af810ca941cdbd,ok,0,38,38,22,0,0,0,4.2,
 yoy123/remembermcp-for-lm-studio,f8b0ad298464fff798265fd152e6f26591f8da14,ok,24,0,9,9,0,0,0,2.5,
 nikonovmi/ai-advents,5eb23daa0eb0eaf4c6ff4734a376ed8b40b51c50,ok,0,1962,210,210,0,0,0,57.0,
@@ -3871,7 +3795,6 @@ NityaNotes/nityanotes-design,02d2dbd6735abfa443bbb17e895f861765ffc8fa,ok,1,103,0
 mateohysa/reelsfarm-agent-plugin,35c378eab654d429aa7f2aee63b3c1c377b5733f,ok,0,4,0,0,0,0,0,7.2,
 DarkCodePE/sw-factory,af2ba89bf7ff9a564c739548b3d3b43ee00fe591,ok,0,183,5,1,0,0,0,7.3,
 agpro001/animanexus,08da36d8acf3c356b7469b65681f39ba3a6068ac,ok,0,119,4,4,2,2,2,4.7,
-lijk7677-dev/lovanet-fr-28637b15,531a8241ba591466a05ab0ecdccb2be5ea5f71be,error,,,,,,,,300.8,RuntimeError: download budget exceeded
 skforecast/skforecast-ai,a8e6c52812df24a34fbdc2962445b5d6df0eef0a,ok,373,10,0,0,0,0,0,17.0,
 praveen-thirumurugan/vitalog,74af3131d0f0b414ea2f901e4b7e182dbc132441,ok,0,158,2,2,0,0,0,21.9,
 Veselin15/cartscout-mcp,282c037074f15805f41ff6e4d037b5fa2b29ff84,no_hints,6,0,0,0,,,,4.1,
@@ -3947,7 +3870,6 @@ goodguys-gmbh/cavelon-dev-kit,70c60a1c1e878e20ae2ac6086236f8cb1aad815e,ok,2,230,
 partydecorkolkata-cmyk/decorza-book-master,d73ed02b930276f43f55f24747852ab5bdae70d4,ok,0,128,4,4,0,0,0,83.4,
 Wulfgardr/mediflow,353af357d2fca9e8332125bcbff3e14a671fd762,ok,15,2425,13,13,0,0,0,101.4,
 CSOAI-ORG/csv-tools-ai-mcp,05e2b3babaadc004b0dc947ac3dd4ad2ff8ac308,no_hints,4,0,0,0,,,,2.5,
-whistlegraph/aesthetic-computer,5fe430c1683bedf7a522a307c869f4827089d9e1,error,,,,,,,,291.6,RuntimeError: archive too large
 Anddrrew/scopus-mcp,e08906228360dd67d8937a3c5596ae44efeecfeb,ok,0,55,8,8,0,0,0,3.5,
 mbrt/kustomize-mcp,9318312e8f133be0f2f4dc702d0943fc0f4403f5,ok,3,0,6,6,0,0,0,2.8,
 insodimension/dimension-community,6ce815983e2990d899c26427b60f734bfd0e909c,ok,76,764,118,109,10,6,0,28.1,
@@ -4029,7 +3951,6 @@ hz-xue/AnnaResearch,c5ad59ae481e5d3d4cfbcdba0a4b04270c64d37f,no_hints,235,139,0,
 studiomeyer-io/mcp-protocol-conformance,7cb7535f6f90942e98f92251d006d08d96c4b603,ok,0,51,2,2,0,0,0,7.8,
 Ankit512/grounded-support-agent,69d4fb9b80e759571a27804afd7d64e3d8951719,ok,11,0,0,0,0,0,0,3.8,
 ubukhari/agent-merge-audit,582a92bc11d027bab9c27aa91a85a481981164b4,ok,0,30,0,0,0,0,0,7.4,
-leviprogrammer71/the-vantage-media,d6c2e43f215e9024d56321f2650dc6e2c044e3a6,error,,,,,,,,147.5,RuntimeError: archive too large
 Arthurzxy/vivado_mcp_native,83028f00dfe40dcf554378b168b21fae5f342833,no_hints,6,0,0,0,,,,5.0,
 Rosentic/cursor-plugin,a30c458f5a64fdf95afac38af2768e1253260ea7,no_hints,0,0,0,0,,,,3.5,
 Happygallo/apple-ads-mcp,7f73700efd8dda180fb9d4689130cec11fd92dd1,ok,0,26,54,54,25,22,0,5.6,
@@ -4140,7 +4061,6 @@ betahub-io/betahub-mcp-server,783b1727b9f2d821be788f68e81ea9f697a649d8,ok,0,54,1
 Cantara/kcp-agent,ba88b3c89cbaae08b88d3deaa1519ddf3eaf15bc,no_hints,0,91,0,0,,,,9.3,
 madhusudan-kulkarni/computase,0aadf9515f133fbf94c5970eae1536d864284c8b,ok,38,0,5,5,0,0,0,6.4,
 anthonyniqmm/servo,9216ddf8c7feed87f8834179976f8e0321ed8403,ok,3221,62185,0,0,0,0,0,1613.2,
-tentenco/charmvilla_shopify_official,e5b35ec651d70792411d509483a78b65cf920807,error,,,,,,,,121.8,RuntimeError: archive too large
 pyrohao/VisualMD,0edac4c85c9538a671e24500bf2cd6f1c29590ca,no_hints,0,237,0,0,,,,19.0,
 Skye-flyhigh/mnemo-mcp,3077da3f7de7e3ecae75cc1731685f44d26a2cd1,ok,0,13,8,2,0,0,0,5.2,
 clearminds/clr-pagerduty-mcp,181956e51b92fe07775d3a95edad3bfc40e1bc32,ok,9,0,0,0,0,0,0,4.7,
@@ -4182,7 +4102,6 @@ tszaks/payday,53bad12d3579bcee098056a6248c45f2d7364c32,ok,1,2,0,0,0,0,0,16.2,
 celestiaorg/eden-docs,8fd58698a81099b6cd3c6c4490526a8686d9cca9,ok,0,11,0,0,0,0,0,9.3,
 mrkooblu/semrush-mcp,f2e858521109948aa0c024ea0d52ef7c04742913,ok,0,11,77,77,0,0,0,4.7,
 tmill313/shopbuddy-plugin,5207baba2a8530a692a1d72a56c33e0919581216,no_hints,0,0,0,0,,,,3.4,
-fardaf/.agents,e484d6006fa0a5ea817a8b868810d0baa8ade27f,error,,,,,,,,146.5,RuntimeError: archive too large
 native-agent-stack/native-agent-stack,4b8ca6208e8b2bb656f662df2708f6a70a3c7830,partial,1827,74,0,0,0,0,0,394.8,
 lanchuske/local-mcp-releases,dac32ef531b12c3a72f412764b6b1169235eb2c0,no_hints,0,1,0,0,,,,4.7,
 CSOAI-ORG/meok-stripe-acp-checkout-mcp,15e07c3fb80653c1c178bae7ffdb781491f99baa,no_hints,4,0,0,0,,,,5.3,
@@ -4554,7 +4473,6 @@ fahmmin/sahaayak,,unreachable,,,,,,,,1.5,
 miapre/html-to-figma-design-system,0bd61f09eb1c13f233e12f74057862fca9901606,ok,0,88,1,0,0,0,0,32.0,
 matematicsolutions/lu-eli-mcp,14a9017c42429c72b9180ff0e42511a236487df9,ok,15,0,3,3,0,0,0,5.3,
 shehryarsaroya/agent-eve,2a25648027093b5d1bd3c50686654d9d58e49053,ok,11,817,11,11,7,7,0,227.9,
-jlawyerorg/j-lawyer-org,adc2dd842d6dba318f3920a90b636b0e400f3c94,error,,,,,,,,216.8,RuntimeError: archive too large
 hussainn7/oldtimes,2d51ecd19467a9d693e180a6a688bbe2d365de29,ok,1,103,0,0,0,0,0,13.1,
 taciturnaxolotl/solder-mcp,975f745db079032857b10e26bf5d8de867dd4634,ok,0,7,12,12,0,0,0,4.1,
 ppravdin/patchcord,20ed0fba41acd8f955b6f0de1e61438d396acfef,ok,20,6,18,7,7,7,0,6.7,
@@ -4675,7 +4593,6 @@ slava01011910-ops/telemost-mcp-server,c450f4f0a358bc99d084aa89135b8a9bc85f1bd5,o
 Maheswar-Sah00/babel,c0f435935b884f55f66c5d8bc751957a6f0f77f0,ok,57,14,1,1,0,0,0,16.9,
 Abhiram-pixel123/Loome-AI-Fashon,ad24692d8975510575f2f4e355679927272fa6f8,ok,0,135,6,6,6,6,0,11.8,
 ofri-peretz/burgee,80c8eaa52befeb6349496d40ffbda244ecc78b3f,ok,0,1264,2,1,0,0,0,65.2,
-luffysky/ai-island-web,57500e5c7282c04a428c9f7af40ddc2df739b200,error,,,,,,,,145.1,RuntimeError: archive too large
 stevenmichiels/yt-mcp,e7e6d3377ceea6bf40b4ccb2deef469a7e14b84f,ok,4,0,6,6,0,0,0,4.3,
 bluerobotics/cockpit,6a4bc2985f19a8f04a0f533420756ae75eb428dc,ok,0,365,3,1,0,0,0,27.5,
 borland667/tools,fc41fe5816aee02f29a9693ca897f41fe638d9fa,ok,37,2,0,0,0,0,0,6.2,
@@ -4736,7 +4653,6 @@ somacoffeekyoto/imgx-mcp,840585c6cfefd8d822517738b311806e2d68b018,no_hints,1,28,
 Butipm/chronous-,bb0598d84f4cfb84c02274462dd20500c4bd7e10,ok,0,917,30,30,0,0,0,46.3,
 AshMet/vibemap-mcp,ca8444485c8e29559af3b555cea373e42f0a8012,ok,0,54,55,55,0,0,1,6.9,
 Eldergenix/Proofloop,738bd53187cf1b8b96032193b5f7134b264c31b2,ok,1,77,0,0,0,0,0,9.0,
-MelaBuilt-AI/atlas-of-threads,2adef6ba67e0135366400c86b263b1778a5110b4,error,,,,,,,,216.9,RuntimeError: archive too large
 Matronhq/matron-web,81dfd9ab8a148959c239e66f89e3d7b745512080,no_hints,0,236,0,0,,,,18.4,
 sseshachala/conduct-cli,dfa8d1d0557d25f793839580f7b4c75822ee021a,ok,48,0,0,0,0,0,0,11.2,
 openkedge/openkedge,b5b498fc6c14dde0cd6f84f5cb30f938ebe6b316,ok,0,150,4,4,1,0,0,10.3,
@@ -4897,7 +4813,6 @@ pipeworx-io/mcp-arcgis-greenwood,b3013080ef131a0b6f834b36c8e451c8b3aecbe0,no_hin
 InsForge/insforge-mcp,52585ec29407b328b0f562944d36479203c5489e,no_hints,0,61,0,0,,,,6.6,
 WeatherPal-AI/MCP-handle,9c59f16950d25e08c1058d8174e12b22861280d8,ok,378,166,852,731,5,4,0,82.4,
 vbkotecha/agentservices-api,a9a5fd8aa7ecb9910e4a291b4718aa659ea41fbe,ok,86,23,65,49,0,0,0,14.0,
-SUMITDROY/LH-backend,4c15bdc4459a576cf2a2daba35e43378ee0de271,error,,,,,,,,198.2,RuntimeError: archive too large
 jiankn/savepinner-mcp,aac1eb63c6f3a8c3325c11173bb3fa28f6729ba0,ok,0,4,6,6,0,0,0,4.2,
 threatray/threatray-mcp,1d816f8b7a260595c497380676c038a14b788183,ok,102,0,29,29,9,1,0,9.7,
 HaveNiceDa/My-Notion,c090511cbd0bd5279cc9657b05bb6da0f3a04a07,ok,0,446,5,5,0,0,0,24.7,
@@ -4999,3 +4914,41 @@ Daku22/CompanionAI,f4f51bcda2786232209975d34bb99614322f4a42,ok,1,170,4,1,0,0,0,3
 codeofaxel/Kiln,ffc46b6dc1983de377ecc22582dfe2ec28c8fb3e,ok,1127,1,451,23,0,0,0,203.6,
 HobbyCoders/ai-shuffle,0bc8441a4028fcdbeac7251af63b05ac3b79e561,ok,2374,1381,17,0,0,0,0,371.0,
 ypanagidis/t3code,1b6ed77b97d4f09db6e6b2165935f09fc2f93af0,ok,10,24069,2,2,0,0,0,1211.1,
+aimtowin/Super,9b522dcefa15e29b4da3f914838cd452a620d6c7,ok,0,1443,4,3,0,0,0,209.6,
+mikipalet/gigainvestors,5180fcf6362afea8631e5c7b59dbd983e3b3c98f,error,,,,,,,,225.8,RuntimeError: archive too large
+shuaiyuan17/grub-radar,fb015e42a14fa4436bf328a6143a417160e660e7,error,0,271,,,,,,21.1,RuntimeError: Node.js v24.12.0
+vedangvatsa/PDFtoWebsite,5048eb034a15297902281fbb9e17ca12d7cbd77a,ok,1,568,0,0,0,0,0,122.2,
+ed1868/anwcc-command-center,a3a4cb95d60473c86608c47d2f0fc46185269efc,ok,4,4748,111,110,0,0,0,369.3,
+aadorian/MinimalVS,d016f0faa4b9aed590f799c6d26ec6204bedd86a,ok,0,8116,63,12,0,0,0,514.1,
+AlexVazquezATX/Urban-Simple-2.0,9a436f8e112bac7b1c7f38b78718e913bebee9a5,ok,0,767,4,3,0,0,0,148.8,
+20000419/fauxnix,9643605fcd541e019f99114bb4fdb5a8ff84aadf,ok,0,107,2,2,1,1,0,129.4,
+wysisoft/webcode.host,3e2d06ac1f21cd5f798b4494ad07eb07430fe60e,ok,73,9840,63,0,0,0,0,683.4,
+DerrickYifeng/shipflare,79d25bfb6482453dd42aa05a16881c23e22fb19d,ok,0,2720,1,0,0,0,0,183.6,
+shreed27/razor-oss,2527702d4f96a70bab7ca06d25b0c12f055060ed,ok,0,161,0,0,0,0,0,20.2,
+LLaammTTeerr/DuckOJ,b49571f800c369c0aeaae53e6994a8b5c29887e7,ok,11,706,1,1,0,0,0,46.2,
+nolindnaidoo/paths-le,5a4e9e13e6d1c0ac14144e0a79ad3b33ee4ed905,no_hints,3,147,0,0,,,,14.3,
+1995F150/cridergpt,1ade63ef161afeda6be068cc2c6ffc2c36f82244,ok,35,573,10,0,0,0,0,73.3,
+drQedwards/PPM,e5cf8be81c8b5e958d62903d4979e09e8fb10fed,no_hints,78,22,0,0,,,,11.8,
+boboboda/buyoungsil-dev-web,12f809dec2786c758673df19dc38dd7574aadeac,ok,0,398,4,4,0,0,0,39.5,
+melgarafael/DeskcommCRM,40db34708049e52304d159b7a6f1829bfde23358,ok,15,6797,76,0,0,0,0,465.0,
+ogisetiawan/bm-ai-orchestrator,4f8a4c20fde19e245aa6ad8e6a4065fd3775166c,ok,3833,6948,0,0,0,0,0,631.5,
+carlosdh12335-ship-it/INTELIGENCIA-VASTA-DA-IA-,7be0cb05a56df6ad86d48b0d2bf4049bdcb17008,error,,,,,,,,269.1,RuntimeError: archive too large
+mcp-tool-shop-org/mcp-arcade-cabinets,fd7039f130cbd2f95da7f99eeaf85954814dec01,error,,,,,,,,289.7,RuntimeError: archive too large
+jiangxxxue/KOCO-bench,786c801ee9938ba7e0bebac04219622f7a4b9739,error,,,,,,,,183.2,RuntimeError: archive too large
+stevendaix/cfdx_dev,9e16262ffe002bd092fb1a7584640f5f5749c817,ok,322,0,19,19,0,0,0,37.7,
+kunalvaghani/Jarvis,f909256ba2c4846c599f54fcb2532760dc10ecc7,error,2022,2994,,,,,,582.8,RuntimeError: MemoryError: Parser stack overflowed - Python source too complex to parse
+hanzoai/insights,3df36215fba20510fbfeb503ed64cf5154ebb29d,ok,15842,11953,3,1,0,0,0,1385.9,
+plm66/hermes-delegate,285d2a56ee813355b4ff8376583b850bf9b7b476,partial,7002,3663,0,0,0,0,0,772.9,
+odphineguy/web-main,2f00ed52e64f602afa17638d1ebf76b94fbbe22b,error,,,,,,,,302.1,RuntimeError: download budget exceeded
+KaraAliOsman/framedex,f4861b8f2c1384dfbda48370f16c046b2db463a3,error,,,,,,,,301.8,RuntimeError: download budget exceeded
+marolinik/waggle-os,2af0904df01ca3d374cc78ba95b60dc579dd6a7a,error,,,,,,,,403.6,RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)
+samma1997/sammapix,14dd5716a8e8791d43a3210b18b40e6e852fe731,error,,,,,,,,373.1,RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)
+Embassy-of-the-Free-Mind/sourcelibrary-v2,d05ad3d3dbd57b2c3176017fa076e054c9aabb4b,error,,,,,,,,301.2,RuntimeError: download budget exceeded
+Tane1101/premier-news-DB,e0e29d16697580baebeb43160d832d3501b38b72,partial,16825,2,0,0,0,0,0,1170.1,
+irhaapparelsofficial-ctrl/irha-global-craft-f3881330,a432f0450b14a4f9bf3080a6b19aeaf953c01b3b,error,,,,,,,,301.8,RuntimeError: download budget exceeded
+BabylonJS/Editor,8f9687b9745789a8ea74fce92e1f4aa76dbbc699,error,,,,,,,,894.8,RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)
+lijk7677-dev/lovanet-fr-4dc85ff8,3076f5fb58209995808cd35db362f6eb1deb5a82,error,,,,,,,,1077.5,RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)
+leviethang2509/QUANLYNHASACH_TICHHOPNHANDIEN,4f9b197d8c0639a031405452991c0bf7b6a01c5b,error,,,,,,,,1077.6,RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)
+pol197kuba-collab/J.A.R.V.I.S.,73e3133e5bcf3c425716a286c4f815a5c279ef1e,error,1,473,,,,,,12721.0,RuntimeError: Node.js v24.12.0
+KingInYellows/grok-obsidian,c5945299ce54c1820390cab9cc13a81575c33092,ok,0,16,2,2,1,1,0,36908.1,
+baobabprince/roey-tzena-podcast,a970d0517cd36fec132498f31b761807d67416c4,partial,17447,3,0,0,0,0,0,38836.2,
