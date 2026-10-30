@@ -13,3 +13,4 @@ data/raw/registry_snapshot_*.json
 node_modules/
 data/tmp/
 data/results/scan/
+labeling/d_labels_v1/sealed/

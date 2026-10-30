@@ -85,7 +85,15 @@ not of two models and not of two independent humans.
    the prompt. Compare files with `scripts/compare_d_labels.py`, which keeps
    claims separate (no reduction to one status) and asks binary questions:
    affirmed by the tool / uncertain / denied at any scope.
-2. **Evaluation (100):** `d_eval_100_tasneem.xlsx` and `d_eval_100_menna.xlsx`,
+2. **Evaluation (40, replaces the 100; decided 2026-10-30):** `d_eval_40_{tasneem,menna}.xlsx`,
+   made by `scripts/make_d_eval_40.py`: 10 tools per stratum (the code detector
+   found execute / delete / network / none), so the rare effects have enough
+   examples; one tool per owner. 33 come from the 100-tool set and 7 from the
+   other 300, so **label the 40 before opening `d_rest_300_claude_proposals.xlsx`**.
+   The set measures agreement and accuracy, not prevalence (`d_eval_40_key.csv`
+   holds strata and inclusion probabilities; do not open it while labelling).
+   The 100-tool description below is kept for reference.
+   Previously planned: **Evaluation (100):** `d_eval_100_tasneem.xlsx` and `d_eval_100_menna.xlsx`,
    100 tools from the 400-tool sample, drawn before anyone saw proposals for
    them. Both label independently; kappa before any discussion; adjudicate.
    This is the human reference.
