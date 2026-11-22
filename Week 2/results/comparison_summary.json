@@ -1,0 +1,50 @@
+{
+  "cohort": "development_workbook",
+  "runs": 1,
+  "compared_tools": 39,
+  "tool_statuses": {
+    "no_supported_candidate": 28,
+    "review": 10,
+    "candidate": 1
+  },
+  "hints": {
+    "readOnlyHint": {
+      "true": 22,
+      "false": 16,
+      "omitted": 1,
+      "applicable": 22,
+      "candidate": 0,
+      "review": 1,
+      "no_supported_candidate": 21
+    },
+    "destructiveHint": {
+      "true": 6,
+      "false": 24,
+      "omitted": 9,
+      "applicable": 11,
+      "candidate": 1,
+      "review": 4,
+      "no_supported_candidate": 6
+    },
+    "openWorldHint": {
+      "true": 10,
+      "false": 19,
+      "omitted": 10,
+      "applicable": 19,
+      "candidate": 0,
+      "review": 1,
+      "no_supported_candidate": 18
+    },
+    "destructiveHint_M2b": {
+      "true": 6,
+      "false": 24,
+      "omitted": 9,
+      "applicable": 11,
+      "candidate": 0,
+      "review": 4,
+      "no_supported_candidate": 7
+    }
+  },
+  "rule_profile": "mapping_DA_v0.2_draft",
+  "mapping_v0.4_scope": "C↔A only; D↔A uses description claims"
+}
